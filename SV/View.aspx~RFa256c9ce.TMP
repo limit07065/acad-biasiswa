@@ -8,7 +8,7 @@
                 <div class="name-bgcolor">
                     <div class="row">
                         <!-- BEGIN DISPLAY PHOTO -->
-                        <div class=" col-sm-3 col-xs-6"  id="imgPhoto" runat="server">
+                        <div class=" col-sm-3 col-xs-6" id="imgPhoto" runat="server">
                         </div>
                         <!-- END DISPLAY PHOTO -->
                         <div class="col-sm-9 col-xs-12 ">
