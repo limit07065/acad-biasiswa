@@ -14,7 +14,7 @@ public partial class SV_View : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                string sesisem = Session["acadUserSs"].ToString();
+               
                 showProfile();                
                
             }
@@ -26,7 +26,7 @@ public partial class SV_View : System.Web.UI.Page
     {
         imgPhoto.InnerHtml = "<img src=\"../Styles/images/nophoto.png\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
         lblName.Text = "Umar in Khalid";
-
+        lblProgramme.Text="Program: ";
        
     }
 }
