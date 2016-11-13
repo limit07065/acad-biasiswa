@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SV/SVMasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="SV_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+
     <div class="row">
-        <div id="cssmenu2" class="">
+        <div id="cssmenu2" >
             <ul style="font-size: small">
                 <li class="active"><a href="#">&nbsp;<span class="fa fa-user"></span>&nbsp;Scholarship Application</a></li>
 
             </ul>
         </div>
+
         
         <asp:GridView ID="GridView1" CssClass="col-xs-12" runat="server" DataSourceID="SMUTM" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="NOKP" ForeColor="#333333" GridLines="None" >
             <AlternatingRowStyle BackColor="White" />

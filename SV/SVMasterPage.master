@@ -2,6 +2,7 @@
     Inherits="SVMasterPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+    <link href="../Styles/css/pls.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         .style158i
@@ -51,8 +52,8 @@
     <div id="sumInfo" class="container-fluid">
         <div class="row">
             <div class="col-sm-9 spadding">
-                <div class="name-bgcolor">
-                    <div class="row">
+             
+                    <div class="row name-bgcolor" style="padding-bottom: 10px;">
                         <!-- BEGIN DISPLAY PHOTO -->
                         <div class=" col-sm-3 col-xs-12 " id="imgPhoto" runat="server">
                         </div>
@@ -103,10 +104,10 @@
                                 </div>
                             </div>
                         </div>
+                        <br />
                     </div>
-                    <div class="statfiller">
-                    </div>
-                </div>
+                   
+               
             </div>
             <div class="col-sm-3 spadding">
                 <div class="row stat-row">
@@ -142,6 +143,7 @@
     </div>
     <div class="xsfiller">
     </div>
+        <br />
     <div class="main">
         <div id="main_content" class="container-fluid">
             <div class="row">

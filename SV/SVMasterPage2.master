@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SVMasterPage2.master.cs" Inherits="SV_SVMasterPage2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
-
+    <link href="../Styles/css/pls.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .style158i {
             vertical-align: top;
