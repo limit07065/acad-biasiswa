@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SVMasterPage2.master.cs" Inherits="SV_SVMasterPage2" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+
+    <style type="text/css">
+        .style158i {
+            vertical-align: top;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <div id="menu" class="menu-bg">
+        <ul class="left">
+            <li class="home"><a href="/SV" class="icon-home"></a><span style="visibility: hidden;">---</span></li>
+            <li><a>
+                <asp:Label ID="Label2" runat="server" Text="Student Info" CssClass="textMenu"></asp:Label></a>
+                <ul>
+                    <li><a href=""><span class="fa fa-user"></span>Personal Info</a></li>
+                    <li><a href=""><span class="fa fa-graduation-cap"></span>Academic Info</a></li>
+                    <li><a href=""><span class="fa fa-dollar"></span>Financial</a></li>
+                </ul>
+            </li>
+            <li><a>
+                <asp:Label ID="Label1" runat="server" Text="Activity" CssClass="textMenu"></asp:Label></a>
+                <ul>
+                    <li><a href=""><span class="fa fa-list"></span>Internal Activity</a></li>
+                    <li><a href=""><span class="fa fa-pencil-square-o"></span>External Activity</a></li>
+                </ul>
+            </li>
+            <li><a>
+                <asp:Label ID="Label4c" runat="server" Text="Society" CssClass="textMenu" Visible="false"></asp:Label></a>
+                <ul id="ulSociety" runat="server">
+                </ul>
+            </li>
+        </ul>
+        <ul class="right">
+            <span style="color: #ffffff;">
+                <asp:Label ID="lblLoggedInUser" runat="server" Text=""></asp:Label></span>&nbsp;
+            <li class="profile"><a class="icon-user"></a>
+                <ul>
+                    <li><a href="#" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
+                    <li><a href="#" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="main">
+        <div id="main_content" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 spadding">
+                    <asp:ContentPlaceHolder ID="BodyContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+
+            </div>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    // light
+                    $('.tl').timeline({
+                        startItem: '26/06/2016',
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</asp:Content>
+
+
