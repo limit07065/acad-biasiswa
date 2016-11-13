@@ -11,9 +11,24 @@ public partial class SV_View : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //string sesisem = Session["acadUserSs"].ToString();
-            showProfile();
-            //lblLoggedInUser.Text = Session["acadUserNm"].ToString();
+            Session["acadUserSs"] = "201620171";           
+            Session["acadUserPr"] = "Bachelor Of Computer Science (Database Systems)";
+            Session["acadUserFn"] = "Computing";
+            Session["acadUserMt"] = "A14CS0999";
+            Session["acadUserBs"] = "6";
+            Session["acadUserNs"] = "8";
+            Session["acadUserSv"] = "Dr. Gigi Sweetiee";
+            Session["acadUserTs"] = "Taught Course";
+            Session["acadUserEm"] = "kaakasim@live.utm.my";
+            Session["acadUserTl"] = "017-754943283";
+
+
+            if (!IsPostBack)
+            {
+                string sesisem = Session["acadUserSs"].ToString();
+                showProfile();                
+               
+            }
         }
 
     }

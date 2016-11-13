@@ -9,7 +9,8 @@ public partial class SV_SVMasterPage2 : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Session["acadUserNm"] = "AIR KELAPA BIN KELABU ASAP";
+        lblLoggedInUser.Text = Session["acadUserNm"].ToString();
 
     }
 
