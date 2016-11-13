@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
 
 
-    <div class="row name-bgcolor" style="padding-bottom: 10px;"" id="personal-info">
+    <div class="row name-bgcolor" style="padding-bottom: 10px;" id="personal-info">
         <!-- BEGIN DISPLAY PHOTO -->
-        <div class=" col-sm-3 col-xs-6" id="imgPhoto" runat="server">
+        <div class=" col-sm-3 col-xs-12" id="imgPhoto" runat="server">
         </div>
 
         <!-- END DISPLAY PHOTO -->
@@ -84,14 +84,83 @@
     <br />
     <br />
 
-    <div class="row name-bgcolor" style="padding-bottom: 10px;" id="publication">
+    <div class="row " style="padding-bottom: 10px;" id="publication">
         <div id="cssmenu2">
             <ul style="font-size: small">
                 <li class="active"><a href="#">&nbsp;<span class="fa fa-user"></span>&nbsp;Publication</a></li>
             </ul>
         </div>
 
+        <br />
+
+        <div class="col-sm-6 name-bgcolor" style="padding:15px 0px 15px 0px ">
+            
+                <div class="col-sm3">
+                    <asp:Label ID="lblTextTitle" runat="server" Font-Bold="True" Text="Title:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextAuthor" runat="server" Font-Bold="True" Text="Author(s):"></asp:Label>&nbsp
+                                    <asp:Label ID="lblAuthor" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextAuthorship" runat="server" Font-Bold="True" Text="Authorship:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblAuthorship" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextStatus" runat="server" Font-Bold="True" Text="Status:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
+                    <br />
+                </div>
+                <div class="col-sm3">
+                    <asp:Label ID="lblTextTypePublication" runat="server" Font-Bold="True" Text="Type of Publication:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblTypePublication" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextNameJournal" runat="server" Font-Bold="True" Text="Name of Journal:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblNameJournal" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextPublisherURL" runat="server" Font-Bold="True" Text="Publisher URL:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblPublisherURL" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="lblTextRemark" runat="server" Font-Bold="True" Text="Remark:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblRemark" runat="server" Text=""></asp:Label>                    
+                </div>
+           
+        </div>
+        <div class="col-sm-6 name-bgcolor" >
+           
+                <div class="col-sm3">
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="Title:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label3" runat="server" Font-Bold="True" Text="Author(s):"></asp:Label>&nbsp
+                                    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label5" runat="server" Font-Bold="True" Text="Authorship:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label7" runat="server" Font-Bold="True" Text="Status:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+                    <br />
+                </div>
+                <div class="col-sm3">
+                    <asp:Label ID="Label9" runat="server" Font-Bold="True" Text="Type of Publication:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label11" runat="server" Font-Bold="True" Text="Name of Journal:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label13" runat="server" Font-Bold="True" Text="Publisher URL:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label14" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:Label ID="Label15" runat="server" Font-Bold="True" Text="Remark:"></asp:Label>&nbsp
+                                    <asp:Label ID="Label16" runat="server" Text=""></asp:Label>                    
+                </div>
+           
+        </div>
+        <br />
+
+        
+        
     </div>
+
 
 
 
