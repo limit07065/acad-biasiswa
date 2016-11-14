@@ -36,6 +36,11 @@
                 <ul id="ulSociety" runat="server">
                 </ul>
             </li>
+            <li><a>
+                <asp:Label ID="Label3" runat="server" Text="Scholarship Recommendation" CssClass="textMenu" ></asp:Label></a>
+                <ul id="ul1" runat="server">
+                </ul>
+            </li>
         </ul>
         <ul class="right">
             <span style="color: #ffffff;">
@@ -358,14 +363,7 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-            $(window).load(function() {
-	            // light
-	            $('.tl').timeline({
-		            startItem : '26/06/2016',
-	            });
-            });	
-            </script>
+            
         </div>
     </div>
 </asp:Content>
