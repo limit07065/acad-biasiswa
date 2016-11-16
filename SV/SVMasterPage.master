@@ -14,7 +14,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div id="menu" class="menu-bg">
         <ul class="left">
-            <li class="home"><a href="" class="icon-home"></a><span style="visibility: hidden;">
+            <li class="home"><a href="Default.aspx" class="icon-home"></a><span style="visibility: hidden;">
                 ---</span></li>
             <li><a>
                 <asp:Label ID="Label2" runat="server" Text="Student Info" CssClass="textMenu"></asp:Label></a>
