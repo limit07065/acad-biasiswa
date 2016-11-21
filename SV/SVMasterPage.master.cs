@@ -137,7 +137,7 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
       **/
     protected void showProfile()
     {
-        imgPhoto.InnerHtml = "<img src=\"../Styles/images/nophoto.png\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
+        imgPhoto.InnerHtml = "<img src=\"../Styles/images/MSO.jpg\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
         lblName.Text = Session["acadUserNm"].ToString();
         lblProgramme.Text = Session["acadUserPr"].ToString();
         lblFaculty.Text = Session["acadUserFn"].ToString();

@@ -1,0 +1,206 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SPSMasterPage.master.cs"
+    Inherits="SPSMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+    <link href="../Styles/bootsrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/bootsrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/flat.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/tomenu.css" rel="stylesheet" type="text/css" /> 
+    <link href="../Styles/css/ls.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/pls.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/site.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/addon.css" rel="stylesheet" type="text/css" />                           <!-- add on css file by students -->
+    <script src="../Styles/js/bootsrap/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Styles/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="../Styles/js/jquery.timeline.min.js" type="text/javascript"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <div id="menu" class="menu-bg">
+        <ul class="left">
+            <li class="home"><a href="" class="icon-home"></a><span style="visibility: hidden;">
+                ---</span></li>
+            <li><a href="listApplication.aspx">
+                <asp:Label ID="Label2" runat="server" Text="Scholarship" CssClass="textMenu"></asp:Label></a>
+            </li>
+            <li><a>
+                <asp:Label ID="Label1" runat="server" Text="Administration" CssClass="textMenu"></asp:Label></a>
+                <ul>
+                    <li><a href="listRequirement.aspx"><span class="fa fa-gear"></span>&nbsp;Manage Requirement</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="right">
+            <span style="color: #ffffff;">
+                <asp:Label ID="lblLoggedInUser" runat="server" Text=""></asp:Label></span>&nbsp;
+            <li class="profile"><a class="icon-user"></a>
+                <ul>
+                    <li><a href="#" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
+                    <li><a href="#" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="sumInfo" class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 spadding">
+                <div class="name-bgcolor">
+                    <div class="row">
+                        <!-- BEGIN DISPLAY PHOTO -->
+                        <div class="col-md-3" id="imgPhoto" runat="server">
+                        </div>
+                        <!-- END DISPLAY PHOTO -->
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="name-row">
+                                    <asp:Label ID="lblName" runat="server" Font-Bold="True" Font-Size="Large" Text=""></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblPosition" runat="server" Font-Bold="True" ForeColor="#AC0000" Text=""></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblDepartment" runat="server" Font-Bold="True" ForeColor="#AD0000"
+                                        Text=""></asp:Label>
+                                    <p class="filler">
+                                        &nbsp;</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="margin-left: -10px">
+                                    <asp:Label ID="lblUserID" runat="server" Font-Bold="True" Text="User ID:"></asp:Label>&nbsp
+                                    <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
+                                    <div class="xsfiller">
+                                    </div>
+                                    <div class="xsfiller">
+                                    </div>
+                                    <br />
+                                    <div class="statfiller">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-left: -10px">
+                                    <div class="xsfiller">
+                                    </div>
+                                    <div class="xsfiller">
+                                    </div>
+                                    <br />
+                                    <div class="statfiller">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statfiller">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 spadding">
+                <div class="row stat-row">
+                    <br />
+                    <p align="center" style="margin-top: 3px;">
+                        <strong>No. of Applicants</strong></p>
+                    <div>
+                        <a href="YourFileHere1.aspx">
+                            <asp:Label ID="lblNotification" runat="server" Font-Bold="True" Font-Size="XX-Large"
+                                CssClass="cnt-sum" ToolTip="Show application(s)"></asp:Label></a>
+                        <p align="center">
+                            New application
+                        </p>
+                    </div>
+                </div>
+                <div class="row stat-row">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="xsfiller">
+    </div>
+    <div class="main">
+        <div id="main_content" class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 spadding">
+                    <asp:ContentPlaceHolder ID="BodyContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <p>
+                    <strong>Contact Us</strong></p>
+                <div class="res-row">
+                    <p style="font-size: 11px">
+                        <strong>Any inquiry, directly contact us :</strong></p>
+                    <p style="font-size: 11px">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#ContAmd" style="color: Black; padding: 3px 10px 3px 10px">
+                                AMD</a></li>
+                            <li><a data-toggle="tab" href="#ContactSps" style="color: Black; padding: 3px 10px 3px 10px">
+                                SPS</a></li>
+                            <li><a data-toggle="tab" href="#ContactIsc" style="color: Black; padding: 3px 10px 3px 10px">
+                                ISC</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="ContAmd" class="tab-pane fade in active">
+                                <p style="font-size: 11px">
+                                    <em>Academic Management Division,</em><br />
+                                    Office of Deputy Vice Chancellor Academic &amp; International)<br />
+                                    Universiti Teknologi Malaysia<br />
+                                    UTM Johor Bahru,<br />
+                                    81310 Johor<br />
+                                    Malaysia.</p>
+                                <p style="font-size: 11px">
+                                    Phone : (6)07 – 5530463<br />
+                                    Fax : (6)07 – 5581791<br />
+                                    Email : upa@utm.my / admission@utm.my<br />
+                                </p>
+                            </div>
+                            <div id="ContactSps" class="tab-pane fade">
+                                <p style="font-size: 11px">
+                                    <em>School Of Graduate Studies,</em><br />
+                                    F54, Universiti Teknologi Malaysia<br />
+                                    UTM Johor Bahru,<br />
+                                    81310 Johor<br />
+                                    Malaysia.</p>
+                                <p style="font-size: 11px">
+                                    Phone : (6)07 – 5537790 /
+                                    <br />
+                                    (6)07 &#8211; 5537783<br />
+                                    Fax : (6) 07 &#8211; 5537800 /
+                                    <br />
+                                    07-5537546<br />
+                                    E-mail : graduate@utm.my / intakesps@utm.my<br />
+                                    Website : http://www.sps.utm.my or www.utm.my/admission<br />
+                                </p>
+                            </div>
+                            <div id="ContactIsc" class="tab-pane fade">
+                                <p style="font-size: 11px">
+                                    <em>UTM International,</em><br />
+                                    Block S19,Universiti Teknologi Malaysia<br />
+                                    UTM Johor Bahru,<br />
+                                    81310 Johor<br />
+                                    Malaysia.</p>
+                                <p style="font-size: 11px">
+                                    Phone :
+                                    <br />
+                                    (6)07 – 5538001 (Personal Assistant of Senior Director)
+                                    <br />
+                                    (6)07 – 5536844/45/46 (General Office for Relations Unit & Global Education Unit)
+                                    <br />
+                                    (6)07 – 5536866/ +607-5536867 (General Office for International Student Centre)
+                                    <br />
+                                    (6)07 – 5536847
+                                    <br />
+                                    E-mail : international@utm.my<br />
+                                </p>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(window).load(function() {
+	            // light
+	            $('.tl').timeline({
+		            startItem : '26/06/2016',
+	            });
+            });	
+        </script>
+    </div>
+    </div>
+</asp:Content>
