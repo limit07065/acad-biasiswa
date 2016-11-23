@@ -128,7 +128,7 @@
                     CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None"
                     ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
                     EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="Matrix_No" OnRowDataBound="GridView1_RowDataBound">
+                    DataKeyNames="Matrix_No" >
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
