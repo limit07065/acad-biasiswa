@@ -2,6 +2,12 @@
     CodeFile="listApplication.aspx.cs" Inherits="SPS_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+    <style>
+        a:hover
+        {
+            text-decoration: underline;    
+        }
+    </style>
     <div id="cssmenu2">
         <ul style="font-size: small">
             <li class="active"><a href=""><span class="fa fa-navicon"></span>&nbsp;Application List</a></li>
@@ -125,10 +131,10 @@
                     </tr>
                 </table>
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
-                    CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None"
+                    CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"
                     ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
                     EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="Matrix_No" >
+                    DataKeyNames="Matrix_No" OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
@@ -136,22 +142,39 @@
                                 <%# Container.DataItemIndex + 1 %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Faculty_Initial" HeaderText="Faculty" 
-                            SortExpression="Faculty_Initial" />
-                        <asp:BoundField DataField="Expr1" HeaderText="Name" SortExpression="Expr1" />
+                        <asp:BoundField DataField="Faculty" HeaderText="Faculty" 
+                            SortExpression="Faculty" />
+                        <asp:TemplateField HeaderText="Name" SortExpression="Stu_Name">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="viewStuInfo" runat="server"><%# Eval("Stu_Name") %></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Matrix_No" HeaderText="Matrix No" 
                             SortExpression="Matrix_No" />
-                        <asp:BoundField DataField="App_Date" HeaderText="App. Date" 
-                            SortExpression="App_Date" />
+                        <asp:TemplateField HeaderText="App. Date" SortExpression="App_Date">
+                            <ItemTemplate>
+                            <asp:Label runat="server"><%# ((DateTime)Eval("App_Date")).ToString("dd-MMM-yyyy") %></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Session" HeaderText="Session" 
                             SortExpression="Session" />
-                        <asp:BoundField DataField="Course_Name" HeaderText="Program" 
-                            SortExpression="Course_Name" />
-                        <asp:BoundField DataField="Nationality_BI" HeaderText="Nationality" 
-                            SortExpression="Nationality_BI" />
-                        <asp:BoundField DataField="Name" HeaderText="Type" SortExpression="Name" />
-                        <asp:BoundField DataField="Description" HeaderText="App. Status" 
-                            SortExpression="Description" />
+                        <asp:BoundField DataField="Program" HeaderText="Program" 
+                            SortExpression="Program" />
+                        <asp:BoundField DataField="Nationality" HeaderText="Nationality" 
+                            SortExpression="Nationality" />
+                        <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+                        <asp:TemplateField HeaderText="Mark" SortExpression="Mark">
+                            <ItemStyle CssClass="toggleModal" />
+                            <ItemTemplate>
+                            <asp:LinkButton ID="viewMark" runat="server"><%# Eval("Mark") %></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
+                            <ItemStyle CssClass="toggleModal" />
+                            <ItemTemplate>
+                            <asp:LinkButton ID="viewStatus" runat="server"><%# Eval("App_Status")%></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -167,11 +190,41 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
         SelectCommand="SELECT * FROM [vw_Application] ORDER BY [App_Date] DESC">
     </asp:SqlDataSource>
     <br />
-    <br />
-    <br />
+
+    <%-- Bootstrap Modal started --%>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;</button>
+                    <h4 class="modal-title">
+                        </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function viewStuInfo(str) {
+            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
+        }
+
+
+
+        $(document).ready(function () {
+            $(".toggleModal a").attr("data-toggle", "modal");
+            $(".toggleModal a").attr("data-target", "#myModal");
+        });
+    </script>
 </asp:Content>

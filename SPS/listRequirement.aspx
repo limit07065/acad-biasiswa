@@ -58,6 +58,8 @@
             SelectCommand="SELECT [Code], [Name] FROM [CODE_SCHOLARSHIP]">
         </asp:SqlDataSource>
     </div>
+
+    <%-- Bootstrap Modal started --%>
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
