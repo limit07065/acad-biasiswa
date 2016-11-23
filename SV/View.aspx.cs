@@ -4,29 +4,73 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class SV_View : System.Web.UI.Page
 {
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-        {       
-
-            if (!IsPostBack)
+        {
+            if ((string.IsNullOrEmpty(Request.QueryString["app"])) || (string.IsNullOrEmpty(Request.QueryString["mat"])) || (string.IsNullOrEmpty(Request.QueryString["ses"])))
             {
-               
-                showProfile();                
-               
+                Response.Redirect("");
             }
-        }
+            else
+            {               
+                DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+                if (dv == null)
+                {
+                    dv = new DataView();
+                }
+                if (dv.Count == 0)
+                {
+                    Response.Redirect("");
+                }
+                else
+                {
+                    DataView student = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
+                    lblName.Text = student[0]["Name"].ToString();
+                    lblContactNo.Text = student[0]["Contact"].ToString();
+                    lblEmail.Text = student[0]["Email"].ToString();
+                }
 
+                DataView dv2 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+                if (dv2.Count == 1)
+                {
+                    TextAreaComment.Text = dv2[0]["comment"].ToString();
+                    String recommendation = dv2[0]["recommendation"].ToString();
+
+                    switch (recommendation[0])
+                    {
+                        case '2': RadioButtonListRecommendation.SelectedIndex = 0; break;
+                        case '1': RadioButtonListRecommendation.SelectedIndex = 1; break;
+                        case '0': RadioButtonListRecommendation.SelectedIndex = 2; break;
+                    }
+
+                }
+            }
+
+
+        }
     }
 
-    protected void showProfile()
+    protected void btn_click(object sender, EventArgs e)
     {
-       
-        lblName.Text = "Umar in Khalid";
-        lblProgramme.Text="Doctor of Philosophy Civil Engineering";
-       
+        DataView dv2 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+        if (dv2.Count == 0)
+        {
+            SqlDataSource2.Insert();
+            SqlDataSource4.Update();
+        }
+        else
+        {
+            SqlDataSource2.Update();
+        }
+
+
+        Response.Redirect("");
     }
 }

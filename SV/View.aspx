@@ -1,63 +1,97 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SV/SVMasterPage.master" AutoEventWireup="true" CodeFile="View.aspx.cs" Inherits="SV_View" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SV/SVMasterPage.master" AutoEventWireup="true"
+    CodeFile="View.aspx.cs" Inherits="SV_View" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        SelectCommand="SELECT * FROM [SUPERVISE] WHERE (([Matrix_No] = @Matrix_No) AND ([Session] = @Session) AND ([Staff_No] = @Staff_No)) ">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="Matrix_No" QueryStringField="mat" Type="String" />
+            <asp:QueryStringParameter Name="Session" QueryStringField="ses" Type="String" />
+            <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        SelectCommand="SELECT * FROM [STUDENT] WHERE ([Matrix_No] = @Matrix_No)">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="Matrix_No" QueryStringField="mat" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        UpdateCommand="UPDATE [APPLICATION] SET [Status] = @Status WHERE [App_No] = @App_No">
+        <UpdateParameters>
+            <asp:Parameter Name="Status" Type="String" DefaultValue="2" />
+            <asp:Parameter Name="App_No" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
     <div class="row" id="supervisor-recommendation">
         <div class="col-sm-12" id="cssmenu2">
             <ul style="font-size: small">
                 <li class="active"><a href="#">&nbsp;Supervisor Recommendation</a></li>
             </ul>
         </div>
-
-
-
         <div class="col-sm-12" style="padding-bottom: 10px;" id="personal-info">
-
-
             <div class="col-sm-4" id="imgPhoto" runat="server">
                 <!--student photo-->
-                <img class="img-responsive" src="../Styles/images/nophoto.png" class="img-profile" alt="profileimage" />
+                <img class="img-responsive " src="../Styles/images/nophoto.png" alt="profileimage" />
                 <br />
                 <!--basic info-->
                 <asp:Label ID="lblTextName" runat="server" Font-Bold="True" Font-Size="Large" Text="Name:"></asp:Label>&nbsp;
-                            <asp:Label ID="lblName" runat="server" Font-Bold="True" Font-Size="Large" Text=""></asp:Label>
+                <asp:Label ID="lblName" runat="server" Font-Bold="True" Font-Size="Large" Text=""></asp:Label>
                 <br />
-                <asp:Label ID="lblTextProgramme" runat="server" Font-Italic="True" Font-Bold="True" ForeColor="#AC0000" Text="Program:"></asp:Label>&nbsp;
-                            <asp:Label ID="lblProgramme" runat="server" Font-Italic="True" Font-Bold="True" ForeColor="#AC0000" Text=""></asp:Label>
+                <asp:Label ID="lblTextProgramme" runat="server" Font-Italic="True" Font-Bold="True"
+                    ForeColor="#AC0000" Text="Program:"></asp:Label>&nbsp;
+                <asp:Label ID="lblProgramme" runat="server" Font-Italic="True" Font-Bold="True" ForeColor="#AC0000"
+                    Text=""></asp:Label>
                 <br />
                 <asp:Label ID="lvlTextContactNo" runat="server" Font-Bold="True" Text="Contact No.:"></asp:Label>&nbsp;
-                            <asp:Label ID="lblContactNo" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblContactNo" runat="server" Text=""></asp:Label>
                 <br />
                 <asp:Label ID="lblTextEmail" runat="server" Font-Bold="True" Text="Email:"></asp:Label>&nbsp;
-                            <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
                 <br />
             </div>
-
             <div class="col-sm-8" id="supervisor-action">
                 <div>
                     <br />
                     <a href="#" class="btn btn-default">View Full Info</a>
                 </div>
-                <div>
-                    <br />
-                    <asp:RadioButton ID="RadioButton1" runat="server" Text="Strongly Recommended" /><br />
-                    <asp:RadioButton ID="RadioButton2" runat="server" Text="Recommended" /><br />
-                    <asp:RadioButton ID="RadioButton3" runat="server" Text="Not Recommended" /><br />
-                </div>
-
-                <div>
-                    <br />
-                    <asp:Label ID="lblTextComment" runat="server" Text="Comment" Font-Bold="true"></asp:Label>
-                    <br />
-                    <asp:TextBox ID="TextAreaComment" TextMode="multiline" Rows="5" runat="server" Width="100%" />
-                    <br />
-                    <a href="Default.aspx" class="btn btn-primary pull-right">Submit</a>
-                   
-                    <!--<asp:Button ID="Button2" runat="server" CausesValidation="False" Text="Reset" UseSubmitBehavior="False" CssClass="btn btn-danger pull-right"/>-->
-                </div>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+                    SelectCommand="SELECT * FROM [SUPERVISOR_RECOMMENDATION] WHERE ([id] = @id) "
+                    InsertCommand="INSERT INTO [SUPERVISOR_RECOMMENDATION] ([id],[comment], [recommendation],[supervisor_id]) VALUES (@id,@comment, @recommendation,@supervisor_id)"
+                    UpdateCommand="UPDATE [SUPERVISOR_RECOMMENDATION] SET [comment] = @comment, [recommendation] = @recommendation ,[supervisor_id] = @supervisor_id WHERE ([id] = @id)">
+                    <SelectParameters>
+                        <asp:QueryStringParameter Name="id" QueryStringField="app" Type="String" />
+                    </SelectParameters>
+                    <InsertParameters>
+                        <asp:QueryStringParameter Name="id" QueryStringField="app" />
+                        <asp:ControlParameter Name="comment" ControlID="TextAreaComment" Type="String" />
+                        <asp:ControlParameter Name="recommendation" ControlID="RadioButtonListRecommendation"
+                            PropertyName="SelectedValue" />
+                        <asp:SessionParameter Name="supervisor_id" SessionField="staffNo" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:QueryStringParameter Name="id" QueryStringField="app" />
+                        <asp:ControlParameter Name="comment" ControlID="TextAreaComment" Type="String" />
+                        <asp:ControlParameter Name="recommendation" ControlID="RadioButtonListRecommendation"
+                            PropertyName="SelectedValue" />
+                        <asp:SessionParameter Name="supervisor_id" SessionField="staffNo" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+                <asp:RadioButtonList ID="RadioButtonListRecommendation" runat="server">
+                    <asp:ListItem Value="2">Strongly Recommended</asp:ListItem>
+                    <asp:ListItem Value="1">Recommended</asp:ListItem>
+                    <asp:ListItem Value="0">Not Recommended</asp:ListItem>
+                </asp:RadioButtonList>
+                <br />
+                <asp:Label ID="lblTextComment" runat="server" Text="Comment" Font-Bold="true"></asp:Label>
+                <br />
+                <asp:TextBox ID="TextAreaComment" TextMode="multiline" Rows="5" runat="server" Width="100%" />
+                <br />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonListRecommendation"
+                    Display="Static" ErrorMessage="Please choose a recommendation." />
+                <asp:Button ID="btn" OnClick="btn_click" runat="server" class="btn btn-primary pull-right"
+                    Text="Submit"></asp:Button>
             </div>
-
         </div>
     </div>
-
 </asp:Content>
-
