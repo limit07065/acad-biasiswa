@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
-        SelectCommand="SELECT * FROM [SUPERVISE] WHERE (([Matrix_No] = @Matrix_No) AND ([Session] = @Session) AND ([Staff_No] = @Staff_No)) ">
+        SelectCommand="SELECT * FROM [SUPERVISE] WHERE (([Matrix_No] = @Matrix_No) AND ([Semester] = @Session) AND ([Staff_No] = @Staff_No)) ">
         <SelectParameters>
             <asp:QueryStringParameter Name="Matrix_No" QueryStringField="mat" Type="String" />
             <asp:QueryStringParameter Name="Session" QueryStringField="ses" Type="String" />
