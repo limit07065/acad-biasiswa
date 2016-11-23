@@ -15,28 +15,15 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["acadUserSs"] = "201620171";
-        Session["acadUserNm"] = "AIR KELAPA BIN KELABU ASAP";
-        Session["acadUserPr"] = "Bachelor Of Computer Science (Database Systems)";
-        Session["acadUserFn"] = "Computing";
-        Session["acadUserMt"] = "A14CS0999";
-        Session["acadUserBs"] = "6";
-        Session["acadUserNs"] = "8";
-        Session["acadUserSv"] = "Dr. Gigi Sweetiee";
-        Session["acadUserTs"] = "Taught Course";
-        Session["acadUserEm"] = "kaakasim@live.utm.my";
-        Session["acadUserTl"] = "017-754943283";
-
-
-
+        lblStaffNo.Text = (String)Session["staffNo"];
 		if (!IsPostBack)
 		{
-			string sesisem = Session["acadUserSs"].ToString();
+			//string sesisem = Session["acadUserSs"].ToString();
 			showProfile();
-            checkDebt("");
-            showAchievement("", "");
-            showActivities("");
-			lblLoggedInUser.Text = Session["acadUserNm"].ToString();
+           // checkDebt("");
+           // showAchievement("", "");
+           // showActivities("");
+			//lblLoggedInUser.Text = Session["acadUserNm"].ToString();
 		}
     }
     protected void AC_Click(object sender, ImageClickEventArgs e)
@@ -137,8 +124,8 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
       **/
     protected void showProfile()
     {
-        imgPhoto.InnerHtml = "<img src=\"../Styles/images/MSO.jpg\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
-        lblName.Text = Session["acadUserNm"].ToString();
+        imgPhoto.InnerHtml = "<img src=\"../Styles/images/photo/mso.jpg\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
+        /*lblName.Text = Session["acadUserNm"].ToString();
         lblProgramme.Text = Session["acadUserPr"].ToString();
         lblFaculty.Text = Session["acadUserFn"].ToString();
         lblMatric.Text = Session["acadUserMt"].ToString();
@@ -146,41 +133,7 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
         lblAA.Text = Session["acadUserSv"].ToString();
         lblToS.Text = Session["acadUserTs"].ToString() + " (Full Time)";
         lblEmail.Text = Session["acadUserEm"].ToString();
-        lblPhone.Text = Session["acadUserTl"].ToString();
-    }
-
-    /**
-       * Function  : checkDebt() 
-       * Remarks   : To Show Student's Debt
-       * Date      : 31/10/2016
-       * Developer : Mohd Azman
-       **/
-    protected void checkDebt(string nokp)
-    {
-        pnlDebt.Visible = true;
-        lblDebt.Text = "RM 200.50";
-    }
-
-    /**
-       * Function  : showAchievement() 
-       * Remarks   : To Show Student's Num of Achievement
-       * Date      : 31/10/2016
-       * Developer : Mohd Azman
-       **/
-    protected void showAchievement(string sesisem, string nokp)
-    {
-	    lblResult.Text = "3.80";
-    }
-
-    /**
-       * Function  : showActivities() 
-       * Remarks   : To Show Student's Num of Activities
-       * Date      : 31/10/2016
-       * Developer : Mohd Azman
-       **/
-    protected void showActivities(string matrik)
-    {
-        lblActivity.Text = "20";
+        lblPhone.Text = Session["acadUserTl"].ToString();*/
     }
 
 

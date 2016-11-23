@@ -13,32 +13,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div id="menu" class="menu-bg">
         <ul class="left">
-            <li class="home"><a href="Default.aspx" class="icon-home"></a><span style="visibility: hidden;">
-                ---</span></li>
+            ---</span></li>
             <li><a>
-                <asp:Label ID="Label2" runat="server" Text="Student Info" CssClass="textMenu"></asp:Label></a>
-                <ul>
-                    <li><a href=""><span class="fa fa-user"></span>Personal Info</a></li>
-                    <li><a href=""><span class="fa fa-graduation-cap"></span>Academic Info</a></li>
-                    <li><a href=""><span class="fa fa-dollar"></span>Financial</a></li>
-                </ul>
+                <asp:Label ID="Label2" runat="server" Text="List of Students" CssClass="textMenu"></asp:Label></a>
             </li>
             <li><a>
-                <asp:Label ID="Label1" runat="server" Text="Activity" CssClass="textMenu"></asp:Label></a>
-                <ul>
-                    <li><a href=""><span class="fa fa-list"></span>Internal Activity</a></li>
-                    <li><a href=""><span class="fa fa-pencil-square-o"></span>External Activity</a></li>
-                </ul>
+                <asp:Label ID="Label1" runat="server" Text="Key-In Marks" CssClass="textMenu"></asp:Label></a>
             </li>
-            <li><a>
-                <asp:Label ID="Label4c" runat="server" Text="Society" CssClass="textMenu" Visible="false"></asp:Label></a>
-                <ul id="ulSociety" runat="server">
-                </ul>
-            </li>
-            <li><a>
+            <li><a href="Default.aspx">
                 <asp:Label ID="Label3" runat="server" Text="Scholarship Recommendation" CssClass="textMenu"></asp:Label></a>
-                <ul id="ul1" runat="server">
-                </ul>
             </li>
         </ul>
         <ul class="right">
@@ -62,82 +45,81 @@
                     </div>
                     <!-- END DISPLAY PHOTO -->
                     <div class="col-sm-9 col-xs-12 ">
+                        <asp:Label ID="lblName" runat="server" Font-bold="true" Text="PM DR MOHD SHAHIZAN BIN OTHMAN"></asp:Label>
+                        
                         <div class="row">
-                            <div class="name-row">
-                                <asp:Label ID="lblName" runat="server" Font-Bold="True" Font-Size="Large" Text=""  DataTextField="name" DataSourceID="SqlDataSource1"></asp:Label>
+                        <br />
+                            <div class="col-sm-6">
+                                <asp:Image ID="Image1" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/Staff No.png" />
+                                <asp:Label ID="lblStaffNo" runat="server" Text=""></asp:Label>
                                 <br />
-                                <asp:Label ID="lblProgramme" runat="server" Font-Bold="True" ForeColor="#AC0000"
-                                    Text=""></asp:Label>
                                 <br />
-                                <asp:Label ID="lblFaculty" runat="server" Font-Bold="True" ForeColor="#AD0000" Text=""></asp:Label>
-                                <p class="filler">
-                                    &nbsp;</p>
+                                <asp:Image ID="Image2" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/Position.png" />
+                                <asp:Label ID="Label5" runat="server" Text="Professor Madya(Ds54)"></asp:Label>
+                                <br />
+                                <br />
+                                <asp:Image ID="Image3" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/Tel No.png" />
+                                <asp:Label ID="Label6" runat="server" Text="075532034"></asp:Label>
+                                <br />
+                            </div>
+                            <div class="col-sm-6">
+                               <asp:Image ID="Image4" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/Faculty.png" />
+                                <asp:Label ID="Label7" runat="server" Text="FC"></asp:Label>
+                                <br />
+                                <br />
+                                <asp:Image ID="Image5" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/PHD Grad. Date.png" />
+                                <asp:Label ID="Label8" runat="server" Text="15-AUG-2009"></asp:Label>
+                                <br />
+                                <br />
+                                <asp:Image ID="Image6" runat="server" 
+                                    ImageUrl="~/Styles/images/icon-regsys/Email.png" />
+                                <asp:Label ID="Label9" runat="server" Text="shahizan@utm.my"></asp:Label>
+                                <br />
+                               
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6" style="margin-left: -10px">
-                                <asp:Label ID="lblTxtMatric" runat="server" Font-Bold="True" Text="Matric No.:"></asp:Label>&nbsp
-                                <asp:Label ID="lblMatric" runat="server" Text=""></asp:Label>
-                                <div class="xsfiller">
-                                </div>
-                                <asp:Label ID="lblTxtBilSemester" runat="server" Font-Bold="True" Text="	Semester/Norm:"></asp:Label>&nbsp
-                                <asp:Label ID="lblBilSemester" runat="server" Text=""></asp:Label>
-                                <div class="xsfiller">
-                                </div>
-                                <asp:Label ID="lblTextAA" runat="server" Font-Bold="True" Text="AA:"></asp:Label>&nbsp
-                                <asp:Label ID="lblAA" runat="server" Text=""></asp:Label>
-                                <br />
-                                <div class="statfiller">
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="margin-left: -10px">
-                                <asp:Label ID="lblTxtToS" runat="server" Font-Bold="True" Text="Type of Study:"></asp:Label>&nbsp
-                                <asp:Label ID="lblToS" runat="server" Text=""></asp:Label>
-                                <div class="xsfiller">
-                                </div>
-                                <asp:Label ID="lblTxtEmail" runat="server" Font-Bold="True" Text="E-mail:"></asp:Label>&nbsp
-                                <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
-                                <div class="xsfiller">
-                                </div>
-                                <asp:Label ID="lblTxtPhone" runat="server" Font-Bold="True" Text="Phone:"></asp:Label>&nbsp
-                                <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label>
-                                <br />
-                                <div class="statfiller">
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:database %>"
-                                        SelectCommand="SELECT * FROM [Lecturer]"></asp:SqlDataSource>
-                                </div>
-                            </div>
-                        </div>
+                        <br />
                     </div>
-                    <br />
                 </div>
             </div>
             <div class="col-sm-3 spadding">
                 <div class="row stat-row">
                     <p align="center" style="margin-top: 3px;">
-                        <strong>Achievement
-                            <asp:Label ID="lblSession" runat="server"></asp:Label></strong></p>
-                    <div>
-                        <asp:Label ID="lblResult" runat="server" Text="" Font-Bold="True" Font-Size="XX-Large"
+                        <strong>Students Graduated</strong>                            
+                    </p>
+                    <div class="col-sm-6">
+                        <asp:Label ID="lblTotal" runat="server" Text="31" Font-Bold="True" Font-Size="XX-Large"
                             CssClass="cnt-sum"></asp:Label>
                         <p align="center">
-                            CGPA
+                            Total
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <asp:Label ID="lblPhD" runat="server" Text="4" Font-Bold="True" Font-Size="XX-Large"
+                            CssClass="cnt-sum"></asp:Label>
+                        <p align="center">
+                            PhD
                         </p>
                     </div>
                 </div>
                 <div class="row stat-row">
                     <div class="col-sm-6">
-                        <asp:Label ID="lblActivity" runat="server" Text="0" Font-Bold="True" Font-Size="XX-Large"
+                        <asp:Label ID="lblMaster" runat="server" Text="23" Font-Bold="True" Font-Size="XX-Large"
                             CssClass="cnt-sum"></asp:Label>
                         <p align="center">
-                            Activity
+                            Master
                         </p>
                     </div>
                     <div class="col-sm-6">
-                        <asp:Label ID="lblAward" runat="server" Text="0" Font-Bold="True" Font-Size="XX-Large"
+                        <asp:Label ID="lblUndergraduate" runat="server" Text="4" Font-Bold="True" Font-Size="XX-Large"
                             CssClass="cnt-sum"></asp:Label>
                         <p align="center">
-                            Award
+                            Undergraduate
                         </p>
                     </div>
                 </div>
@@ -155,26 +137,7 @@
                     </asp:ContentPlaceHolder>
                 </div>
                 <div class="col-sm-3 spadding">
-                    <!-- BEGIN DISPLAY DEBT -->
-                    <asp:Panel ID="pnlDebt" runat="server">
-                        <div class="divide-s">
-                        </div>
-                        <table style="width: 100%; height: 8px;">
-                            <tr>
-                                <td>
-                                    <asp:HyperLink ID="HyperLinkD" runat="server" ImageUrl="~/Styles/images/Warning.gif"
-                                        NavigateUrl="#" ToolTip="Click Here" Style="width: 25px; height: 22px;"></asp:HyperLink>
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblTextDebt" runat="server" Text="Outstanding Balance of" ForeColor="Black"
-                                        CssClass="labeldebt" Font-Bold="False" Text-align="right"></asp:Label>&nbsp;<br />
-                                    <asp:Label ID="lblDebt" runat="server" Text="RM 00.00" Text-align="right" Font-Bold="True"
-                                        ForeColor="Red"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </asp:Panel>
-                    <!-- END DISPLAY DEBT -->
+                    
                     <div class="divide-s">
                     </div>
                     <p>
@@ -362,5 +325,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</asp:Content>
+</strong></asp:Content>
