@@ -1,7 +1,11 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SPSMasterPage.master.cs"
     Inherits="SPSMasterPage" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+    <title>Graduate Studies Management System</title>
     <link href="../Styles/bootsrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/bootsrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/css/flat.css" rel="stylesheet" type="text/css" />
@@ -93,20 +97,8 @@
                 </div>
             </div>
             <div class="col-md-3 spadding">
-                <div class="row stat-row">
-                    <br />
-                    <p align="center" style="margin-top: 3px;">
-                        <strong>No. of Applicants</strong></p>
-                    <div>
-                        <a href="YourFileHere1.aspx">
-                            <asp:Label ID="lblNotification" runat="server" Font-Bold="True" Font-Size="XX-Large"
-                                CssClass="cnt-sum" ToolTip="Show application(s)"></asp:Label></a>
-                        <p align="center">
-                            New application
-                        </p>
-                    </div>
-                </div>
-                <div class="row stat-row">
+                <div>
+                    
                 </div>
             </div>
         </div>
