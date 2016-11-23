@@ -5,8 +5,7 @@
     <div class="row">
         <div id="cssmenu2">
             <ul style="font-size: small">
-                <li class="active"><a href="#">&nbsp;<span class="fa fa-newspaper-o"></span>&nbsp;Scholarship
-                    Recommendation</a></li>
+               
             </ul>
         </div>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="Button1"
