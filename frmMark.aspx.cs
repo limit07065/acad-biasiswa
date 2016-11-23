@@ -6,21 +6,30 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.Data;
 public partial class frmMark : System.Web.UI.Page
 {
-    
-    protected String code;//, name, addr1, addr2, postcode, city, state, telNo, ageLimit, jobLimit, cpaLimit, semLimit, regLimit, nationality;
+    protected static string ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
+    protected static SqlConnection con = new SqlConnection(ConnectionString);
+    protected DataTable dt;
+    protected DataSet ds;
+    protected string matrixNo;
+   
     
     protected void Page_Load(object sender, EventArgs e)
-    {
-        code = Request.QueryString["type"];
-       
+    {    
         getData();
     }
     
     protected void getData()
     {
+        //Get matrix no and type from Http POST data
+        matrixNo = Request.QueryString["matrixNo"];
+       
+
+        //Creating several database queries mark table undecided
+       // string markQuery = String.Format("SELECT * FROM [] WHERE [Matrix_No] = '{0}'", matrixNo);
+
     /*    
         String ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
 
