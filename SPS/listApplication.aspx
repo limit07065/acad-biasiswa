@@ -70,11 +70,11 @@
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblKeyword" runat="server" Text="Keyword: "></asp:Label>
-                            <asp:TextBox ID="searchKeyword" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="searchBar" runat="server" Text=""></asp:TextBox>
                             <asp:Button ID="Button1" runat="server" Text="Search" />
                             <br />
                         </td>
-                        <td>
+                        <td align="right">
                             <asp:Label ID="lblFaculty" runat="server" Text="Faculty: "></asp:Label>
                             <asp:DropDownList ID="ddlFaculty" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Value="">All</asp:ListItem>
@@ -107,15 +107,15 @@
                             <asp:Label ID="lblAppStatus" runat="server" Text="Application status: "></asp:Label>
                             <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Value="">All status</asp:ListItem>
-                                <asp:ListItem Value="BIA_02">1. Permohonan diterima</asp:ListItem>
-                                <asp:ListItem Value="BIA_03">2. Permohonan dihantar kepada Penyelia</asp:ListItem>
-                                <asp:ListItem Value="BIA_04">3. Penyelia telah kemaskini permohonan</asp:ListItem>
-                                <asp:ListItem Value="BIA_05">4. Permohonan dihantar kepada Fakulti</asp:ListItem>
-                                <asp:ListItem Value="BIA_06">5. Permohonan disahkan oleh Fakulti</asp:ListItem>
-                                <asp:ListItem Value="BIA_07">6. Surat Panggil Temuduga dihantar</asp:ListItem>
-                                <asp:ListItem Value="BIA_08">7. Keputusan permohonan</asp:ListItem>
-                                <asp:ListItem Value="BIA_09">8. Surat Tawaran / Dukacita</asp:ListItem>
-                                <asp:ListItem Value="BIA_10">9. Dokumen Perjanjian diterima</asp:ListItem>
+                                <asp:ListItem Value="BIA_01">1. Permohonan diterima</asp:ListItem>
+                                <asp:ListItem Value="BIA_02">2. Permohonan dihantar kepada Penyelia</asp:ListItem>
+                                <asp:ListItem Value="BIA_03">3. Penyelia telah kemaskini permohonan</asp:ListItem>
+                                <asp:ListItem Value="BIA_04">4. Permohonan dihantar kepada Fakulti</asp:ListItem>
+                                <asp:ListItem Value="BIA_05">5. Permohonan disahkan oleh Fakulti</asp:ListItem>
+                                <asp:ListItem Value="BIA_06">6. Surat Panggil Temuduga dihantar</asp:ListItem>
+                                <asp:ListItem Value="BIA_07">7. Keputusan permohonan</asp:ListItem>
+                                <asp:ListItem Value="BIA_08">8. Surat Tawaran / Dukacita</asp:ListItem>
+                                <asp:ListItem Value="BIA_09">9. Dokumen Perjanjian diterima</asp:ListItem>
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>
@@ -164,13 +164,11 @@
                             SortExpression="Nationality" />
                         <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                         <asp:TemplateField HeaderText="Mark" SortExpression="Mark">
-                            <ItemStyle CssClass="toggleModal" />
                             <ItemTemplate>
                             <asp:LinkButton ID="viewMark" runat="server"><%# Eval("Mark") %></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
-                            <ItemStyle CssClass="toggleModal" />
                             <ItemTemplate>
                             <asp:LinkButton ID="viewStatus" runat="server"><%# Eval("App_Status")%></asp:LinkButton>
                             </ItemTemplate>
@@ -192,39 +190,31 @@
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-        SelectCommand="SELECT * FROM [vw_Application] ORDER BY [App_Date] DESC">
+        SelectCommand="SELECT DISTINCT * FROM [vw_Application] WHERE (([Bia_Code] LIKE '%' + @Bia_Code + '%') AND ([Fac_Code] LIKE '%' + @Fac_Code + '%') AND ([Session] LIKE '%' + @Session + @Semester + '%') AND ([Status_Code] LIKE '%' + @App_Status + '%') AND ([Stu_Name] LIKE '%' + @Keyword + '%') OR ([Matrix_No] LIKE '%' + @Keyword + '%'))">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" 
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlFaculty" Name="Fac_Code" 
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSession" Name="Session"
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSemester" Name="Semester"
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlStatus" Name="App_Status" 
+               PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="searchBar" Name="Keyword" 
+               PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+        </SelectParameters>
     </asp:SqlDataSource>
     <br />
 
-    <%-- Bootstrap Modal started --%>
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        &times;</button>
-                    <h4 class="modal-title">
-                        </h4>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                        Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+    <script type="javascript">
         function viewStuInfo(str) {
-            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
+            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
         }
 
-
-
-        $(document).ready(function () {
-            $(".toggleModal a").attr("data-toggle", "modal");
-            $(".toggleModal a").attr("data-target", "#myModal");
-        });
+        function viewStatus(matrixNo, session) {
+            window.open("../frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
+        }
     </script>
 </asp:Content>
