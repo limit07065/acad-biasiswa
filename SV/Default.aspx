@@ -2,6 +2,7 @@
     CodeFile="Default.aspx.cs" Inherits="SV_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+    <%//label %>
     <div class="row">
         <div id="cssmenu2">
             <ul style="font-size: small">
@@ -9,9 +10,11 @@
                     Recommendation</a></li>
             </ul>
         </div>
+       <%//temporary session setter %>
+        <!--<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="Button1"
+            runat="server" Text="Button" OnClick="staffNo" />-->
+
        
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="Button1"
-            runat="server" Text="Button" OnClick="staffNo" />
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="True" UpdateMode="Conditional">
@@ -46,7 +49,7 @@
         </asp:UpdatePanel>
         
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
-            SelectCommand="SELECT * FROM [vw_scholarship recommendation] WHERE ([Staff_No] = @Staff_No)">
+            SelectCommand="SELECT * FROM [vw_scholarship recommendation] WHERE ([Staff_No] = @Staff_No) ORDER BY Description ASC, App_Date DESC ">
             <SelectParameters>
                 <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
             </SelectParameters>
