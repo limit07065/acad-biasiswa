@@ -13,7 +13,8 @@ public partial class SPS_Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
+            ddlSession.SelectedValue = "20162017";
+            ddlSemester.SelectedValue = "1";
         }
     } 
 
@@ -43,7 +44,7 @@ public partial class SPS_Default : System.Web.UI.Page
 
             LinkButton viewStatus = e.Row.FindControl("viewStatus") as LinkButton;
             string jsFunction3 = String.Format("viewStatus('{0}', '{1}');", e.Row.Cells[3].Text.Trim(), e.Row.Cells[5].Text.Trim());
-            viewStatus.Attributes.Add("OnClick", jsFunction2);
+            viewStatus.Attributes.Add("OnClick", jsFunction3);
         }
     }
 }

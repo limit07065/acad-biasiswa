@@ -17,10 +17,10 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="True" UpdateMode="Conditional">
-            <ContentTemplate>
+            <ContentTemplate> 
                 <table style="width: 100%;">
                     <tr>
-                        <td style="width: 582px">
+                        <td style="width: 50%">
                             <asp:LinkButton ID="btnSelectAll" runat="server" ToolTip="Show record(s) from all session"
                                 OnClick="btnSelectAll_Click">Select All Session</asp:LinkButton>
                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,13 +41,13 @@
                                 <asp:ListItem Value="20132014">20132014</asp:ListItem>
                                 <asp:ListItem Value="20142015">20142015</asp:ListItem>
                                 <asp:ListItem Value="20152016">20152016</asp:ListItem>
-                                <asp:ListItem Value="20162017" Selected="True">20162017</asp:ListItem>
+                                <asp:ListItem Value="20162017">20162017</asp:ListItem>
                             </asp:DropDownList>
                             &nbsp;&nbsp;
                             <asp:Label ID="lblSemester" runat="server" Text="Semester: "></asp:Label>
                             <asp:DropDownList ID="ddlSemester" runat="server" AutoPostBack="True">
                                 <asp:ListItem Value="">All</asp:ListItem>
-                                <asp:ListItem Value="1" Selected="True">1</asp:ListItem>
+                                <asp:ListItem Value="1">1</asp:ListItem>
                                 <asp:ListItem Value="2">2</asp:ListItem>
                                 <asp:ListItem Value="3">3</asp:ListItem>
                             </asp:DropDownList>
@@ -71,7 +71,7 @@
                             <br />
                             <asp:Label ID="lblKeyword" runat="server" Text="Keyword: "></asp:Label>
                             <asp:TextBox ID="searchBar" runat="server" Text=""></asp:TextBox>
-                            <asp:Button ID="Button1" runat="server" Text="Search" />
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" />
                             <br />
                         </td>
                         <td align="right">
@@ -185,15 +185,18 @@
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
                     <SortedDescendingHeaderStyle BackColor="#820000" />
                 </asp:GridView>
-            </ContentTemplate>
+             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        EnableCaching="true"
+        DataSourceMode="DataSet"
         ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-        SelectCommand="SELECT DISTINCT * FROM [vw_Application] WHERE (([Bia_Code] LIKE '%' + @Bia_Code + '%') AND ([Fac_Code] LIKE '%' + @Fac_Code + '%') AND ([Session] LIKE '%' + @Session + @Semester + '%') AND ([Status_Code] LIKE '%' + @App_Status + '%') AND ([Stu_Name] LIKE '%' + @Keyword + '%') OR ([Matrix_No] LIKE '%' + @Keyword + '%'))">
-        <SelectParameters>
+        SelectCommand="SELECT DISTINCT * FROM [vw_Application]"
+        FilterExpression="(Bia_Code LIKE '%{0}%') AND (Fac_Code LIKE '%{1}%') AND (Session LIKE '%{2}{3}%') AND (Status_Code LIKE '%{4}%') AND ((Stu_Name LIKE '%{5}%') OR (Matrix_No LIKE '%{5}%'))">
+        <FilterParameters>
             <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" 
-                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false"  />
             <asp:ControlParameter ControlID="ddlFaculty" Name="Fac_Code" 
                 PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
             <asp:ControlParameter ControlID="ddlSession" Name="Session"
@@ -204,11 +207,11 @@
                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
             <asp:ControlParameter ControlID="searchBar" Name="Keyword" 
                PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
-        </SelectParameters>
+        </FilterParameters>
     </asp:SqlDataSource>
     <br />
 
-    <script type="javascript">
+    <script type="text/javascript">
         function viewStuInfo(str) {
             window.open("../frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
         }
