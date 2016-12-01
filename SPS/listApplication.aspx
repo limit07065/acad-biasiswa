@@ -134,7 +134,7 @@
                     CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"
                     ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
                     EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="Matrix_No,Short_Name" OnRowDataBound="GridView1_RowDataBound">
+                    DataKeyNames="App_No,Short_Name" OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
@@ -221,7 +221,7 @@
         }
 
         function viewMark(str,str2) {
-            window.open("../frmMark.aspx?matrixNo=" + str+"&type="+str2, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
+            window.open("../frmMark.aspx?appNo=" + str+"&type="+str2, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
         }
 
 

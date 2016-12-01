@@ -40,7 +40,7 @@ public partial class SPS_Default : System.Web.UI.Page
             viewStuInfo.Attributes.Add("OnClick", jsFunction1);
 
             LinkButton viewMark = e.Row.FindControl("viewMark") as LinkButton;
-            string jsFunction2 = String.Format("viewMark('{0}','{1}');", e.Row.Cells[3].Text.Trim(), GridView1.DataKeys[e.Row.DataItemIndex]["Short_Name"].ToString().Trim());
+            string jsFunction2 = String.Format("viewMark('{0}','{1}');", GridView1.DataKeys[e.Row.DataItemIndex]["App_No"].ToString().Trim(), GridView1.DataKeys[e.Row.DataItemIndex]["Short_Name"].ToString().Trim());
             viewMark.Attributes.Add("OnClick", jsFunction2);
 
             LinkButton viewStatus = e.Row.FindControl("viewStatus") as LinkButton;
