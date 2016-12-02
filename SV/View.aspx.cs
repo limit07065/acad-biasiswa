@@ -20,7 +20,7 @@ public partial class SV_View : System.Web.UI.Page
             }
             else
             {               
-                DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+                DataView dv = (DataView)SqlDataSourceSupervise.Select(DataSourceSelectArguments.Empty);
                 if (dv == null)
                 {
                     dv = new DataView();
@@ -31,13 +31,13 @@ public partial class SV_View : System.Web.UI.Page
                 }
                 else
                 {
-                    DataView student = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
+                    DataView student = (DataView)SqlDataSourceStudent.Select(DataSourceSelectArguments.Empty);
                     lblName.Text = student[0]["Name"].ToString();
                     lblContactNo.Text = student[0]["Contact"].ToString();
                     lblEmail.Text = student[0]["Email"].ToString();
                 }
 
-                DataView dv2 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+                DataView dv2 = (DataView)SqlDataSourceSupervisorRecommendation.Select(DataSourceSelectArguments.Empty);
                 if (dv2.Count == 1)
                 {
                     TextAreaComment.Text = dv2[0]["comment"].ToString();
@@ -59,18 +59,19 @@ public partial class SV_View : System.Web.UI.Page
 
     protected void btn_click(object sender, EventArgs e)
     {
-        DataView dv2 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+        DataView dv2 = (DataView)SqlDataSourceSupervisorRecommendation.Select(DataSourceSelectArguments.Empty);
         if (dv2.Count == 0)
         {
-            SqlDataSource2.Insert();
-            SqlDataSource4.Update();
+            SqlDataSourceSupervisorRecommendation.Insert();
+            SqlDataSourceApplication.Update();
         }
         else
         {
-            SqlDataSource2.Update();
+            SqlDataSourceSupervisorRecommendation.Update();
+            
         }
 
 
-        Response.Redirect("");
+        Response.Redirect("Default.aspx");
     }
 }

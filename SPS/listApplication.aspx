@@ -74,7 +74,7 @@
                             <asp:Button ID="btnSearch" runat="server" Text="Search" />
                             <br />
                         </td>
-                        <td align="right">
+                        <td align="left">
                             <asp:Label ID="lblFaculty" runat="server" Text="Faculty: "></asp:Label>
                             <asp:DropDownList ID="ddlFaculty" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Value="">All</asp:ListItem>
@@ -134,7 +134,7 @@
                     CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"
                     ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
                     EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="Matrix_No" OnRowDataBound="GridView1_RowDataBound">
+                    DataKeyNames="App_No, Short_Name"  OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
@@ -192,7 +192,7 @@
         EnableCaching="true"
         DataSourceMode="DataSet"
         ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-        SelectCommand="SELECT DISTINCT * FROM [vw_Application]"
+        SelectCommand="SELECT * FROM [vw_Application]"
         FilterExpression="(Bia_Code LIKE '%{0}%') AND (Fac_Code LIKE '%{1}%') AND (Session LIKE '%{2}{3}%') AND (Status_Code LIKE '%{4}%') AND ((Stu_Name LIKE '%{5}%') OR (Matrix_No LIKE '%{5}%'))">
         <FilterParameters>
             <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" 
@@ -218,6 +218,10 @@
 
         function viewStatus(matrixNo, session) {
             window.open("../frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
+        }
+
+        function viewMark(str, str2) {
+            window.open("../frmMark.aspx?appNo=" + str + "&type=" + str2, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
         }
     </script>
 </asp:Content>

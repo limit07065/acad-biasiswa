@@ -13,7 +13,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div id="menu" class="menu-bg">
         <ul class="left">
-            ---</span></li>
+            <li class="home"><a href="" class="icon-home"></a><span style="visibility: hidden;">
+                ---</span></li>
             <li><a>
                 <asp:Label ID="Label2" runat="server" Text="List of Students" CssClass="textMenu"></asp:Label></a>
             </li>
@@ -45,42 +46,34 @@
                     </div>
                     <!-- END DISPLAY PHOTO -->
                     <div class="col-sm-9 col-xs-12 ">
-                        <asp:Label ID="lblName" runat="server" Font-bold="true" Text="PM DR MOHD SHAHIZAN BIN OTHMAN"></asp:Label>
-                        
+                        <asp:Label ID="lblName" runat="server" Font-Bold="true" Text="PM DR MOHD SHAHIZAN BIN OTHMAN"></asp:Label>
                         <div class="row">
-                        <br />
+                            <br />
                             <div class="col-sm-6">
-                                <asp:Image ID="Image1" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/Staff No.png" />
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Styles/images/icon-regsys/Staff No.png" />
                                 <asp:Label ID="lblStaffNo" runat="server" Text=""></asp:Label>
                                 <br />
                                 <br />
-                                <asp:Image ID="Image2" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/Position.png" />
+                                <asp:Image ID="Image2" runat="server" ImageUrl="~/Styles/images/icon-regsys/Position.png" />
                                 <asp:Label ID="Label5" runat="server" Text="Professor Madya(Ds54)"></asp:Label>
                                 <br />
                                 <br />
-                                <asp:Image ID="Image3" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/Tel No.png" />
+                                <asp:Image ID="Image3" runat="server" ImageUrl="~/Styles/images/icon-regsys/Tel No.png" />
                                 <asp:Label ID="Label6" runat="server" Text="075532034"></asp:Label>
                                 <br />
                             </div>
                             <div class="col-sm-6">
-                               <asp:Image ID="Image4" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/Faculty.png" />
+                                <asp:Image ID="Image4" runat="server" ImageUrl="~/Styles/images/icon-regsys/Faculty.png" />
                                 <asp:Label ID="Label7" runat="server" Text="FC"></asp:Label>
                                 <br />
                                 <br />
-                                <asp:Image ID="Image5" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/PHD Grad. Date.png" />
+                                <asp:Image ID="Image5" runat="server" ImageUrl="~/Styles/images/icon-regsys/PHD Grad. Date.png" />
                                 <asp:Label ID="Label8" runat="server" Text="15-AUG-2009"></asp:Label>
                                 <br />
                                 <br />
-                                <asp:Image ID="Image6" runat="server" 
-                                    ImageUrl="~/Styles/images/icon-regsys/Email.png" />
+                                <asp:Image ID="Image6" runat="server" ImageUrl="~/Styles/images/icon-regsys/Email.png" />
                                 <asp:Label ID="Label9" runat="server" Text="shahizan@utm.my"></asp:Label>
                                 <br />
-                               
                             </div>
                         </div>
                         <br />
@@ -90,7 +83,7 @@
             <div class="col-sm-3 spadding">
                 <div class="row stat-row">
                     <p align="center" style="margin-top: 3px;">
-                        <strong>Students Graduated</strong>                            
+                        <strong>Students Graduated</strong>
                     </p>
                     <div class="col-sm-6">
                         <asp:Label ID="lblTotal" runat="server" Text="31" Font-Bold="True" Font-Size="XX-Large"
@@ -137,7 +130,6 @@
                     </asp:ContentPlaceHolder>
                 </div>
                 <div class="col-sm-3 spadding">
-                    
                     <div class="divide-s">
                     </div>
                     <p>
@@ -325,4 +317,4 @@
                 </div>
             </div>
         </div>
-</strong></asp:Content>
+    </strong></asp:Content>
