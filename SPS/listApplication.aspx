@@ -172,7 +172,7 @@
                         <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
                             <ItemStyle CssClass="toggleModal" />
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewStatus" runat="server"><%# Eval("App_Status")%></asp:LinkButton>
+                            <asp:LinkButton ID="viewStatus" runat="server" ><%# Eval("App_Status")%></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

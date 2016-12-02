@@ -1,13 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="frmMark.aspx.cs" Inherits="frmMark" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="frmMark.aspx.cs" Inherits="frmMark" %>
 
 <html>
 <head id="Head1" runat="server">
     <title>Marks </title>
     <script type="text/javascript" src="Styles/sps/jquery-1.4.2.min.js"></script>
     <link href="Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
+    <!--<link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />-->
+    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/sps.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
-    <link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />
+    
     <link rel="shortcut icon" href="~/styles/images/utm.ico" />
     <script type="text/javascript" src="Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
     <script type="text/javascript">
@@ -17,13 +20,15 @@
 </head>
 <body>
     <form runat="server">
+    
     <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">        
     </asp:SqlDataSource>
-    <div class="ui-corner-all fill_yellow">
+    <div class="ui-corner-all fill_yellow">      
+        <div class="jumbotron">Mark Update - <%= Request.QueryString["type"] %> </div>
         <br />
         <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />
         <asp:Button ID="Button2" runat="server" Text="List of Publication" CssClass="btn btn-default" />
-        <asp:Button ID="Button3" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" />
+        <asp:Button ID="Button3" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" OnClientClick="window.close();" />
         <asp:Button ID="Button4" runat="server" Text="Cancel" CssClass="btn btn-default" />
         <br />
         <br />
@@ -32,6 +37,8 @@
     <% if (Request.QueryString["type"] == "Zamalah" || Request.QueryString["type"] == "IDF")
        {
     %>
+
+    
     <table width="100%" border="2">
         <tr>
             <td class="ui-widget-header" colspan="3">
@@ -151,7 +158,7 @@
                         &nbsp;&nbsp;
                         <asp:TextBox runat="server" name="MQ" ID="MQ"></asp:TextBox><br>
                     </td>
-                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="24">
+                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="26">
                         <table width="300" style="border-collapse: collapse" border="1">
                             <tbody>
                                 <tr>
