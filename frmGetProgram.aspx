@@ -4,12 +4,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <style type="text/css">
-        .style1
-        {
-            height: 20px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
