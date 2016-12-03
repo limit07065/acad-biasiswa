@@ -63,7 +63,8 @@ public partial class SV_View : System.Web.UI.Page
         if (dv2.Count == 0)
         {
             SqlDataSourceSupervisorRecommendation.Insert();
-            SqlDataSourceApplication.Update();
+            //requires insert to app_status_details
+            //SqlDataSourceApplication.Update();
         }
         else
         {
