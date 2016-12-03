@@ -17,10 +17,10 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="True" UpdateMode="Conditional">
-            <ContentTemplate>
+            <ContentTemplate> 
                 <table style="width: 100%;">
                     <tr>
-                        <td style="width: 582px">
+                        <td style="width: 50%">
                             <asp:LinkButton ID="btnSelectAll" runat="server" ToolTip="Show record(s) from all session"
                                 OnClick="btnSelectAll_Click">Select All Session</asp:LinkButton>
                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,13 +41,13 @@
                                 <asp:ListItem Value="20132014">20132014</asp:ListItem>
                                 <asp:ListItem Value="20142015">20142015</asp:ListItem>
                                 <asp:ListItem Value="20152016">20152016</asp:ListItem>
-                                <asp:ListItem Value="20162017" Selected="True">20162017</asp:ListItem>
+                                <asp:ListItem Value="20162017">20162017</asp:ListItem>
                             </asp:DropDownList>
                             &nbsp;&nbsp;
                             <asp:Label ID="lblSemester" runat="server" Text="Semester: "></asp:Label>
                             <asp:DropDownList ID="ddlSemester" runat="server" AutoPostBack="True">
                                 <asp:ListItem Value="">All</asp:ListItem>
-                                <asp:ListItem Value="1" Selected="True">1</asp:ListItem>
+                                <asp:ListItem Value="1">1</asp:ListItem>
                                 <asp:ListItem Value="2">2</asp:ListItem>
                                 <asp:ListItem Value="3">3</asp:ListItem>
                             </asp:DropDownList>
@@ -70,11 +70,11 @@
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblKeyword" runat="server" Text="Keyword: "></asp:Label>
-                            <asp:TextBox ID="searchKeyword" runat="server"></asp:TextBox>
-                            <asp:Button ID="Button1" runat="server" Text="Search" />
+                            <asp:TextBox ID="searchBar" runat="server" Text=""></asp:TextBox>
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" />
                             <br />
                         </td>
-                        <td>
+                        <td align="left">
                             <asp:Label ID="lblFaculty" runat="server" Text="Faculty: "></asp:Label>
                             <asp:DropDownList ID="ddlFaculty" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Value="">All</asp:ListItem>
@@ -107,15 +107,15 @@
                             <asp:Label ID="lblAppStatus" runat="server" Text="Application status: "></asp:Label>
                             <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Value="">All status</asp:ListItem>
-                                <asp:ListItem Value="BIA_02">1. Permohonan diterima</asp:ListItem>
-                                <asp:ListItem Value="BIA_03">2. Permohonan dihantar kepada Penyelia</asp:ListItem>
-                                <asp:ListItem Value="BIA_04">3. Penyelia telah kemaskini permohonan</asp:ListItem>
-                                <asp:ListItem Value="BIA_05">4. Permohonan dihantar kepada Fakulti</asp:ListItem>
-                                <asp:ListItem Value="BIA_06">5. Permohonan disahkan oleh Fakulti</asp:ListItem>
-                                <asp:ListItem Value="BIA_07">6. Surat Panggil Temuduga dihantar</asp:ListItem>
-                                <asp:ListItem Value="BIA_08">7. Keputusan permohonan</asp:ListItem>
-                                <asp:ListItem Value="BIA_09">8. Surat Tawaran / Dukacita</asp:ListItem>
-                                <asp:ListItem Value="BIA_10">9. Dokumen Perjanjian diterima</asp:ListItem>
+                                <asp:ListItem Value="BIA_01">1. Permohonan diterima</asp:ListItem>
+                                <asp:ListItem Value="BIA_02">2. Permohonan dihantar kepada Penyelia</asp:ListItem>
+                                <asp:ListItem Value="BIA_03">3. Penyelia telah kemaskini permohonan</asp:ListItem>
+                                <asp:ListItem Value="BIA_04">4. Permohonan dihantar kepada Fakulti</asp:ListItem>
+                                <asp:ListItem Value="BIA_05">5. Permohonan disahkan oleh Fakulti</asp:ListItem>
+                                <asp:ListItem Value="BIA_06">6. Surat Panggil Temuduga dihantar</asp:ListItem>
+                                <asp:ListItem Value="BIA_07">7. Keputusan permohonan</asp:ListItem>
+                                <asp:ListItem Value="BIA_08">8. Surat Tawaran / Dukacita</asp:ListItem>
+                                <asp:ListItem Value="BIA_09">9. Dokumen Perjanjian diterima</asp:ListItem>
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>
@@ -134,7 +134,7 @@
                     CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"
                     ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
                     EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="App_No,Short_Name" OnRowDataBound="GridView1_RowDataBound">
+                    DataKeyNames="App_No, Short_Name"  OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
@@ -164,13 +164,11 @@
                             SortExpression="Nationality" />
                         <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                         <asp:TemplateField HeaderText="Mark" SortExpression="Mark">
-                            <ItemStyle CssClass="" />
                             <ItemTemplate>
                             <asp:LinkButton ID="viewMark" runat="server"><%# Eval("Mark") %></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
-                            <ItemStyle CssClass="toggleModal" />
                             <ItemTemplate>
                             <asp:LinkButton ID="viewStatus" runat="server" ><%# Eval("App_Status")%></asp:LinkButton>
                             </ItemTemplate>
@@ -187,48 +185,43 @@
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
                     <SortedDescendingHeaderStyle BackColor="#820000" />
                 </asp:GridView>
-            </ContentTemplate>
+             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        EnableCaching="true"
+        DataSourceMode="DataSet"
         ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-        SelectCommand="SELECT * FROM [vw_Application] ORDER BY [App_Date] DESC">
+        SelectCommand="SELECT * FROM [vw_Application]"
+        FilterExpression="(Bia_Code LIKE '%{0}%') AND (Fac_Code LIKE '%{1}%') AND (Session LIKE '%{2}{3}%') AND (Status_Code LIKE '%{4}%') AND ((Stu_Name LIKE '%{5}%') OR (Matrix_No LIKE '%{5}%'))">
+        <FilterParameters>
+            <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" 
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false"  />
+            <asp:ControlParameter ControlID="ddlFaculty" Name="Fac_Code" 
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSession" Name="Session"
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSemester" Name="Semester"
+                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlStatus" Name="App_Status" 
+               PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="searchBar" Name="Keyword" 
+               PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+        </FilterParameters>
     </asp:SqlDataSource>
     <br />
 
-    <%-- Bootstrap Modal started --%>
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        &times;</button>
-                    <h4 class="modal-title">
-                        </h4>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                        Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+    <script type="text/javascript">
         function viewStuInfo(str) {
-            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
+            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
         }
 
-        function viewMark(str,str2) {
-            window.open("../frmMark.aspx?appNo=" + str+"&type="+str2, '', 'toolbar=no, menubar=no, resizable=yes, width=800, height=550');
+        function viewStatus(matrixNo, session) {
+            window.open("../frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
         }
 
-
-
-        $(document).ready(function () {
-            $(".toggleModal a").attr("data-toggle", "modal");
-            $(".toggleModal a").attr("data-target", "#myModal");
-        });
+        function viewMark(str, str2) {
+            window.open("../frmMark.aspx?appNo=" + str + "&type=" + str2, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+        }
     </script>
 </asp:Content>

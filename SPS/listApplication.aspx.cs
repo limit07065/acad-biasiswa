@@ -13,7 +13,8 @@ public partial class SPS_Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
+            ddlSession.SelectedValue = "20162017";
+            ddlSemester.SelectedValue = "1";
         }
     } 
 
