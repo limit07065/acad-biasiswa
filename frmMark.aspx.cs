@@ -26,6 +26,8 @@ public partial class frmMark : System.Web.UI.Page
             getData();
         }
 
+        string jsFunction1 = String.Format("viewPublications('{0}');", Request.QueryString["appNo"]);
+        btnPublication.Attributes.Add("OnClick", jsFunction1);
 
     }
 
