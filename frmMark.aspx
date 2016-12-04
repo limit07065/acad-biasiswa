@@ -24,6 +24,7 @@
         <div class="jumbotron">
             Mark Update -
             <%= Request.QueryString["type"] %>
+            <asp:Label ID="test"> </asp:Label>
         </div>
         <br />
         <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />

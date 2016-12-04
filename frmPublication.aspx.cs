@@ -34,6 +34,29 @@ public partial class frmPublication : System.Web.UI.Page
         }
     }
 
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.RowType == DataControlRowType.DataRow)           
+        {
+            TextBox mark =  e.Row.FindControl("tbMark") as TextBox;
+            TextBox myra2 = e.Row.FindControl("tbMyra2") as TextBox;
+            DataRowView rv = (DataRowView)e.Row.DataItem;
+            
+            mark.Text = rv["mark"].ToString();
+            myra2.Text =rv["myra2"].ToString();
+        }        
+    }
+
+    protected void Update_Mark(object sender, EventArgs e)
+    { 
+        SqlDataSourcePublication.UpdateCommand = "";
+        foreach (GridViewRow row in GridView1)
+        {
+        }
+        
+    }
+
     
 
 

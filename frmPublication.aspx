@@ -66,7 +66,8 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
-            DataSourceID="SqlDataSourcePublication" CellPadding="4" ForeColor="#333333" GridLines="Both">
+            DataSourceID="SqlDataSourcePublication" CellPadding="4" ForeColor="#333333" GridLines="Both"
+            OnRowDataBound="GridView1_RowDataBound">
             <AlternatingRowStyle BackColor="#f7f7ba" />
             <Columns>
                 <asp:TemplateField HeaderText="No.">
@@ -79,26 +80,25 @@
                 <asp:BoundField DataField="authors" HeaderText="authors" SortExpression="authors" />
                 <asp:BoundField DataField="type_authorship" HeaderText="type_authorship" SortExpression="type_authorship" />
                 <asp:BoundField DataField="index" HeaderText="index" SortExpression="index" />
-                
                 <asp:BoundField DataField="status_paper" HeaderText="status_paper" SortExpression="status_paper" />
                 <asp:BoundField DataField="affiliation_UTM" HeaderText="affiliation_UTM" SortExpression="affiliation_UTM" />
                 <asp:TemplateField HeaderText="Mark">
                     <ItemTemplate>
-                       <asp:TextBox ID="tbMark" runat="server" CssClass="width-50" ></asp:TextBox>
+                        <asp:TextBox ID="tbMark" runat="server" CssClass="width-50"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Myra2" >                       
+                <asp:TemplateField HeaderText="Myra2">
                     <ItemTemplate>
-                         <asp:TextBox ID="tbMyra2" runat="server" CssClass="width-50" ></asp:TextBox>
+                        <asp:TextBox ID="tbMyra2" runat="server" CssClass="width-50"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-               
             </Columns>
             <FooterStyle BackColor="#680d0d" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#680d0d" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#e2e2e2" ForeColor="#333333" /> 
+            <RowStyle BackColor="#e2e2e2" ForeColor="#333333" />
         </asp:GridView>
+        <asp:Button ID="btnUpdateMark" runat="server" Text="Update Mark" CssClass="btn btn-default" OnClick="Update_Mark" />
     </div>
     </form>
 </body>

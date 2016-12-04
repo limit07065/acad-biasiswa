@@ -21,6 +21,7 @@ public partial class frmMark : System.Web.UI.Page
         {
             Response.Redirect("SPS/listApplication.aspx");
         }
+              
         if (!IsPostBack)
         {
             getData();
@@ -28,7 +29,8 @@ public partial class frmMark : System.Web.UI.Page
 
         string jsFunction1 = String.Format("viewPublications('{0}');", Request.QueryString["appNo"]);
         btnPublication.Attributes.Add("OnClick", jsFunction1);
-
+        Label test = (Label)Page.FindControl("test");
+        
     }
 
     protected void getData()
