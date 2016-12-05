@@ -5,9 +5,10 @@
     <title>Marks </title>
     <script type="text/javascript" src="Styles/sps/jquery-1.4.2.min.js"></script>
     <link href="Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
+    <!--<link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />-->
+    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/sps.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
-    <link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link rel="shortcut icon" href="~/styles/images/utm.ico" />
     <script type="text/javascript" src="Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
     <script type="text/javascript">
@@ -17,13 +18,19 @@
 </head>
 <body>
     <form runat="server">
-    <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">        
+    <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">
     </asp:SqlDataSource>
     <div class="ui-corner-all fill_yellow">
+        <div class="jumbotron">
+            Mark Update -
+            <%= Request.QueryString["type"] %>
+            <asp:Label ID="test"> </asp:Label>
+        </div>
         <br />
         <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />
-        <asp:Button ID="Button2" runat="server" Text="List of Publication" CssClass="btn btn-default" />
-        <asp:Button ID="Button3" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" />
+        <asp:Button ID="btnPublication" runat="server" Text="List of Publication" CssClass="btn btn-default" />
+        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save"
+            OnClientClick="window.close();" />
         <asp:Button ID="Button4" runat="server" Text="Cancel" CssClass="btn btn-default" />
         <br />
         <br />
@@ -32,7 +39,7 @@
     <% if (Request.QueryString["type"] == "Zamalah" || Request.QueryString["type"] == "IDF")
        {
     %>
-    <table width="100%" border="2">
+    <table width="100%">
         <tr>
             <td class="ui-widget-header" colspan="3">
                 <b>MSC Mark (RU University / RU None UTM / None RU)</b>
@@ -151,7 +158,7 @@
                         &nbsp;&nbsp;
                         <asp:TextBox runat="server" name="MQ" ID="MQ"></asp:TextBox><br>
                     </td>
-                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="24">
+                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="26">
                         <table width="300" style="border-collapse: collapse" border="1">
                             <tbody>
                                 <tr>
@@ -639,6 +646,11 @@
                     </td>
                 </tr>
         </table>
+        <script>
+            function viewPublications(str) {
+                window.open("frmPublication.aspx?appNo="+str ,"List of Publication",'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+            }
+        </script>
 </body>
 </html>
 </form>

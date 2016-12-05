@@ -21,12 +21,16 @@ public partial class frmMark : System.Web.UI.Page
         {
             Response.Redirect("SPS/listApplication.aspx");
         }
+              
         if (!IsPostBack)
         {
             getData();
         }
 
-
+        string jsFunction1 = String.Format("viewPublications('{0}');", Request.QueryString["appNo"]);
+        btnPublication.Attributes.Add("OnClick", jsFunction1);
+        Label test = (Label)Page.FindControl("test");
+        
     }
 
     protected void getData()
@@ -56,6 +60,7 @@ public partial class frmMark : System.Web.UI.Page
         //Fill in student info from dataset
         dt = ds.Tables["appInfo"];
 
+        Decimal mark = 0;
         foreach (DataRow dr in dt.Rows)
         {
             if (type == "Zamalah")
@@ -72,6 +77,14 @@ public partial class frmMark : System.Web.UI.Page
                 alumni.Text = dr["alumni"].ToString();
                 company.Text = dr["special_company"].ToString();
                 dean.Text = dr["dean"].ToString();
+
+                mark += Decimal.Parse(RU.Text);
+                mark += Decimal.Parse(lampiran.Text);
+                mark += Decimal.Parse(anugerahChancellor.Text);
+                mark += Decimal.Parse(anugerahPChancellor.Text);
+                mark += Decimal.Parse(alumni.Text);
+                mark += Decimal.Parse(company.Text);
+                mark += Decimal.Parse(dean.Text);
             }
             else if (type == "PNF")
             {
@@ -102,6 +115,26 @@ public partial class frmMark : System.Web.UI.Page
                 coSecretaryLevel.Text = dr["secretary_level"].ToString();
                 coCommittee.Text = dr["committee"].ToString();
                 coCommitteeLevel.Text = dr["committee_level"].ToString();
+
+                mark += Decimal.Parse(aaAlumni.Text);
+                mark += Decimal.Parse(MQ.Text);
+                mark += Decimal.Parse(aaSpecialCompany.Text);
+                mark += Decimal.Parse(aaBestStudentSPS.Text);
+                mark += Decimal.Parse(aaBestStudentFaculty.Text);
+                mark += Decimal.Parse(raBestPaper.Text);
+                mark += Decimal.Parse(raBestSpeaker.Text);
+                mark += Decimal.Parse(raResearch.Text);
+                mark += Decimal.Parse(raOthers.Text);
+                mark += Decimal.Parse(coPresident.Text);
+                mark += Decimal.Parse(coPresidentLevel.Text);
+                mark += Decimal.Parse(coVicePresident.Text);
+                mark += Decimal.Parse(coVicePresidentLevel.Text);
+                mark += Decimal.Parse(coBursar.Text);
+                mark += Decimal.Parse(coBursarLevel.Text);
+                mark += Decimal.Parse(coSecretary.Text);
+                mark += Decimal.Parse(coSecretaryLevel.Text);
+                mark += Decimal.Parse(coCommittee.Text);
+                mark += Decimal.Parse(coCommitteeLevel.Text);
             }
             /*
             // both zamalah and PNF
@@ -120,29 +153,18 @@ public partial class frmMark : System.Web.UI.Page
             //total publication marks
             totalMarkPubSA
             totalMarkPubMY
-            overallMark
+            
             overallMarkMY    
              */
+            overallMark.Text = mark.ToString();
+
         }
 
     }
 
     protected void Save(object sender, EventArgs e)
     {
-
-        /* 
-         <UpdateParameters>
-             <asp:QueryStringParameter Name="id" Type="Int32" QueryStringField="appNo" />
-             <asp:ControlParameter Name="ru" Type="Decimal" ControlID="RU" PropertyName="Text" />
-             <asp:ControlParameter Name="attachment" Type="Decimal" ControlID="lampiran" PropertyName="Text" />
-             <asp:ControlParameter Name="chancellor" Type="Decimal" ControlID="anugerahChancellor"
-                 PropertyName="Text" />
-             <asp:ControlParameter Name="pro_chancellor" Type="Decimal" ControlID="anugerahPChancellor"
-                 PropertyName="Text" />
-             <asp:ControlParameter Name="alumni" Type="Decimal" ControlID="alumni" PropertyName="Text" />
-             <asp:ControlParameter Name="special_company" Type="Decimal" ControlID="company" PropertyName="Text" />
-             <asp:ControlParameter Name="dean" Type="Decimal" ControlID="dean" PropertyName="Text" />
-         </UpdateParameters>*/
+        Decimal mark = 0;
         String type = Request.QueryString["type"];
         if (type == "Zamalah")
         {
@@ -155,9 +177,15 @@ public partial class frmMark : System.Web.UI.Page
             SqlDataSourceMark.UpdateParameters.Add("special_company", company.Text);
             SqlDataSourceMark.UpdateParameters.Add("dean", dean.Text);
             SqlDataSourceMark.UpdateParameters.Add("id", Request.QueryString["appNo"]);
-
-
             SqlDataSourceMark.Update();
+
+            mark += Decimal.Parse(RU.Text);
+            mark += Decimal.Parse(lampiran.Text);
+            mark += Decimal.Parse(anugerahChancellor.Text);
+            mark += Decimal.Parse(anugerahPChancellor.Text);
+            mark += Decimal.Parse(alumni.Text);
+            mark += Decimal.Parse(company.Text);
+            mark += Decimal.Parse(dean.Text);
 
         }
         else if (type == "PNF")
@@ -165,7 +193,7 @@ public partial class frmMark : System.Web.UI.Page
             //update PNF marks in 3 tables.
             //mark_zamalah table
             SqlDataSourceMark.UpdateCommand = "UPDATE MARK_PNF SET [alumni] = @alumni, [master_qualification] = @mq, [special_company] = @special_company, [best_student_sps]= @aaBestStudentSPS, [best_student_faculty] = @aaBestStudentFaculty WHERE [id] = @id";
-            
+
             SqlDataSourceMark.UpdateParameters.Add("alumni", aaAlumni.Text);
             SqlDataSourceMark.UpdateParameters.Add("mq", MQ.Text);
             SqlDataSourceMark.UpdateParameters.Add("special_company", aaSpecialCompany.Text);
@@ -173,16 +201,29 @@ public partial class frmMark : System.Web.UI.Page
             SqlDataSourceMark.UpdateParameters.Add("aaBestStudentFaculty", aaBestStudentFaculty.Text);
             SqlDataSourceMark.UpdateParameters.Add("id", Request.QueryString["appNo"]);
             SqlDataSourceMark.Update();
-            
+
+            mark += Decimal.Parse(aaAlumni.Text);
+            mark += Decimal.Parse(MQ.Text);
+            mark += Decimal.Parse(aaSpecialCompany.Text);
+            mark += Decimal.Parse(aaBestStudentSPS.Text);
+            mark += Decimal.Parse(aaBestStudentFaculty.Text);
+
+
             //mark_research_award table
             SqlDataSourceMark.UpdateCommand = "UPDATE MARK_RESEARCH_AWARD SET [best_paper] = @best_paper, [best_speaker] = @best_speaker, [research] = @research, [others] = @others WHERE [id] = @id";
             SqlDataSourceMark.UpdateParameters.Add("best_paper", raBestPaper.Text);
-            SqlDataSourceMark.UpdateParameters.Add("best_speaker", raBestSpeaker.Text);           
+            SqlDataSourceMark.UpdateParameters.Add("best_speaker", raBestSpeaker.Text);
             SqlDataSourceMark.UpdateParameters.Add("research", raResearch.Text);
             SqlDataSourceMark.UpdateParameters.Add("others", raOthers.Text);
             //SqlDataSourceMark.UpdateParameters.Add("id", Request.QueryString["appNo"]);
             SqlDataSourceMark.Update();
-            
+
+            mark += Decimal.Parse(raBestPaper.Text);
+            mark += Decimal.Parse(raBestSpeaker.Text);
+            mark += Decimal.Parse(raResearch.Text);
+            mark += Decimal.Parse(raOthers.Text);
+
+
             //mark_cocurricular_activities table
             SqlDataSourceMark.UpdateCommand = "UPDATE MARK_COCURRICULAR_ACTIVITIES SET [president] = @president, [president_level] = @president_level,[vice_president] = @vice_president, [vice_president_level] = @vice_president_level, "
                                             + "[bursar] = @bursar, [bursar_level] = @bursar_level, [secretary] = @secretary, [secretary_level] = @secretary_level, [committee] = @committee, [committee_Level] = @committee_level  WHERE [id] = @id";
@@ -191,15 +232,31 @@ public partial class frmMark : System.Web.UI.Page
             SqlDataSourceMark.UpdateParameters.Add("vice_president", coVicePresident.Text);
             SqlDataSourceMark.UpdateParameters.Add("vice_president_level", coVicePresidentLevel.Text);
             SqlDataSourceMark.UpdateParameters.Add("bursar", coBursarLevel.Text);
-            SqlDataSourceMark.UpdateParameters.Add("bursar_level",coBursarLevel.Text);
+            SqlDataSourceMark.UpdateParameters.Add("bursar_level", coBursarLevel.Text);
             SqlDataSourceMark.UpdateParameters.Add("secretary", coSecretary.Text);
             SqlDataSourceMark.UpdateParameters.Add("secretary_level", coSecretaryLevel.Text);
             SqlDataSourceMark.UpdateParameters.Add("committee", coCommittee.Text);
-            SqlDataSourceMark.UpdateParameters.Add("committee_level", coCommitteeLevel.Text); 
+            SqlDataSourceMark.UpdateParameters.Add("committee_level", coCommitteeLevel.Text);
             //SqlDataSourceMark.UpdateParameters.Add("id", Request.QueryString["appNo"]);
             SqlDataSourceMark.Update();
-
+            
+            mark += Decimal.Parse(coPresident.Text);
+            mark += Decimal.Parse(coPresidentLevel.Text);
+            mark += Decimal.Parse(coVicePresident.Text);
+            mark += Decimal.Parse(coVicePresidentLevel.Text);
+            mark += Decimal.Parse(coBursar.Text);
+            mark += Decimal.Parse(coBursarLevel.Text);
+            mark += Decimal.Parse(coSecretary.Text);
+            mark += Decimal.Parse(coSecretaryLevel.Text);
+            mark += Decimal.Parse(coCommittee.Text);
+            mark += Decimal.Parse(coCommitteeLevel.Text);
         }
+        //Update marks in application table.
+        SqlDataSourceMark.UpdateCommand = "UPDATE  [APPLICATION] SET[Mark] = @mark WHERE [App_No] = @id";
+        SqlDataSourceMark.UpdateParameters.Add("mark", mark.ToString());
+        SqlDataSourceMark.Update();
+
+
 
 
 
