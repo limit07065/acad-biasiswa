@@ -50,10 +50,23 @@ public partial class frmPublication : System.Web.UI.Page
 
     protected void Update_Mark(object sender, EventArgs e)
     { 
-        SqlDataSourcePublication.UpdateCommand = "";
-        foreach (GridViewRow row in GridView1)
+        SqlDataSourcePublication.UpdateCommand = "UPDATE MARK_PUBLICATION SET [mark]= @mark, [myra2] = @myra2 WHERE id = @id";
+        
+        foreach (GridViewRow row in GridView1.Rows)
         {
+            //get updated marks
+            TextBox mark = row.FindControl("tbMark") as TextBox;
+            TextBox myra2 = row.FindControl("tbMyra2") as TextBox;
+
+            //get ID from row.            
+            int id = (int) GridView1.DataKeys[row.DataItemIndex]["id"];
+             //GridView1.DataKeys[e.Row.DataItemIndex]["App_No"].ToString().Trim(), GridView1.DataKeys[e.Row.DataItemIndex]["Short_Name"].ToString().Trim())
+            SqlDataSourcePublication.UpdateParameters.Add("mark", mark.Text);
+            SqlDataSourcePublication.UpdateParameters.Add("myra2", myra2.Text);
+            SqlDataSourcePublication.UpdateParameters.Add("id", id.ToString());
+            SqlDataSourcePublication.Update();
         }
+
         
     }
 
