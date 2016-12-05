@@ -17,11 +17,17 @@ public partial class frmMark : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if ((string.IsNullOrEmpty(Request.QueryString["type"])) || (string.IsNullOrEmpty(Request.QueryString["appNo"])))
+
+        try
+        {
+            String url = Request.UrlReferrer.OriginalString;
+
+        }
+        catch (NullReferenceException enull)
         {
             Response.Redirect("SPS/listApplication.aspx");
         }
-              
+
         if (!IsPostBack)
         {
             getData();
@@ -30,7 +36,7 @@ public partial class frmMark : System.Web.UI.Page
         string jsFunction1 = String.Format("viewPublications('{0}');", Request.QueryString["appNo"]);
         btnPublication.Attributes.Add("OnClick", jsFunction1);
         Label test = (Label)Page.FindControl("test");
-        
+
     }
 
     protected void getData()
@@ -136,6 +142,48 @@ public partial class frmMark : System.Web.UI.Page
                 mark += Decimal.Parse(coCommittee.Text);
                 mark += Decimal.Parse(coCommitteeLevel.Text);
             }
+
+            //Calculate publication marks.
+            //declare variable
+            Decimal markJournal = 0;
+            Decimal myra2Journal = 0;
+            Decimal markConference = 0;
+            Decimal myra2Conference = 0;
+            Decimal markBook = 0;
+            Decimal myra2Book = 0;
+            Decimal markBookC = 0;
+            Decimal myra2BookC = 0;
+            Decimal totalMarkPub = 0;
+            Decimal totalMyra2Pub = 0;
+
+            //gets dataview selected by sqldatasourcepublication
+            DataView publication = (DataView)SqlDataSourcePublication.Select(DataSourceSelectArguments.Empty);
+
+            //loop through each row
+            foreach (DataRowView drv in publication)
+            {
+                DataRow row = drv.Row;
+                switch (row["type"].ToString())
+                {
+                    case "Conference": 
+                        markConference += (Decimal)row["mark"];
+                        myra2Conference += (Decimal)row["myra2"];
+                        break;
+                    case "Journal": 
+                        markJournal += (Decimal)row["mark"];
+                        myra2Journal += (Decimal)row["myra2"];
+                        break;
+                    case "Book":
+                        markBook += (Decimal)row["mark"];
+                        myra2Book += (Decimal)row["myra2"];
+                        break;
+                    case "Book Chapter":
+                        markBookC += (Decimal)row["mark"];
+                        myra2BookC += (Decimal)row["myra2"];
+                        break;
+
+                }
+            }
             /*
             // both zamalah and PNF
             //journal
@@ -156,6 +204,7 @@ public partial class frmMark : System.Web.UI.Page
             
             overallMarkMY    
              */
+
             overallMark.Text = mark.ToString();
 
         }
@@ -239,7 +288,7 @@ public partial class frmMark : System.Web.UI.Page
             SqlDataSourceMark.UpdateParameters.Add("committee_level", coCommitteeLevel.Text);
             //SqlDataSourceMark.UpdateParameters.Add("id", Request.QueryString["appNo"]);
             SqlDataSourceMark.Update();
-            
+
             mark += Decimal.Parse(coPresident.Text);
             mark += Decimal.Parse(coPresidentLevel.Text);
             mark += Decimal.Parse(coVicePresident.Text);

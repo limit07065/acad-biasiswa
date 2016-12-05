@@ -67,7 +67,7 @@
         </asp:SqlDataSource>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
             DataSourceID="SqlDataSourcePublication" CellPadding="4" ForeColor="#333333" GridLines="Both"
-            OnRowDataBound="GridView1_RowDataBound">
+            OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
             <AlternatingRowStyle BackColor="#f7f7ba" />
             <Columns>
                 <asp:TemplateField HeaderText="No.">
@@ -93,7 +93,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
-            <FooterStyle BackColor="#680d0d" Font-Bold="True" ForeColor="White" />
+            <FooterStyle BackColor="#d9534f" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#680d0d" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#e2e2e2" ForeColor="#333333" />

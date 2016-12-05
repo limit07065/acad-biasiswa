@@ -20,11 +20,18 @@
     <form runat="server">
     <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourcePublication" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+        SelectCommand="SELECT * FROM [vw_List_Publication] WHERE ([app_no] = @app_no)">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="app_no" QueryStringField="appNo" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <div class="ui-corner-all fill_yellow">
         <div class="jumbotron">
             Mark Update -
             <%= Request.QueryString["type"] %>
-            <asp:Label ID="test"> </asp:Label>
+            <asp:Label ID="test" runat="server" Text=""> <%= Request.UrlReferrer.OriginalString %></asp:Label>
         </div>
         <br />
         <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />
