@@ -1,8 +1,13 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/SV/SVMasterPage.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="SV_Default" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+    <style>
+        a:hover
+        {
+            text-decoration: underline;
+        }
+    </style>
     <%//label %>
     <div class="row">
         <div id="cssmenu2">
@@ -14,7 +19,6 @@
         <%//temporary session setter %>
         <!--<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="Button1"
             runat="server" Text="Button" OnClick="staffNo" />-->
-             
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="True" UpdateMode="Conditional">
@@ -24,7 +28,11 @@
                     CssClass="col-sm-12" AllowSorting="True" OnRowDataBound="gvScholarship_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                        <asp:TemplateField HeaderText="Name" SortExpression="Stu_Name">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="viewStuInfo" runat="server"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Matrix_No" HeaderText="Matrix No" ReadOnly="True" SortExpression="Matrix_No" />
                         <asp:TemplateField HeaderText="App. Date" SortExpression="App_Date">
                             <ItemTemplate>
@@ -36,7 +44,7 @@
                         <asp:BoundField DataField="Description" HeaderText="Status" SortExpression="Description" />
                         <asp:HyperLinkField DataNavigateUrlFields="App_No,Matrix_No,Session" DataNavigateUrlFormatString="View.aspx?app={0}&amp;mat={1}&amp;ses={2}"
                             HeaderText="Action" Text="View">
-                            <ItemStyle CssClass="btn btn-default" />
+                            <ItemStyle CssClass="btn btn-default btn-custom" />
                         </asp:HyperLinkField>
                     </Columns>
                     <FooterStyle BackColor="#990000" ForeColor="White" />
@@ -58,4 +66,10 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
+    <script type="text/javascript">
+        function viewStuInfo(str) {
+            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
+        }
+        
+    </script>
 </asp:Content>

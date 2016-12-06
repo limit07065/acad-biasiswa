@@ -34,6 +34,11 @@ public partial class SV_Default : System.Web.UI.Page
             Label date = e.Row.FindControl("lblDate") as Label;
             date.Text = ((DateTime)rv["App_Date"]).ToString("dd-MMM-yyyy");
 
+            LinkButton viewStuInfo = e.Row.FindControl("viewStuInfo") as LinkButton;
+            string jsFunction1 = String.Format("viewStuInfo('{0}');", e.Row.Cells[1].Text.Trim());
+            viewStuInfo.Attributes.Add("OnClick", jsFunction1);
+            viewStuInfo.Text = rv["Name"].ToString();
+
         }
     }
 
