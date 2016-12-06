@@ -15,15 +15,12 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblStaffNo.Text = (String)Session["staffNo"];
+        
 		if (!IsPostBack)
 		{
-			//string sesisem = Session["acadUserSs"].ToString();
+			
 			showProfile();
-           // checkDebt("");
-           // showAchievement("", "");
-           // showActivities("");
-			//lblLoggedInUser.Text = Session["acadUserNm"].ToString();
+           
 		}
     }
     protected void AC_Click(object sender, ImageClickEventArgs e)
@@ -125,15 +122,21 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
     protected void showProfile()
     {
         imgPhoto.InnerHtml = "<img src=\"../Styles/images/photo/mso.jpg\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
-        /*lblName.Text = Session["acadUserNm"].ToString();
-        lblProgramme.Text = Session["acadUserPr"].ToString();
-        lblFaculty.Text = Session["acadUserFn"].ToString();
-        lblMatric.Text = Session["acadUserMt"].ToString();
-        lblBilSemester.Text = Session["acadUserBs"].ToString() + " / " + Session["acadUserNs"].ToString();
-        lblAA.Text = Session["acadUserSv"].ToString();
-        lblToS.Text = Session["acadUserTs"].ToString() + " (Full Time)";
-        lblEmail.Text = Session["acadUserEm"].ToString();
-        lblPhone.Text = Session["acadUserTl"].ToString();*/
+        DataView dv= (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView drv in dv)
+        {
+            DataRow dr = drv.Row;
+            lblName.Text = dr["SV_Name"].ToString();
+            lblContact.Text = dr["contact"].ToString();
+            lblEmail.Text = dr["email"].ToString();
+            lblFaculty.Text = dr["faculty"].ToString();
+            if(dr["PHD_Graduate_Date"]!=DBNull.Value)
+                lblPhdGraduationDate.Text = ((DateTime)dr["PHD_Graduate_Date"]).ToString("dd-MMM-yy");
+            lblPosition.Text = dr["code"].ToString() + " " + dr["position"].ToString();
+            lblStaffNo.Text = (String)Session["staffNo"];
+           
+
+        }
     }
 
 

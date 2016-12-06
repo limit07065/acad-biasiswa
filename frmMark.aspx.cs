@@ -35,7 +35,10 @@ public partial class frmMark : System.Web.UI.Page
 
         string jsFunction1 = String.Format("viewPublications('{0}');", Request.QueryString["appNo"]);
         btnPublication.Attributes.Add("OnClick", jsFunction1);
-        Label test = (Label)Page.FindControl("test");
+        string jsFunction2 = "window.close()";
+        btnCancel.Attributes.Add("OnClick", jsFunction2);
+       
+        
 
     }
 
@@ -181,31 +184,38 @@ public partial class frmMark : System.Web.UI.Page
                         markBookC += (Decimal)row["mark"];
                         myra2BookC += (Decimal)row["myra2"];
                         break;
-
                 }
             }
-            /*
-            // both zamalah and PNF
-            //journal
-            jurnalMarkSA
-            jurnalMarkMY
-            //conference
-            persidanganMarkSA
-            persidanganMarkMY
-            //books
-            bukuMarkSA
-            bukuMarkMY
-            //books chapter
-            bukuCMarkSA
-            bukuCMarkMY
-            //total publication marks
-            totalMarkPubSA
-            totalMarkPubMY
-            
-            overallMarkMY    
-             */
 
+            //calculate total publication marks and overall marks
+            totalMarkPub += markConference + markJournal + markBook + markBookC;
+            totalMyra2Pub += myra2Conference + myra2Journal + myra2Book + myra2BookC;
+            mark += totalMarkPub;
+            
+            //display in label
+            //journal
+            jurnalMarkSA.Text = markJournal.ToString();
+            jurnalMarkMY.Text = myra2Journal.ToString();
+
+            //conference
+            persidanganMarkSA.Text = markConference.ToString();
+            persidanganMarkMY.Text = myra2Conference.ToString();
+
+            //books
+            bukuMarkSA.Text = markBook.ToString();
+            bukuMarkMY.Text = myra2Book.ToString();
+
+            //book chapter
+            bukuCMarkSA.Text = markBookC.ToString();
+            bukuCMarkMY.Text = myra2BookC.ToString();
+
+            //total publication mark
+            totalMarkPubSA.Text = totalMarkPub.ToString();
+            totalMarkPubMY.Text = totalMyra2Pub.ToString();
+                       
+            //overall total mark
             overallMark.Text = mark.ToString();
+            overallMarkMY.Text = totalMyra2Pub.ToString();
 
         }
 
@@ -300,14 +310,20 @@ public partial class frmMark : System.Web.UI.Page
             mark += Decimal.Parse(coCommittee.Text);
             mark += Decimal.Parse(coCommitteeLevel.Text);
         }
+        //include publication marks
+        Decimal totalMarkPub = 0;
+        if (Decimal.TryParse(totalMarkPubSA.Text, out totalMarkPub))
+        {
+            mark += totalMarkPub;
+        }
+        
+
         //Update marks in application table.
         SqlDataSourceMark.UpdateCommand = "UPDATE  [APPLICATION] SET[Mark] = @mark WHERE [App_No] = @id";
         SqlDataSourceMark.UpdateParameters.Add("mark", mark.ToString());
         SqlDataSourceMark.Update();
 
-
-
-
-
+        //call javascript function
+        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "refreshParent()", true);
     }
 }

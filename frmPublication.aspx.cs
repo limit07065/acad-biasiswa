@@ -12,15 +12,22 @@ public partial class frmPublication : System.Web.UI.Page
     decimal totalMyra2 = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(Request.QueryString["appNo"]))
+        try
+        {
+            String url = Request.UrlReferrer.OriginalString;
+
+        }
+        catch (NullReferenceException )
         {
             Response.Redirect("SPS/listApplication.aspx");
         }
+
         if (!IsPostBack)
         {
             loadStudentInfo();
           
         }
+        
     }
 
     protected void loadStudentInfo()
@@ -83,6 +90,7 @@ public partial class frmPublication : System.Web.UI.Page
             SqlDataSourcePublication.UpdateParameters["id"].DefaultValue = GridView1.DataKeys[row.DataItemIndex]["id"].ToString();
             SqlDataSourcePublication.Update();
         }
+        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "refreshParent()", true);
 
         
     }

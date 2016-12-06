@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="frmPublication.aspx.cs" Inherits="frmPublication" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
     <title>List of Publication</title>
     <script type="text/javascript" src="Styles/sps/jquery-1.4.2.min.js"></script>
@@ -15,6 +15,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <div>
         <asp:SqlDataSource ID="SqlDataSourceStudentInfo" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
             SelectCommand="SELECT [Matrix_No], [Name], [App_No], [supervisor] FROM [vw_scholarship recommendation] WHERE ([App_No] = @App_No)">
@@ -75,21 +77,21 @@
                         <%# Container.DataItemIndex + 1 %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
-                <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
-                <asp:BoundField DataField="authors" HeaderText="authors" SortExpression="authors" />
-                <asp:BoundField DataField="type_authorship" HeaderText="type_authorship" SortExpression="type_authorship" />
-                <asp:BoundField DataField="index" HeaderText="index" SortExpression="index" />
-                <asp:BoundField DataField="status_paper" HeaderText="status_paper" SortExpression="status_paper" />
-                <asp:BoundField DataField="affiliation_UTM" HeaderText="affiliation_UTM" SortExpression="affiliation_UTM" />
+                <asp:BoundField DataField="type" HeaderText="Type of Publication" SortExpression="type" />
+                <asp:BoundField DataField="title" HeaderText="Thesis Title" SortExpression="title" />
+                <asp:BoundField DataField="authors" HeaderText="Authors" SortExpression="authors" />
+                <asp:BoundField DataField="type_authorship" HeaderText="Type of Authorship" SortExpression="type_authorship" />
+                <asp:BoundField DataField="index" HeaderText="Index" SortExpression="index" />
+                <asp:BoundField DataField="status_paper" HeaderText="Status of Paper" SortExpression="status_paper" />
+                <asp:BoundField DataField="affiliation_UTM" HeaderText="Affiliation UTM" SortExpression="affiliation_UTM" />
                 <asp:TemplateField HeaderText="Mark">
                     <ItemTemplate>
-                        <asp:TextBox ID="tbMark" runat="server" CssClass="width-50"></asp:TextBox>
+                        <asp:TextBox ID="tbMark" runat="server" Width="50px"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Myra2">
                     <ItemTemplate>
-                        <asp:TextBox ID="tbMyra2" runat="server" CssClass="width-50"></asp:TextBox>
+                        <asp:TextBox ID="tbMyra2" runat="server" Width="55px"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -98,8 +100,21 @@
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#e2e2e2" ForeColor="#333333" />
         </asp:GridView>
-        <asp:Button ID="btnUpdateMark" runat="server" Text="Update Mark" CssClass="btn btn-default" OnClick="Update_Mark" />
+        <br />
+        <asp:Button ID="btnUpdateMark" runat="server" Text="Update Mark" CssClass="btn btn-default"
+            OnClick="Update_Mark" />
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-default" OnClientClick="window.close();"/>
     </div>
+    <script>
+        function refreshParent() {
+            window.opener.location.href = window.opener.location.href;
+            if (window.opener.progressWindow) {
+                window.opener.progressWindow.close();
+            }
+            window.close();
+        }
+            
+    </script>
     </form>
 </body>
 </html>

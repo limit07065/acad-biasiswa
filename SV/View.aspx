@@ -88,7 +88,7 @@
                 <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonListRecommendation"
                     Display="Static" ErrorMessage="Please choose a recommendation." />
-                <asp:Button ID="btn" OnClick="btn_click" runat="server" CssClass="btn btn-primary pull-right"
+                <asp:Button ID="btn" OnClick="btn_click" runat="server" CssClass="btn btn-primary pull-right "
                     Text="Submit"></asp:Button>
             </div>
         </div>

@@ -146,14 +146,14 @@
                             SortExpression="Faculty" />
                         <asp:TemplateField HeaderText="Name" SortExpression="Stu_Name">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewStuInfo" runat="server"><%# Eval("Stu_Name") %></asp:LinkButton>
+                            <asp:LinkButton ID="viewStuInfo" runat="server"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Matrix_No" HeaderText="Matrix No" 
                             SortExpression="Matrix_No" />
                         <asp:TemplateField HeaderText="App. Date" SortExpression="App_Date">
                             <ItemTemplate>
-                            <asp:Label runat="server"><%# ((DateTime)Eval("App_Date")).ToString("dd-MMM-yyyy") %></asp:Label>
+                            <asp:Label runat="server" ID="lblDate"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Session" HeaderText="Session" 
@@ -165,12 +165,12 @@
                         <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                         <asp:TemplateField HeaderText="Mark" SortExpression="Mark">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewMark" runat="server"><%# Eval("Mark") %></asp:LinkButton>
+                            <asp:LinkButton ID="viewMark" runat="server"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewStatus" runat="server" ><%# Eval("App_Status")%></asp:LinkButton>
+                            <asp:LinkButton ID="viewStatus" runat="server" ></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -189,7 +189,7 @@
         </asp:UpdatePanel>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        EnableCaching="true"
+        EnableCaching="false"
         DataSourceMode="DataSet"
         ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
         SelectCommand="SELECT * FROM [vw_Application]"
