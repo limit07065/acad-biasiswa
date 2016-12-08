@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <link href="../Styles/css/pls.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/addon.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .style158i
         {
@@ -30,13 +31,19 @@
                 <asp:Label ID="lblLoggedInUser" runat="server" Text=""></asp:Label></span>&nbsp;
             <li class="profile"><a class="icon-user"></a>
                 <ul>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
-                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
+                    <li><a href="../UGStudent/" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
+                    <li><a href="../SV" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+                    <li><a href="../SPS/listApplication.aspx"><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
                 </ul>
             </li>
         </ul>
     </div>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        SelectCommand="SELECT * FROM [vw_Supervisor] WHERE ([Staff_No] = @Staff_No)">
+        <SelectParameters>
+            <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <div id="sumInfo" class="container-fluid">
         <div class="row">
             <div class="col-sm-9 spadding">
@@ -55,24 +62,24 @@
                                 <br />
                                 <br />
                                 <asp:Image ID="Image2" runat="server" ImageUrl="~/Styles/images/icon-regsys/Position.png" />
-                                <asp:Label ID="Label5" runat="server" Text="Professor Madya(Ds54)"></asp:Label>
+                                <asp:Label ID="lblPosition" runat="server" Text=""></asp:Label>
                                 <br />
                                 <br />
                                 <asp:Image ID="Image3" runat="server" ImageUrl="~/Styles/images/icon-regsys/Tel No.png" />
-                                <asp:Label ID="Label6" runat="server" Text="075532034"></asp:Label>
+                                <asp:Label ID="lblContact" runat="server" Text="075532034"></asp:Label>
                                 <br />
                             </div>
                             <div class="col-sm-6">
                                 <asp:Image ID="Image4" runat="server" ImageUrl="~/Styles/images/icon-regsys/Faculty.png" />
-                                <asp:Label ID="Label7" runat="server" Text="FC"></asp:Label>
+                                <asp:Label ID="lblFaculty" runat="server" Text="FC"></asp:Label>
                                 <br />
                                 <br />
                                 <asp:Image ID="Image5" runat="server" ImageUrl="~/Styles/images/icon-regsys/PHD Grad. Date.png" />
-                                <asp:Label ID="Label8" runat="server" Text="15-AUG-2009"></asp:Label>
+                                <asp:Label ID="lblPhdGraduationDate" runat="server" Text=""></asp:Label>
                                 <br />
                                 <br />
                                 <asp:Image ID="Image6" runat="server" ImageUrl="~/Styles/images/icon-regsys/Email.png" />
-                                <asp:Label ID="Label9" runat="server" Text="shahizan@utm.my"></asp:Label>
+                                <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
                                 <br />
                             </div>
                         </div>

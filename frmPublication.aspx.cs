@@ -8,17 +8,26 @@ using System.Data;
 
 public partial class frmPublication : System.Web.UI.Page
 {
+    decimal totalMark = 0;
+    decimal totalMyra2 = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(Request.QueryString["appNo"]))
+        try
+        {
+            String url = Request.UrlReferrer.OriginalString;
+
+        }
+        catch (NullReferenceException )
         {
             Response.Redirect("SPS/listApplication.aspx");
         }
+
         if (!IsPostBack)
         {
             loadStudentInfo();
           
         }
+        
     }
 
     protected void loadStudentInfo()
@@ -36,7 +45,7 @@ public partial class frmPublication : System.Web.UI.Page
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
+       
         if (e.Row.RowType == DataControlRowType.DataRow)           
         {
             TextBox mark =  e.Row.FindControl("tbMark") as TextBox;
@@ -45,13 +54,27 @@ public partial class frmPublication : System.Web.UI.Page
             
             mark.Text = rv["mark"].ToString();
             myra2.Text =rv["myra2"].ToString();
-        }        
+
+            //calculate the total mark
+            totalMark += (decimal)rv["mark"];
+            totalMyra2+= (decimal)rv["myra2"];
+
+        }else if (e.Row.RowType == DataControlRowType.Footer)
+        {       
+            // Display the total mark 
+            e.Row.Cells[7].Text = "Total";
+            e.Row.Cells[8].Text = totalMark.ToString();
+            e.Row.Cells[9].Text = totalMyra2.ToString();
+        }      
     }
 
     protected void Update_Mark(object sender, EventArgs e)
     { 
         SqlDataSourcePublication.UpdateCommand = "UPDATE MARK_PUBLICATION SET [mark]= @mark, [myra2] = @myra2 WHERE id = @id";
-        
+        SqlDataSourcePublication.UpdateParameters.Add("mark",null);
+        SqlDataSourcePublication.UpdateParameters.Add("myra2",null);      
+        SqlDataSourcePublication.UpdateParameters.Add("id",null);
+
         foreach (GridViewRow row in GridView1.Rows)
         {
             //get updated marks
@@ -61,11 +84,13 @@ public partial class frmPublication : System.Web.UI.Page
             //get ID from row.            
             int id = (int) GridView1.DataKeys[row.DataItemIndex]["id"];
              //GridView1.DataKeys[e.Row.DataItemIndex]["App_No"].ToString().Trim(), GridView1.DataKeys[e.Row.DataItemIndex]["Short_Name"].ToString().Trim())
-            SqlDataSourcePublication.UpdateParameters.Add("mark", mark.Text);
-            SqlDataSourcePublication.UpdateParameters.Add("myra2", myra2.Text);
-            SqlDataSourcePublication.UpdateParameters.Add("id", id.ToString());
+           
+            SqlDataSourcePublication.UpdateParameters["mark"].DefaultValue = mark.Text;
+            SqlDataSourcePublication.UpdateParameters["myra2"].DefaultValue = myra2.Text;
+            SqlDataSourcePublication.UpdateParameters["id"].DefaultValue = GridView1.DataKeys[row.DataItemIndex]["id"].ToString();
             SqlDataSourcePublication.Update();
         }
+        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "refreshParent()", true);
 
         
     }
