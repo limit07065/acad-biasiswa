@@ -32,8 +32,6 @@ public partial class SPS_Default : System.Web.UI.Page
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        
-
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             LinkButton viewStuInfo = e.Row.FindControl("viewStuInfo") as LinkButton;

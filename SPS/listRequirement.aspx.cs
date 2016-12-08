@@ -37,7 +37,6 @@ public partial class SPSRequirement_Default : System.Web.UI.Page
     protected void FormView1_ItemUpdated(object sender, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(modalPanel, modalPanel.GetType(), "alert", "alert('Update successfully!');", true);
-        ScriptManager.RegisterStartupScript(modalPanel, modalPanel.GetType(), "hide", "$(function () { $('#" + Panel1.ClientID + "').modal('hide'); });", true);
     }
 
     /************* Text formatting when FormView Databound *************/
