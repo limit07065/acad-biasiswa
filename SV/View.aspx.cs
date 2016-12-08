@@ -56,19 +56,31 @@ public partial class SV_View : System.Web.UI.Page
     }
 
     protected void btn_click(object sender, EventArgs e)
-    {
-        DataView dv2 = (DataView)SqlDataSourceSupervisorRecommendation.Select(DataSourceSelectArguments.Empty);
-        if (dv2.Count == 0)
-        {
+    {        
             SqlDataSourceSupervisorRecommendation.Insert();
-            //requires insert to app_status_details
-            //SqlDataSourceApplication.Update();
-        }
-        else
-        {
-            SqlDataSourceSupervisorRecommendation.Update();
 
-        }
+            //change all previous app_status of application to inactive
+           
+            sql.UpdateCommand = "UPDATE [APP_STATUS_DETAILS] SET [Active]='0' WHERE ([App_Code]=@appNo)";
+            sql.UpdateParameters.Add("appNo",Request.QueryString["app"]);
+            sql.Update();
+                        
+            //Insert to app_status_details
+            String supervisorName ="";
+            DataView dv = (DataView) SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+            foreach(DataRowView drv in dv)
+            {
+                DataRow dr = drv.Row;
+                supervisorName = dr["supervisor"].ToString();
+            }           
+            
+            sql.InsertCommand = "INSERT INTO [APP_STATUS_DETAILS] ([App_Code],[Status],[Remark],[Date]) VALUES (@appCode,@status,@remark,@date)";
+            sql.InsertParameters.Add("appCode",Request.QueryString["app"]);
+            sql.InsertParameters.Add("status","BIA_03");
+            sql.InsertParameters.Add("remark","Application reviewed by supervisor "+supervisorName);            
+            sql.InsertParameters.Add("date",new DateTime().ToString());
+            sql.Insert();
+        
 
 
         Response.Redirect("Default.aspx");

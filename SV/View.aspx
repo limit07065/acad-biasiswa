@@ -11,6 +11,16 @@
             <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="sql" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        SelectCommand="SELECT * FROM [vw_scholarship recommendation] WHERE (([App_No] = @App_No) AND ([Staff_No] = @Staff_No) AND ([Session] = @Session))">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="App_No" QueryStringField="app" Type="Int32" />
+            <asp:QueryStringParameter Name="Session" QueryStringField="ses" Type="String" />
+            <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <%//Datasource to get student basic info %>
     <asp:SqlDataSource ID="SqlDataSourceStudent" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
         SelectCommand="SELECT * FROM [STUDENT] WHERE ([Matrix_No] = @Matrix_No)">

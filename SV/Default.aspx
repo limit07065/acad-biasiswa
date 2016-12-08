@@ -60,7 +60,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
-            SelectCommand="SELECT * FROM [vw_scholarship recommendation] WHERE ([Staff_No] = @Staff_No) ORDER BY Description ASC, App_Date DESC ">
+            SelectCommand="SELECT * FROM [vw_scholarship recommendation] WHERE ([Staff_No] = @Staff_No) AND ([Status]='BIA_02') ORDER BY App_Date  ">
             <SelectParameters>
                 <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
             </SelectParameters>
