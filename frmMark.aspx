@@ -5,9 +5,10 @@
     <title>Marks </title>
     <script type="text/javascript" src="Styles/sps/jquery-1.4.2.min.js"></script>
     <link href="Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
+    <!--<link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />-->
+    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/sps.css" rel="stylesheet" media="screen" />
     <link href="Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
-    <link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link rel="shortcut icon" href="~/styles/images/utm.ico" />
     <script type="text/javascript" src="Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
     <script type="text/javascript">
@@ -17,14 +18,26 @@
 </head>
 <body>
     <form runat="server">
-    <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">        
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:SqlDataSource ID="SqlDataSourceMark" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>">
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourcePublication" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        SelectCommand="SELECT * FROM [vw_List_Publication] WHERE ([app_no] = @app_no)">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="app_no" QueryStringField="appNo" Type="Int32" />
+        </SelectParameters>
     </asp:SqlDataSource>
     <div class="ui-corner-all fill_yellow">
+        <div class="jumbotron">
+            Mark Update -
+            <%= Request.QueryString["type"] %>
+        </div>
         <br />
         <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />
-        <asp:Button ID="Button2" runat="server" Text="List of Publication" CssClass="btn btn-default" />
-        <asp:Button ID="Button3" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" />
-        <asp:Button ID="Button4" runat="server" Text="Cancel" CssClass="btn btn-default" />
+        <asp:Button ID="btnPublication" runat="server" Text="List of Publication" CssClass="btn btn-default" />
+        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
         <br />
         <br />
     </div>
@@ -32,7 +45,7 @@
     <% if (Request.QueryString["type"] == "Zamalah" || Request.QueryString["type"] == "IDF")
        {
     %>
-    <table width="100%" border="2">
+    <table width="100%">
         <tr>
             <td class="ui-widget-header" colspan="3">
                 <b>MSC Mark (RU University / RU None UTM / None RU)</b>
@@ -151,7 +164,7 @@
                         &nbsp;&nbsp;
                         <asp:TextBox runat="server" name="MQ" ID="MQ"></asp:TextBox><br>
                     </td>
-                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="24">
+                    <td width="51%" class="ui-corner-all fill_yellow" valign="top" rowspan="26">
                         <table width="300" style="border-collapse: collapse" border="1">
                             <tbody>
                                 <tr>
@@ -483,7 +496,7 @@
                         President
                     </td>
                     <td class="tdrow">
-                        &nbsp;&nbsp;
+                        
                         <asp:TextBox runat="server" name="coPresident" ID="coPresident"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -496,7 +509,7 @@
                         Vice President
                     </td>
                     <td class="tdrow">
-                        &nbsp;&nbsp;
+                        
                         <asp:TextBox runat="server" name="coVicePresident" ID="coVicePresident"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -509,7 +522,7 @@
                         Bursar/Vice Bursar
                     </td>
                     <td class="tdrow">
-                        &nbsp;&nbsp;
+                      
                         <asp:TextBox runat="server" name="coBursar" ID="coBursar"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -522,7 +535,7 @@
                         Secretary/Vice Secretary
                     </td>
                     <td class="tdrow">
-                        &nbsp;&nbsp;
+                       
                         <asp:TextBox runat="server" name="coSecretary" ID="coSecretary"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -535,7 +548,7 @@
                         Committee
                     </td>
                     <td class="tdrow">
-                        &nbsp;&nbsp;
+                       
                         <asp:TextBox runat="server" name="coCommittee" ID="coCommittee"> </asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -570,7 +583,7 @@
                     </td>
                     <td class="tdrow" style="text-align: center;">
                         <asp:TextBox runat="server" name="jurnalMarkMY" ID="jurnalMarkMY" Style="border: none;
-                            background-color: #f7f7ba;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #f7f7ba;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -583,7 +596,7 @@
                     </td>
                     <td class="tdrow" style="text-align: center;">
                         <asp:TextBox runat="server" name="persidanganMarkMY" ID="persidanganMarkMY" Style="border: none;
-                            background-color: #f7f7ba;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #f7f7ba;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -596,7 +609,7 @@
                     </td>
                     <td class="tdrow" style="text-align: center;">
                         <asp:TextBox runat="server" name="bukuMarkMY" ID="bukuMarkMY" Style="border: none;
-                            background-color: #f7f7ba;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #f7f7ba;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -609,7 +622,7 @@
                     </td>
                     <td class="tdrow" style="text-align: center;">
                         <asp:TextBox runat="server" name="bukuCMarkMY" ID="bukuCMarkMY" Style="border: none;
-                            background-color: #f7f7ba;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #f7f7ba;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -622,7 +635,7 @@
                     </td>
                     <td class="tdrow" style="text-align: center;">
                         <asp:TextBox runat="server" name="totalMarkPubMY" ID="totalMarkPubMY" Style="border: none;
-                            background-color: #f7f7ba;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #f7f7ba;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -635,10 +648,24 @@
                     </td>
                     <td class="fill_oren" style="text-align: center;">
                         <asp:TextBox runat="server" name="overallMarkMY" ID="overallMarkMY" Style="border: none;
-                            background-color: #fcdcc2; font-weight: bold;" type="text" size="15" ReadOnly="true"></asp:TextBox>
+                            background-color: #fcdcc2; font-weight: bold;" type="text" Width="65px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
         </table>
+        <script>
+            function viewPublications(str) {
+                window.open("frmPublication.aspx?appNo=" + str, "List of Publication", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+            }
+
+            function refreshParent() {
+                window.opener.location.href = window.opener.location.href;
+                if (window.opener.progressWindow) {
+                    window.opener.progressWindow.close();
+                }
+                window.close();
+            }
+            
+        </script>
 </body>
 </html>
 </form>
