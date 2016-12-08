@@ -41,8 +41,10 @@
                 </ul>
             </li>
             <li><a>
-                <asp:Label ID="Label4c" runat="server" Text="Society" CssClass="textMenu" Visible="false"></asp:Label></a>
-                <ul id="ulSociety" runat="server">
+                <asp:Label ID="Label4c" runat="server" Text="Scholarship" CssClass="textMenu" Visible="true"><a href="Biasiswa1.aspx"></a></asp:Label>
+                <ul>
+                <li><a href="">UTM Zamalah</a></li>
+                    <li><a href="">IDF</a></li>
                 </ul>
             </li>
         </ul>
@@ -65,6 +67,7 @@
                     <div class="row">
                         <!-- BEGIN DISPLAY PHOTO -->
                         <div class="col-md-3" id="imgPhoto" runat="server">
+                            
                         </div>
                         <!-- END DISPLAY PHOTO -->
                         <div class="col-md-9">

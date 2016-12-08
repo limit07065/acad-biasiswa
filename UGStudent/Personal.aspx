@@ -87,6 +87,17 @@
                 <table style="width: 100%;">
                     <tr>
                         <td class="style158i" style="height: 24px" bgcolor="#990000" colspan="6">
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                
+                                SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="1" Name="Gender" SessionField="parent1" 
+                                        Type="Int32" />
+                                    <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
+                                        SessionField="matircNo" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             <span id="MainContent_BodyContent_Label105" style="color:White;font-weight:bold;">Guardian</span>
                         </td>
                     </tr>
@@ -98,7 +109,7 @@
                             :
                         </td>
                         <td class="style158i" style="width: *; height: 24px;">
-                            <span id="MainContent_BodyContent_lblName" style="color:#333333;font-weight:normal;">AZALI BIN MD SIDEK</span>
+                            &nbsp;<asp:Label ID="lblname" runat="server" Text="Label"></asp:Label>
                         </td>
                         <td class="style158i" width="100" style="height: 24px">
                             <span id="MainContent_BodyContent_Label132" style="color:#333333;font-weight:bold;">Occupation</span>
@@ -107,7 +118,7 @@
                             :
                         </td>
                         <td class="style158i" width="150" style="height: 24px">
-                            <span id="MainContent_BodyContent_lblOccupation" style="color:#333333;font-weight:normal;">PEM PMBGN MASYRT</span>
+                            &nbsp;<asp:Label ID="lblJob" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -118,7 +129,7 @@
                             :
                         </td>
                         <td class="style158i">
-                            <span id="MainContent_BodyContent_lblAddress" style="color:#333333;font-weight:normal;">NO D1, KUARTES IKBN PERETAK  NO D1, KUARTES IKBN PERETAK</span>
+                            &nbsp;<asp:Label ID="lblAdd" runat="server" Text="Label"></asp:Label>
                         </td>
                         <td class="style158i">
                             <span id="MainContent_BodyContent_Label143" style="color:#333333;font-weight:bold;">Salary</span>
@@ -127,7 +138,9 @@
                             :
                         </td>
                         <td class="style158i">
-                            <span id="MainContent_BodyContent_lblSalary" style="color:#333333;font-weight:normal;">RM    2,100.00</span>
+                            <span id="MainContent_BodyContent_lblSalary" style="color:#333333;font-weight:normal;">
+                            RM </span>
+                            <asp:Label ID="lblSal" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -147,7 +160,7 @@
                             :
                         </td>
                         <td class="style158i">
-                            <span id="MainContent_BodyContent_lblPhone" style="color:#333333;font-weight:normal;">0360641202</span>
+                            &nbsp;<asp:Label ID="lblHp" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -198,26 +211,37 @@
                     <tr>
                         <td class="style158i" style="height: 24px" bgcolor="#990000" colspan="6">
                             <span id="MainContent_BodyContent_Label10" style="color:White;font-weight:bold;">Mother</span>
+                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                
+                                SelectCommand="SELECT * FROM [Guardian] WHERE (([Matric] = @Matric) AND ([Gender] = @Gender))">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="MC123456" Name="Matric" SessionField="matricNo" 
+                                        Type="String" />
+                                    <asp:SessionParameter DefaultValue="2" Name="Gender" SessionField="parent2" 
+                                        Type="Int32" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                         </td>
                     </tr>
                     <tr>
-                        <td class="style158i">
+                        <td class="style158i" style="height: 24px">
                             <span id="MainContent_BodyContent_Label1" style="color:#333333;font-weight:bold;">Name</span>
                         </td>
-                        <td class="style158i">
+                        <td class="style158i" style="height: 24px">
                             :
                         </td>
-                        <td class="style158i">
-                            <span id="MainContent_BodyContent_lblMotherName" style="color:#333333;font-weight:normal;">MARAINI BINTI MAT ISA</span>
+                        <td class="style158i" style="height: 24px">
+                            &nbsp;<asp:Label ID="lblname2" runat="server" Text="Label"></asp:Label>
                         </td>
-                        <td class="style158i">
+                        <td class="style158i" style="height: 24px">
                             <span id="MainContent_BodyContent_Label3" style="color:#333333;font-weight:bold;">Occupation</span>
                         </td>
-                        <td class="style158i">
+                        <td class="style158i" style="height: 24px">
                             :
                         </td>
-                        <td class="style158i">
-                            <span id="MainContent_BodyContent_lblMotherOccupation" style="color:#333333;font-weight:normal;">01</span>
+                        <td class="style158i" style="height: 24px">
+                            &nbsp;<asp:Label ID="lblJob2" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -237,8 +261,7 @@
                             :
                         </td>
                         <td class="style158i">
-                            <span id="MainContent_BodyContent_lblMotherPosition" style="color:#333333;font-weight:normal;">PEN PEG LATIHAN</span>
-                        </td>
+                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td class="style158i">
@@ -257,7 +280,9 @@
                             :
                         </td>
                         <td class="style158i">
-                            <span id="MainContent_BodyContent_lblMotherSalary" style="color:#333333;font-weight:normal;">RM    4,900.00</span>
+                            <span id="MainContent_BodyContent_lblMotherSalary" style="color:#333333;font-weight:normal;">
+                            RM </span>
+                            <asp:Label ID="lblSal2" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
                 </table>
@@ -266,41 +291,36 @@
         <tr>
              <td class="style158">
                             <strong>Academic Background</strong>
+                            <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" 
+                                CellPadding="4" DataSourceID="Acad" ForeColor="#333333" GridLines="None" 
+                                Width="100%">
+                                <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+                                    <asp:BoundField DataField="Name_of_institution" 
+                                        HeaderText="Name_of_institution" SortExpression="Name_of_institution" />
+                                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
+                                    <asp:BoundField DataField="CGPA" HeaderText="CGPA" SortExpression="CGPA" />
+                                    <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
+                                </Columns>
+                                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                <SortedDescendingHeaderStyle BackColor="#820000" />
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="Acad" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                SelectCommand="SELECT [Name of institution] AS Name_of_institution, [Date], [CGPA], [Level] FROM [koku_awd_Acad_code]">
+                            </asp:SqlDataSource>
                         </td>
                     </tr>
                      </table>
         </div>
         <div>
-	        
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                CellPadding="4" DataKeyNames="Name_of_institution" DataSourceID="acad" 
-                ForeColor="#333333" GridLines="None" Width="100%">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    <asp:BoundField DataField="Name_of_institution" 
-                        HeaderText="Name_of_institution" SortExpression="Name_of_institution" />
-                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                    <asp:BoundField DataField="CGPA" HeaderText="CGPA" SortExpression="CGPA" />
-                    <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-                </Columns>
-                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                <SortedDescendingHeaderStyle BackColor="#820000" />
-            </asp:GridView>
-            <asp:SqlDataSource ID="acad" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                SelectCommand="SELECT [Name of institution] AS Name_of_institution, [Date], [CGPA], [Level] FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="GridView1" DefaultValue="MC123456" 
-                        Name="Matric" PropertyName="SelectedValue" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
 	        
      </div>
       <br/>
@@ -309,35 +329,32 @@
                         </td>
                     </tr>       
 
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" DataKeyNames="Name_Of_reward" DataSourceID="SqlDataSource1" 
-            ForeColor="#333333" GridLines="None" Width="100%">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:BoundField DataField="Name_Of_reward" HeaderText="Name_Of_reward" 
-                    SortExpression="Name_Of_reward" />
-                <asp:BoundField DataField="Date_Received" HeaderText="Date_Received" 
-                    SortExpression="Date_Received" />
-                <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-            </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-            <SortedAscendingCellStyle BackColor="#FDF5AC" />
-            <SortedAscendingHeaderStyle BackColor="#4D0000" />
-            <SortedDescendingCellStyle BackColor="#FCF6C0" />
-            <SortedDescendingHeaderStyle BackColor="#820000" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Name Of reward] AS Name_Of_reward, [Date Received] AS Date_Received, [Level] FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="GridView2" DefaultValue="MC123456" 
-                    Name="Matric" PropertyName="SelectedValue" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+        <br />
+     <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" 
+         CellPadding="4" DataSourceID="activ" ForeColor="#333333" GridLines="None" 
+         Width="100%">
+         <AlternatingRowStyle BackColor="White" />
+         <Columns>
+             <asp:BoundField DataField="Name_Of_reward" HeaderText="Name of Award" 
+                 SortExpression="Name_Of_reward" />
+             <asp:BoundField DataField="Date_Received" HeaderText="Date Received" 
+                 SortExpression="Date_Received" />
+             <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
+         </Columns>
+         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+         <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+         <SortedAscendingCellStyle BackColor="#FDF5AC" />
+         <SortedAscendingHeaderStyle BackColor="#4D0000" />
+         <SortedDescendingCellStyle BackColor="#FCF6C0" />
+         <SortedDescendingHeaderStyle BackColor="#820000" />
+     </asp:GridView>
+     <asp:SqlDataSource ID="activ" runat="server" 
+         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+         SelectCommand="SELECT [Name Of reward] AS Name_Of_reward, [Date Received] AS Date_Received, [Level] FROM [koku_awd_Acad_code]">
+     </asp:SqlDataSource>
 
         <br/>
              <tr><td class="style158">
@@ -350,7 +367,7 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Name_of_Association" 
-                    HeaderText="Name_of_Association" SortExpression="Name_of_Association" />
+                    HeaderText="Name of Association" SortExpression="Name_of_Association" />
                 <asp:BoundField DataField="Position" HeaderText="Position" 
                     SortExpression="Position" />
                 <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
@@ -386,12 +403,12 @@
             <Columns>
                 <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
                 <asp:BoundField DataField="Date_of_publication" 
-                    HeaderText="Date_of_publication" SortExpression="Date_of_publication" />
-                <asp:BoundField DataField="column1" HeaderText="column1" 
+                    HeaderText="Date of Publication" SortExpression="Date_of_publication" />
+                <asp:BoundField DataField="column1" HeaderText="Authors" 
                     SortExpression="column1" />
                 <asp:BoundField DataField="Type_of_publication" 
-                    HeaderText="Type_of_publication" SortExpression="Type_of_publication" />
-                <asp:BoundField DataField="Status_of_paper" HeaderText="Status_of_paper" 
+                    HeaderText="Type of Publication" SortExpression="Type_of_publication" />
+                <asp:BoundField DataField="Status_of_paper" HeaderText="Status of paper" 
                     SortExpression="Status_of_paper" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -413,6 +430,8 @@
                     Name="Matric" PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+   
+     <br />
    
     </asp:Panel>
 </asp:Content>

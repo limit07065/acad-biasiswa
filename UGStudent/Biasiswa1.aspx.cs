@@ -19,4 +19,9 @@ public partial class UGStudent_Biasiswa1 : System.Web.UI.Page
     {
         Response.Redirect("instruction.aspx");
     }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
+    }
+    
 }

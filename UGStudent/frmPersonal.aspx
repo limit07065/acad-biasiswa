@@ -5,14 +5,18 @@
 <head runat="server">
     <title></title>
     <style type="text/css">
-        .style1
-        {
-            height: 153px;
-            width: 103px;
-        }
         .style2
         {
             height: 48px;
+        }
+        .style3
+        {
+            height: 47px;
+        }
+        .style4
+        {
+            width: 132px;
+            height: 164px;
         }
     </style>
 </head>
@@ -28,7 +32,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <div>
-        <table width="100%">
+        <table style="width: 100%">
             <tr>
                 <td valign="top">
                     <img alt="" src="http://spsapp3.utm.my:8080/biav2/images/utmLogo.png" /><br />
@@ -45,8 +49,8 @@
                     <b>http://www.sps.utm.my</b>
                 </td>
                 <td valign="top">
-                    &nbsp;<img alt="" class="style1" src="../Styles/images/no_image.jpg" />
-                </td>
+                    &nbsp;
+                    <img alt="" class="style4" src="../Styles/images/photo/studPic.PNG" /></td>
             </tr>
             <tr>
                 <td colspan="2" style="font-size: 10px; padding: 5px">
@@ -69,7 +73,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style3">
                     <b>Have you ever received the Zamalah or Institutional Scholarship before?</b><br />
                     <br />
                     No
@@ -94,66 +98,77 @@
             <tr>
                 <td width="50%" style="font-size: 10px; padding: 5px" colspan="3">
                     <b>Permanent Address</b><br />
+                    <asp:Label ID="lblAdd" runat="server" Text="Label"></asp:Label>
                     <br />
-                    NO 25 RMK KG.SHAFIE, MANCHIS<br />
-                    <br />
-                    &nbsp;&nbsp; BENTONG<br />
-                    PAHANG&nbsp;&nbsp; MALAYSIA
                 </td>
                 <td width="50%" style="font-size: 10px; padding: 5px" valign="top">
                     <b>Contact Telephone No</b><br />
                     <br />
-                0107757705
+                    <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
             </tr>
             <tr>
                 <td colspan="3" style="font-size: 10px; padding: 5px">
                     <b>Correspondence Address</b><br />
                     <br />
-                    NO 25 RUMAH MURAH KG SHAFIE<br />
-                    MANCHIS<br />
-                    28730&nbsp;&nbsp; BENTONG<br />
-                    MALAYSIA&nbsp;&nbsp;
+                    <asp:Label ID="lblAdd1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>E-mail</b><br />
                     <br />
-                    azimahshukor@fkegraduate.utm.my
+                    <asp:Label ID="lblEmail" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" style="font-size: 10px; padding: 5px" valign="top">
                     <b>Date and Place Of Birth</b><br />
                     <br />
-                    04 Dec 1990,&nbsp;MALAYSIA
+                    <asp:Label ID="lblDob" runat="server" Text="Label"></asp:Label>
+                    ,
+                    <asp:Label ID="lblplace" runat="server" Text="Label"></asp:Label>
                     <td style="font-size: 10px; padding: 5px">
                         <b>Present Age</b><br />
                         <br />
-                        25 years 11 months
+                        <asp:Label ID="lblyear" runat="server" Text="Label"></asp:Label>
+&nbsp;years 
+                        <asp:Label ID="lblmonth" runat="server" Text="Label"></asp:Label>
+&nbsp;months
                     </td>
                     <td style="font-size: 10px; padding: 5px">
                         <b>Nationality</b><br />
                         <br />
-                        MALAYSIA&nbsp;
+                        <asp:Label ID="lblNation" runat="server" Text="Label"></asp:Label>
                     </td>
             </tr>
             <tr>
                 <td valign="top" style="font-size: 10px; padding: 5px" colspan="2">
                     <b>Passport or IC No</b><br />
                     <br />
-                    901204065390
+                    <asp:Label ID="lblIc" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Martial Status</b><br />
                     <br />
-                    BERKAHWIN
+                    BUJANG
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Religion</b><br />
                     <br />
-                    ISLAM
+                    <asp:Label ID="lblRel" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
         </table>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            
+            
+            SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+            <SelectParameters>
+                <asp:SessionParameter Name="Gender" SessionField="parent1" Type="Int32" 
+                    DefaultValue="1" />
+                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br style="page-break-after: always">
         <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
             <tr>
@@ -174,13 +189,16 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px">
-                    MOHD SHUKOR BIN SABTU&nbsp;
+                    &nbsp;
+                    
+                    <asp:Label ID="lblguard1" runat="server" Text="Label"></asp:Label>
+                    
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    500315065011&nbsp;
+                    &nbsp;<asp:Label ID="lblIC1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    MALAYSIAN&nbsp;
+                    <asp:Label ID="lblNation1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -196,13 +214,14 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px">
-                    PESARA&nbsp;
+                    &nbsp;<asp:Label ID="lblocc1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    019 - 9532659
+                    <asp:Label ID="lblphone1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1,000.00&nbsp;
+                    &nbsp;
+                    <asp:Label ID="lblSalary1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -218,8 +237,17 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px" colspan="3">
-                    &nbsp;
-                </td>
+                    &nbsp;<asp:SqlDataSource ID="SqlDataSource3" 
+                        runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="2" Name="Gender" SessionField="parent2" 
+                                Type="Int32" />
+                            <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
+                                SessionField="matricNo" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="4" style="font-size: 10px; padding: 5px">
@@ -239,13 +267,13 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px">
-                    HASNAH BINTI RAMAN SHARIFF&nbsp;
+                    &nbsp;<asp:Label ID="lblguard2" runat="server" Text="lblguard2"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    600206065248&nbsp;
+                    &nbsp;<asp:Label ID="lblIC2" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    MALAYSIAN&nbsp;
+                    &nbsp;<asp:Label ID="lblNation2" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -261,13 +289,14 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px">
-                    SURIRUMAH&nbsp;
+                    &nbsp;
+                    <asp:Label ID="lblocc2" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    013 - 9200647
+                    <asp:Label ID="lblphone2" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    0.00&nbsp;
+                    <asp:Label ID="lblSalary2" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -294,17 +323,17 @@
                     <b>Name of Programme</b><br />
                     <br />
                     Doctor of Philosophy
-                </td>
+                    </td>
                 <td width="30%" style="font-size: 10px; padding: 5px">
                     <b>Field of Study</b><br />
                     <br />
                     Electrical Engineering
-                </td>
+                    </td>
                 <td width="30%" style="font-size: 10px; padding: 5px">
                     <b>Date of First Registration</b><br />
                     <br />
                     19 Apr 2016
-                </td>
+                    </td>
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px" colspan="2">
@@ -312,16 +341,16 @@
                     <br />
                     THE DEVELOPMENT OF BEAM-STEERING NETWORK WITH 180 DEGREE PHASE AND DUAL-BEAMWIDTH
                     CAPABILITY FOR 5G WIRELESS COMMUNICATION APPLICATION
+                    <asp:Label ID="lblTitle" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     <b>Faculty</b><br />
-                    <br />
                     Faculty Of Electrical Engineering
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     <b>Matric No</b><br />
                     <br />
-                    PKE153061
+                    <asp:Label ID="lblmatric" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -470,7 +499,7 @@
                     Author(s)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1) Nor Azimah Mohd Shukor 2) Norhudah Seman
+                    1)Saiyidah Munirah Binti Sazali 2) Norhudah Seman
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     Journal Indexed In
@@ -589,7 +618,7 @@
                     Author(s)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1) Nor Azimah Mohd Shukor 2) Norhudah Seman
+                    1) Saiyidah Munirah Binti Sazali 2) Norhudah Seman
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     Journal Indexed In
@@ -811,19 +840,48 @@
         <br>
         <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
             <tr>
-                <td style="padding: 10px; font-size: 10px">
+                <td colspan="4" style="padding: 10px; font-size: 10px">
                     <strong>H. AWARDS AND RECOGNITIONS RECEIVED </strong>
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px" align="center">
-                    - No Record -
+                <th style="font-size: 10px; padding: 5px">
+                    No.
+                </th>
+                <th style="font-size: 10px; padding: 5px">
+                    Name of Asscociation</th>
+                <th style="font-size: 10px; padding: 5px">
+                    &nbsp;Date Recieved&nbsp;</th>
+                <th style="font-size: 10px; padding: 5px">
+                    Level</th>
+            </tr>
+            <tr>
+                <td style="font-size: 10px; padding: 5px">
+                    1
+                </td>
+                <td style="font-size: 10px; padding: 5px">
+                    <asp:Label ID="lblacname" runat="server" Text="Label"></asp:Label>
+                </td>
+                <td style="font-size: 10px; padding: 5px">
+                    <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label>
+                </td>
+                <td style="font-size: 10px; padding: 5px">
+                    &nbsp;<asp:Label ID="lblLevel" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
         </table>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT * FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
         </table><br>
         <td style="font-size: 10px; padding: 5px" align="center">
+            <asp:Label ID="lblAc" runat="server" Text="Label"></asp:Label>
             <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
                 <tr>
                     <td style="padding: 10px; font-size: 10px">
@@ -858,7 +916,7 @@
                         <b>Date</b>
                     </td>
                     <td style="font-size: 10px; padding: 5px" width="50%; padding-left:5px">
-                        Nor Azimah Binti Mohd Shukor<br />
+                        Saiyidha Munirah Binti Sazali<br />
                         ..........................<br />
                         <b>Applicant's Signature</b>
                     </td>
@@ -869,8 +927,8 @@
             <b>SUPERVISOR'S RECOMMENDATION</b><br />
             <br />
             I support this application.
-            <h2 style='background-color: green; color: white; padding: 5px; text-align: center'>
-                Strongly Recommended</h2>
+            <h2 style='background-color: red; color: white; padding: 5px; text-align: center'>
+                N/A</h2>
             <br />
             She is an excellent student. During her Master by Research study (under my supervision
             and graduated last semester), she has published 2 journals and 1 conference paper,
@@ -901,8 +959,8 @@
             <br />
             I would like to verify that the applicant is currently a research student at my
             faculty.
-            <h2 style='background-color: green; padding: 5px; color: white; text-align: center'>
-                Verified</h2>
+            <h2 style='background-color: red; padding: 5px; color: white; text-align: center'>
+                N/A</h2>
             <br />
             <table width="100%">
                 <tr>

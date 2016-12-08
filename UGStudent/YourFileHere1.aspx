@@ -27,7 +27,31 @@
                             <div>
 	<table cellspacing="0" cellpadding="4" id="MainContent_BodyContent_GridView1" style="color:#333333;font-size:Small;width:100%;border-collapse:collapse;">
 		<tr>
-			<td colspan="7">No record(s) found</td>
+			<td colspan="7">
+                <table style="width: 100%">
+                    <tr>
+                        <td bgcolor="#990000" style="color: #FFFFFF">
+                            Application</td>
+                        <td bgcolor="#990000" style="color: #FFFFFF">
+                            Date</td>
+                        <td bgcolor="#990000" style="color: #FFFFFF">
+                            Status</td>
+                        <td bgcolor="#990000" style="color: #FFFFFF">
+                            View</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFCC" style="width: 166px">
+                            UTM Zamalah Scholarship</td>
+                        <td bgcolor="#FFFFCC" style="width: 152px">
+                            08/12/2016</td>
+                        <td bgcolor="#FFFFCC" style="width: 222px">
+                            Submited</td>
+                        <td bgcolor="#FFFFCC">
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="frmPersonal.aspx">View Full Form</asp:HyperLink>
+                        </td>
+                    </tr>
+                </table>
+            </td>
 		</tr>
 	</table>
 </div>  

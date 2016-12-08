@@ -7,7 +7,7 @@
         <script src="../Styles/js/scholarship.js" type="text/javascript"></script>
 
 <div class="wrapper">
-      <div class="col_third"> c
+      <div class="col_third"> 
         <div class="hover panel">
           <div class="front">
             <div class="box1">
@@ -27,7 +27,7 @@
 Open Date: 12 oct 2016 <br/>
 Closing Date: 12 Nov 2016<br/>
 
-               <asp:Button ID="Button1" runat="server" Height="35px" Text="Apply" 
+               <asp:Button ID="Button1" runat="server" Height="35px" Text="Apply"  
                         Width="205px" ForeColor="Maroon" 
                       BackColor="#FFFFCC" Font-Bold="True" Font-Names="Mangal" 
                       onclick="Button1_Click" />
@@ -61,11 +61,11 @@ Closing Date: 12 Nov 2016<br/>
                     <br />
                     <br/>
                     
-               <asp:Button ID="Button2" runat="server" Height="35px" Text="Apply" 
+               <asp:Button ID="Button2" runat="server" Height="35px" Text="Apply" OnClientClick="return false;"
                         Width="205px" ForeColor="Maroon" 
                       BackColor="#FFFFCC" Font-Bold="True" 
-    Font-Names="Mangal" />
-            
+    Font-Names="Mangal" onclick="Button2_Click" />
+    
             </div>
           </div>
         </div>
