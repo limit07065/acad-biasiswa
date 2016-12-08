@@ -70,7 +70,7 @@
                     <asp:UpdatePanel ID="modalPanel" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <asp:FormView ID="FormView1" DataSourceID="formDataSource" runat="server" Width="100%"
-                                OnItemUpdated="FormView1_ItemUpdated" DataKeyNames="Code">
+                                OnItemUpdated="FormView1_ItemUpdated" DataKeyNames="Code" DefaultMode="ReadOnly">
                                 <ItemTemplate>
                                     <table style="width: 100%;" border="2">
                                         <tr>
