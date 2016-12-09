@@ -14,13 +14,15 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
     protected string session;
     protected DataTable dt;
     protected DataSet ds;
-    protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+    protected static string ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
     protected static SqlConnection con = new SqlConnection(ConnectionString);
 
     protected void Page_Load(object sender, EventArgs e)
     {
         getData();
-        Session["matricNo"] = "MC123456";
+        Session["matricNo"] = "A14CS0095";
+        Session["matric_p1"] = "A14CS0095";
+        Session["Relation"] = "Father";
 
 
     }
@@ -36,34 +38,44 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
             DataRow row = drv.Row;
             lblName.Text = row["Name"].ToString();
             lblPhone.Text = row["Contact"].ToString();
-            lblEmail.Text = row["email"].ToString();
+            lblEmail.Text = row["Email"].ToString();
             lblNation.Text = row["Nationality"].ToString();
-            lblAdd.Text = row["address"].ToString();
-            lblRel.Text = row["Raligion"].ToString();
-            lblIc.Text = row["ic"].ToString();
+            lblRel.Text = row["Religion"].ToString();
+            lblIC.Text = row["IC_Passport"].ToString();
             lblDob.Text = row["DOB"].ToString();
-            lblyear.Text = row["age_year"].ToString();
-            lblmonth.Text = row["age_month"].ToString();
-            lblplace.Text = row["BirthPlace"].ToString();
-            lblmatric.Text = row["Matric"].ToString();
+            lblplace.Text = row["State_Birth"].ToString();
+            lblmatric.Text = row["Matrix_No"].ToString();
+            lblMStatus.Text = row["Description"].ToString();
 
 
 
         }
 
-        DataView parentInfo = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+      DataView studAdd = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+
+        foreach (DataRowView drv in studAdd)
+        {
+            DataRow row = drv.Row;
+            lblAdd.Text = row["Address1"].ToString() + " " + row["Address2"].ToString() + ", " + row["Postcode"].ToString() + ", " + row["City"].ToString() + ", " + row["State"].ToString();
+            lblAdd1.Text = row["Address1"].ToString() + " " + row["Address2"].ToString() + ", " + row["Postcode"].ToString() + ", " + row["City"].ToString() + ", " + row["State"].ToString();
+        }
+
+
+        DataView parentInfo = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
 
         foreach (DataRowView drv in parentInfo)
         {
             DataRow row = drv.Row;
+
             lblguard1.Text = row["Name"].ToString();
             lblIC1.Text = row["IC"].ToString();
             lblNation1.Text = row["Nationality"].ToString();
-            lblSalary1.Text = row["Salary"].ToString();
-            lblphone1.Text = row["phone"].ToString();
+             lblSalary1.Text = row["Salary"].ToString();
+           lblphone1.Text = row["Contact"].ToString();
             lblocc1.Text = row["Occupation"].ToString();
         }
-        DataView parentInfo2 = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
+
+       DataView parentInfo2 = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
 
         foreach (DataRowView drv in parentInfo2)
         {
@@ -72,20 +84,9 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
             lblguard2.Text = row["Name"].ToString();
             lblIC2.Text = row["IC"].ToString();
             lblNation2.Text = row["Nationality"].ToString();
-            lblSalary2.Text = row["Salary"].ToString();
-            lblphone2.Text = row["phone"].ToString();
+             lblSalary2.Text = row["Salary"].ToString();
+           lblphone2.Text = row["Contact"].ToString();
             lblocc2.Text = row["Occupation"].ToString();
-        }
-
-        DataView studAward = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
-
-        foreach (DataRowView drv in studAward)
-        {
-            DataRow row = drv.Row;
-
-            lblacname.Text = row["Name Of reward"].ToString();
-            lblDate.Text = row["Date"].ToString();
-            lblLevel.Text = row["Level"].ToString();
             
         }
 

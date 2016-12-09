@@ -16,10 +16,10 @@ public partial class Student_UGMasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["acadUserSs"] = "201620171";
-        Session["acadUserNm"] = "SAIYIDAH MUNIRAH BT SAZALI";
+        Session["acadUserNm"] = "LOH WEN HE";
         Session["acadUserPr"] = "Bachelor Of Computer Science (Database Systems)";
         Session["acadUserFn"] = "Computing";
-        Session["acadUserMt"] = "A14CS0999";
+        Session["acadUserMt"] = "A14CS0047 ";
         Session["acadUserBs"] = "6";
         Session["acadUserNs"] = "8";
         Session["acadUserSv"] = "Dr. Gigi Sweetiee";
@@ -137,7 +137,7 @@ public partial class Student_UGMasterPage : System.Web.UI.MasterPage
       **/
     protected void showProfile()
     {
-        imgPhoto.InnerHtml = "<img src=\"../Styles/images/photo/studPic.PNG\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
+        imgPhoto.InnerHtml = "<img src=\"../Styles/images/nophoto.png\" class=\"img-profile\" width=\"100\" alt=\"profileimage\" />";
         lblName.Text = Session["acadUserNm"].ToString();
         lblProgramme.Text = Session["acadUserPr"].ToString();
         lblFaculty.Text = Session["acadUserFn"].ToString();

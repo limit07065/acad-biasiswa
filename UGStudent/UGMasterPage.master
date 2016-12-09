@@ -40,8 +40,8 @@
                     <li><a href=""><span class="fa fa-pencil-square-o"></span>External Activity</a></li>
                 </ul>
             </li>
-            <li><a>
-                <asp:Label ID="Label4c" runat="server" Text="Scholarship" CssClass="textMenu" Visible="true"><a href="Biasiswa1.aspx"></a></asp:Label>
+            <li><a href= "Biasiswa1.aspx">
+                <asp:Label ID="Label4c" runat="server" Text="Scholarship" CssClass="textMenu" Visible="true"></asp:Label></a>
                 <ul>
                 <li><a href="">UTM Zamalah</a></li>
                     <li><a href="">IDF</a></li>

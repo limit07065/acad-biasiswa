@@ -87,17 +87,6 @@
                 <table style="width: 100%;">
                     <tr>
                         <td class="style158i" style="height: 24px" bgcolor="#990000" colspan="6">
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                
-                                SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
-                                <SelectParameters>
-                                    <asp:SessionParameter DefaultValue="1" Name="Gender" SessionField="parent1" 
-                                        Type="Int32" />
-                                    <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                                        SessionField="matircNo" Type="String" />
-                                </SelectParameters>
-                            </asp:SqlDataSource>
                             <span id="MainContent_BodyContent_Label105" style="color:White;font-weight:bold;">Guardian</span>
                         </td>
                     </tr>
@@ -211,18 +200,7 @@
                     <tr>
                         <td class="style158i" style="height: 24px" bgcolor="#990000" colspan="6">
                             <span id="MainContent_BodyContent_Label10" style="color:White;font-weight:bold;">Mother</span>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                
-                                SelectCommand="SELECT * FROM [Guardian] WHERE (([Matric] = @Matric) AND ([Gender] = @Gender))">
-                                <SelectParameters>
-                                    <asp:SessionParameter DefaultValue="MC123456" Name="Matric" SessionField="matricNo" 
-                                        Type="String" />
-                                    <asp:SessionParameter DefaultValue="2" Name="Gender" SessionField="parent2" 
-                                        Type="Int32" />
-                                </SelectParameters>
-                            </asp:SqlDataSource>
-                        </td>
+                            </td>
                     </tr>
                     <tr>
                         <td class="style158i" style="height: 24px">
@@ -291,32 +269,7 @@
         <tr>
              <td class="style158">
                             <strong>Academic Background</strong>
-                            <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" 
-                                CellPadding="4" DataSourceID="Acad" ForeColor="#333333" GridLines="None" 
-                                Width="100%">
-                                <AlternatingRowStyle BackColor="White" />
-                                <Columns>
-                                    <asp:BoundField DataField="Name_of_institution" 
-                                        HeaderText="Name_of_institution" SortExpression="Name_of_institution" />
-                                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                                    <asp:BoundField DataField="CGPA" HeaderText="CGPA" SortExpression="CGPA" />
-                                    <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-                                </Columns>
-                                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                <SortedDescendingHeaderStyle BackColor="#820000" />
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="Acad" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                                SelectCommand="SELECT [Name of institution] AS Name_of_institution, [Date], [CGPA], [Level] FROM [koku_awd_Acad_code]">
-                            </asp:SqlDataSource>
-                        </td>
+                            </td>
                     </tr>
                      </table>
         </div>
@@ -330,106 +283,19 @@
                     </tr>       
 
         <br />
-     <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" 
-         CellPadding="4" DataSourceID="activ" ForeColor="#333333" GridLines="None" 
-         Width="100%">
-         <AlternatingRowStyle BackColor="White" />
-         <Columns>
-             <asp:BoundField DataField="Name_Of_reward" HeaderText="Name of Award" 
-                 SortExpression="Name_Of_reward" />
-             <asp:BoundField DataField="Date_Received" HeaderText="Date Received" 
-                 SortExpression="Date_Received" />
-             <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-         </Columns>
-         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-         <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-         <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-         <SortedAscendingCellStyle BackColor="#FDF5AC" />
-         <SortedAscendingHeaderStyle BackColor="#4D0000" />
-         <SortedDescendingCellStyle BackColor="#FCF6C0" />
-         <SortedDescendingHeaderStyle BackColor="#820000" />
-     </asp:GridView>
-     <asp:SqlDataSource ID="activ" runat="server" 
-         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-         SelectCommand="SELECT [Name Of reward] AS Name_Of_reward, [Date Received] AS Date_Received, [Level] FROM [koku_awd_Acad_code]">
-     </asp:SqlDataSource>
 
         <br/>
              <tr><td class="style158">
                             <strong>Cocuriculum</strong>
+                            <br />
+                            <br />
                         </td>
                     </tr> 
-        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" DataSourceID="koku" ForeColor="#333333" GridLines="None" 
-            Width="100%" DataKeyNames="Name_of_Association">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:BoundField DataField="Name_of_Association" 
-                    HeaderText="Name of Association" SortExpression="Name_of_Association" />
-                <asp:BoundField DataField="Position" HeaderText="Position" 
-                    SortExpression="Position" />
-                <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-            </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-            <SortedAscendingCellStyle BackColor="#FDF5AC" />
-            <SortedAscendingHeaderStyle BackColor="#4D0000" />
-            <SortedDescendingCellStyle BackColor="#FCF6C0" />
-            <SortedDescendingHeaderStyle BackColor="#820000" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="koku" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Name of Association] AS Name_of_Association, [Position], [Level] FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="GridView3" DefaultValue="MC123456" 
-                    Name="Matric" PropertyName="SelectedValue" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
 
        <tr><td class="style158">
                             <strong>Publish</strong>
                         </td>
                     </tr> 
-   
-        <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" DataSourceID="published" ForeColor="#333333" GridLines="None" 
-            Width="100%" DataKeyNames="Title">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
-                <asp:BoundField DataField="Date_of_publication" 
-                    HeaderText="Date of Publication" SortExpression="Date_of_publication" />
-                <asp:BoundField DataField="column1" HeaderText="Authors" 
-                    SortExpression="column1" />
-                <asp:BoundField DataField="Type_of_publication" 
-                    HeaderText="Type of Publication" SortExpression="Type_of_publication" />
-                <asp:BoundField DataField="Status_of_paper" HeaderText="Status of paper" 
-                    SortExpression="Status_of_paper" />
-            </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-            <SortedAscendingCellStyle BackColor="#FDF5AC" />
-            <SortedAscendingHeaderStyle BackColor="#4D0000" />
-            <SortedDescendingCellStyle BackColor="#FCF6C0" />
-            <SortedDescendingHeaderStyle BackColor="#820000" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="published" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            
-            SelectCommand="SELECT [Title], [Date of publication] AS Date_of_publication, [Author(s)] AS column1, [Type of publication] AS Type_of_publication, [Status of paper] AS Status_of_paper FROM [Publication] WHERE ([Matric] = @Matric)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="GridView4" DefaultValue="MC123456" 
-                    Name="Matric" PropertyName="SelectedValue" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
    
      <br />
    

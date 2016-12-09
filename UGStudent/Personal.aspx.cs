@@ -12,11 +12,11 @@ public partial class UGStudent_Personal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        getData();
-        Session["matricNo"] = "MC123456";
+      /*  getData();
+        Session["matricNo"] = "MC123456";*/
     }
 
-    protected void getData()
+  /*  protected void getData()
     {
         DataView parent1 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
 
@@ -50,5 +50,5 @@ public partial class UGStudent_Personal : System.Web.UI.Page
     protected void GridView2_SelectedIndexChanged1(object sender, EventArgs e)
     {
 
-    }
+    }*/
 }

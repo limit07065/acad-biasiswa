@@ -15,23 +15,37 @@
         }
         .style4
         {
-            width: 132px;
-            height: 164px;
+            width: 151px;
+            height: 181px;
+        }
+        .style5
+        {
+            height: 24px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <asp:SqlDataSource 
-                        ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT * FROM [StudentData] WHERE ([Matric] = @Matric)">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                SessionField="matricNo" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
     <div>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            SelectCommand="SELECT * FROM [vw_StuInfo] WHERE ([Matrix_No] = @Matrix_No)">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            
+            SelectCommand="SELECT * FROM [ADDRESS] WHERE (([Address_Type] = @Address_Type) AND ([Matrix_No] = @Matrix_No))">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="1" Name="Address_Type" 
+                    SessionField="addType" Type="Int16" />
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <table style="width: 100%">
             <tr>
                 <td valign="top">
@@ -50,7 +64,7 @@
                 </td>
                 <td valign="top">
                     &nbsp;
-                    <img alt="" class="style4" src="../Styles/images/photo/studPic.PNG" /></td>
+                    <img alt="" class="style4" src="../Styles/images/nophoto.png" /></td>
             </tr>
             <tr>
                 <td colspan="2" style="font-size: 10px; padding: 5px">
@@ -143,12 +157,12 @@
                 <td valign="top" style="font-size: 10px; padding: 5px" colspan="2">
                     <b>Passport or IC No</b><br />
                     <br />
-                    <asp:Label ID="lblIc" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblIC" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Martial Status</b><br />
                     <br />
-                    BUJANG
+                    <asp:Label ID="lblMStatus" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Religion</b><br />
@@ -157,16 +171,14 @@
                 </td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            
-            
-            SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
             <SelectParameters>
-                <asp:SessionParameter Name="Gender" SessionField="parent1" Type="Int32" 
-                    DefaultValue="1" />
-                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                    SessionField="matricNo" Type="String" />
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
+                    SessionField="matric_p1" Type="String" />
+                <asp:SessionParameter DefaultValue="Father" Name="Relation" 
+                    SessionField="Relation" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br style="page-break-after: always">
@@ -188,16 +200,16 @@
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     &nbsp;
                     
                     <asp:Label ID="lblguard1" runat="server" Text="Label"></asp:Label>
                     
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     &nbsp;<asp:Label ID="lblIC1" runat="server" Text="Label"></asp:Label>
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     <asp:Label ID="lblNation1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -220,7 +232,7 @@
                     <asp:Label ID="lblphone1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;
+                    &nbsp;RM&nbsp;
                     <asp:Label ID="lblSalary1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -237,17 +249,17 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px" colspan="3">
-                    &nbsp;<asp:SqlDataSource ID="SqlDataSource3" 
-                        runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                        SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                        SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
                         <SelectParameters>
-                            <asp:SessionParameter DefaultValue="2" Name="Gender" SessionField="parent2" 
-                                Type="Int32" />
-                            <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                                SessionField="matricNo" Type="String" />
+                            <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
+                                SessionField="matric_p2" Type="String" />
+                            <asp:SessionParameter DefaultValue="Mother" Name="Relation" 
+                                SessionField="Relation2" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-&nbsp;</td>
+                    &nbsp;&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="4" style="font-size: 10px; padding: 5px">
@@ -296,6 +308,7 @@
                     <asp:Label ID="lblphone2" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
+                    RM
                     <asp:Label ID="lblSalary2" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -484,8 +497,7 @@
                     <b>(1)</b> Title of Paper
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    Enhanced Design of Two-Section Microstrip-Slot Branch Line Coupler with the Overlapped
-                    Lambda/4 Open Circuited Lines at Ports
+                    <asp:Label ID="lblpaper" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" width="10%">
                     Date of Publication
@@ -500,6 +512,7 @@
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     1)Saiyidah Munirah Binti Sazali 2) Norhudah Seman
+                    <asp:Label ID="lblAuthor" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     Journal Indexed In
@@ -513,13 +526,13 @@
                     <strong>Type of Authorship</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    First Student Author
+                    <asp:Label ID="lblTypeAutho" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
                     <strong>Type of Publication</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Journal
+                    &nbsp;<asp:Label ID="lblType" runat="server" Text="Label"></asp:Label>
                     <br />
                     <br />
                     <input type="checkbox" readonly name="utm" id="utm" value="1" />
@@ -531,7 +544,7 @@
                     <strong>Status of Paper</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    Published
+                    <asp:Label ID="lblStatusPaper" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -581,7 +594,7 @@
                     Impact Factor (if any)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1.21
+                    <asp:Label ID="lblimpact" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -870,14 +883,6 @@
                 </td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT * FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                    SessionField="matricNo" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <br />
         </table><br>
         <td style="font-size: 10px; padding: 5px" align="center">
@@ -940,14 +945,12 @@
                     <td width="50%" style="font-size: 10px; padding-left: 5px">
                         <br />
                         <br />
-                        07 September 2016<br />
+                        <br />
                         ..........................<br />
                         <b>Date</b>
                     </td>
                     <td width="50%" style="font-size: 10px; padding: 5px">
-                        Dr Norhudah Binti Seman ,<br />
-                        Pusat Komunikasi Wayarles,<br />
-                        Fakulti Kejuruteraan Elektrik<br />
+                        <br />
                         ..........................<br />
                         <b>Supervisor's Signature</b>
                     </td>
@@ -967,13 +970,12 @@
                     <td width="50%" style="font-size: 10px; padding-left: 5px">
                         <br />
                         <br />
-                        14 September 2016<br />
+                        <br />
                         ..........................<br />
                         <b>Date</b>
                     </td>
                     <td width="50%" style="font-size: 10px; padding: 5px">
-                        Prof.ir.dr. Mohd Wazir Bin Mustafa ,<br />
-                        Fakulti Kejuruteraan Elektrik<br />
+                        <br />
                         ..........................<br />
                         <b>Deputy Dean's Signature</b>
                     </td>
