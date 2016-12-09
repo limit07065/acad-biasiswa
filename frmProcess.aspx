@@ -108,11 +108,7 @@
             </td>
             <td class="tdrow">
                 <!-- Linking to print preview of application form -->
-<<<<<<< HEAD
                 <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default"/>
-=======
-                <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default" />
->>>>>>> master
             </td>
         </tr>
         <tr>
@@ -126,12 +122,7 @@
                 &nbsp;Mark:
             </td>
             <td class="tdrow">
-<<<<<<< HEAD
                 <a href="#" onclick="viewMark('<%= applicationNo %>', '<%= shortBiaName %>')"><asp:Label ID="lblMark" runat="server" Text=""></asp:Label></a>
-=======
-                <asp:Label ID="lblMark" runat="server" Text=""></asp:Label>&nbsp;
-                <asp:Button ID="btnMark" runat="server" Text="Mark" UseSubmitBehavior="False" CssClass="btn btn-default" />
->>>>>>> master
             </td>
         </tr>
         <tr>
