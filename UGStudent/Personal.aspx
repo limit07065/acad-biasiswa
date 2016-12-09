@@ -234,6 +234,16 @@
                     <tr>
                         <td class="style158i" style="height: 24px" bgcolor="#990000" colspan="6">
                             <span id="MainContent_BodyContent_Label10" style="color:White;font-weight:bold;">Mother</span>
+                            <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
+                                        SessionField="stud_parent" Type="String" />
+                                    <asp:SessionParameter DefaultValue="Mother" Name="Relation" 
+                                        SessionField="Relation_parent" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             </td>
                     </tr>
                     <tr>

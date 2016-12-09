@@ -41,7 +41,6 @@ public partial class UGStudent_Personal : System.Web.UI.Page
             lblFsalary.Text = row["Salary"].ToString();
             lblphone.Text = row["Contact"].ToString();
             
-
         }
 
         DataView parentAdd = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
@@ -52,6 +51,15 @@ public partial class UGStudent_Personal : System.Web.UI.Page
         lblFstate.Text = row["State"].ToString();
         lblFcity.Text = row["City"].ToString();
    
+        }
+        DataView parentM = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView drv in parentM)
+        {
+            DataRow row = drv.Row;
+            lblMname.Text = row["Name"].ToString();
+            lblMOcc.Text = row["Occupation"].ToString();
+            lblMsalary.Text = row["Salary"].ToString();
+            
         }
       
     }
