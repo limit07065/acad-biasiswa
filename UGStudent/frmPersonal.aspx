@@ -22,6 +22,10 @@
         {
             height: 24px;
         }
+        .style6
+        {
+            height: 36px;
+        }
     </style>
 </head>
 <body>
@@ -142,11 +146,7 @@
                     <td style="font-size: 10px; padding: 5px">
                         <b>Present Age</b><br />
                         <br />
-                        <asp:Label ID="lblyear" runat="server" Text="Label"></asp:Label>
-&nbsp;years 
-                        <asp:Label ID="lblmonth" runat="server" Text="Label"></asp:Label>
-&nbsp;months
-                    </td>
+                        21 years</td>
                     <td style="font-size: 10px; padding: 5px">
                         <b>Nationality</b><br />
                         <br />
@@ -490,6 +490,14 @@
             <tr>
                 <td colspan="4" style="padding: 10px; font-size: 10px">
                     <strong>G. PAPER PUBLICATION</strong>
+                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                        SelectCommand="SELECT * FROM [vw_List_Publication] WHERE ([matrix_no] = @matrix_no)">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="A14CS0047" Name="matrix_no" 
+                                SessionField="matricNo" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -511,7 +519,6 @@
                     Author(s)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1)Saiyidah Munirah Binti Sazali 2) Norhudah Seman
                     <asp:Label ID="lblAuthor" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
@@ -598,257 +605,20 @@
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     Remarks
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     null
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     Attach a copy of paper as proof
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     <b>Documents:</b><i>empty</i>
                 </td>
             </tr>
-            <tr>
-                <td width="10%" style="font-size: 10px; padding: 5px">
-                    <b>(2)</b> Title of Paper
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Design of a Complex Ratio Measuring Unit Using Enhanced Branch-Line Coupler for
-                    Wireless Communication Applications
-                </td>
-                <td style="font-size: 10px; padding: 5px" width="10%">
-                    Date of Publication
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    31 Dec 2016
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Author(s)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    1) Saiyidah Munirah Binti Sazali 2) Norhudah Seman
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Journal Indexed In
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    SCOPUS
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Type of Authorship</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    First Student Author
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <strong>Type of Publication</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Journal
-                    <br />
-                    <br />
-                    <input type="checkbox" readonly name="utm" id="utm" value="1" />
-                    affiliation UTM
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Status of Paper</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Published
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="3">
-                    Name of Journal or Proceedings
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Jurnal Teknologi
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Volume
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    77
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px" width="21%">
-                                Name of Publisher
-                            </td>
-                            <td style="font-size: 10px; padding: 5px" width="79%">
-                                Penerbit Universiti Teknologi Malaysia&nbsp;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px">
-                                URL of Journal
-                            </td>
-                            <td style="font-size: 10px; padding: 5px">
-                                -&nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Pages
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    61-67
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Impact Factor (if any)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    0.43
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Remarks
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Attach a copy of paper as proof
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <b>Documents:</b><i>empty</i>
-                </td>
-            </tr>
-            <tr>
-                <td width="10%" style="font-size: 10px; padding: 5px">
-                    <b>(3)</b> Title of Paper
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Wideband Six-Port Reflectometer Design Formed By Enhanced Branch Line Coupler
-                </td>
-                <td style="font-size: 10px; padding: 5px" width="10%">
-                    Date of Publication
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    17 Feb 2015
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Author(s)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    1)N.A.M. Shukor 2)N. Seman 3)D.N.A. Zaidel
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Journal Indexed In
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    -
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Type of Authorship</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    First Student Author
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <strong>Type of Publication</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Conference
-                    <br />
-                    <br />
-                    <input type="checkbox" readonly name="utm" id="utm" value="1" />
-                    affiliation UTM
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Status of Paper</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Published
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="3">
-                    Name of Journal or Proceedings
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    2014 Asia-Pacific Conference on Applied Electromagnetics, APACE 2014
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Volume
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px" width="21%">
-                                Name of Publisher
-                            </td>
-                            <td style="font-size: 10px; padding: 5px" width="79%">
-                                Institute of Electrical and Electronics Engineers Inc.&nbsp;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px">
-                                URL of Journal
-                            </td>
-                            <td style="font-size: 10px; padding: 5px">
-                                -&nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Pages
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    63-66
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Impact Factor (if any)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Remarks
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Attach a copy of paper as proof
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <b>Documents:</b><i>empty</i>
-                </td>
-            </tr>
-        </table>
+            </table>
         <br />
         <br>
         <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
@@ -869,18 +639,8 @@
                     Level</th>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    1
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblacname" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lblLevel" runat="server" Text="Label"></asp:Label>
-                </td>
+                <td style="font-size: 10px; padding: 5px" align="center" colspan="4">
+                    &nbsp; &nbsp;-No Records-</td>
             </tr>
         </table>
         <br />
@@ -921,7 +681,8 @@
                         <b>Date</b>
                     </td>
                     <td style="font-size: 10px; padding: 5px" width="50%; padding-left:5px">
-                        Saiyidha Munirah Binti Sazali<br />
+                        <asp:Label ID="lblSign" runat="server" Text="Label"></asp:Label>
+                        <br />
                         ..........................<br />
                         <b>Applicant's Signature</b>
                     </td>

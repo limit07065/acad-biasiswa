@@ -15,10 +15,20 @@ public partial class frmProcess : System.Web.UI.Page
     protected DataTable dt;
     protected DataSet ds;
     protected SqlDataAdapter adapter;
-    protected static string matrixNo, biaName, name, session, code, status;
+    protected static string matrixNo, biaName, shortBiaName, applicationNo, session, code, recordStatus;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            String url = Request.UrlReferrer.OriginalString;
+
+        }
+        catch (NullReferenceException enull)
+        {
+            Response.Redirect("SPS/listApplication.aspx");
+        }
+
         if (!IsPostBack)
         {
             getData();
@@ -64,14 +74,15 @@ public partial class frmProcess : System.Web.UI.Page
             lblMark.Text = String.Format("{0:0.00}", dr["Mark"]);
             lblCurrStatus.Text = dr["App_Status"].ToString();
             ddlStatus.SelectedValue = dr["Status_Code"].ToString();
-            btnMark.Attributes.Add("OnClick", String.Format("viewMark('{0}', '{1}');", dr["App_No"].ToString(), dr["Short_Name"].ToString().Trim()));
+            applicationNo = dr["App_No"].ToString();
+            shortBiaName = dr["Short_Name"].ToString().Trim();
         }
 
         dt = ds.Tables["statusInfo"];
         foreach (DataRow dr in dt.Rows)
         {
             tbDate.Text = ((DateTime)dr["Date"]).ToString("dd-MMM-yyyy");
-            status = dr["Short_Status"].ToString().Trim();
+            recordStatus = dr["Short_Status"].ToString().Trim();
             code = dr["App_Code"].ToString().Trim();
         }
 

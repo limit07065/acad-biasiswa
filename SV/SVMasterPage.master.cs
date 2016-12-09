@@ -15,7 +15,7 @@ public partial class SVMasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Session["staffNo"] = "7026";
 		if (!IsPostBack)
 		{
 			

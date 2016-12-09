@@ -23,6 +23,7 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
         Session["matricNo"] = "A14CS0095";
         Session["matric_p1"] = "A14CS0095";
         Session["Relation"] = "Father";
+        Session["Relation2"] = "Mother";
 
 
     }
@@ -37,6 +38,7 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
         {
             DataRow row = drv.Row;
             lblName.Text = row["Name"].ToString();
+            lblSign.Text = row["Name"].ToString();
             lblPhone.Text = row["Contact"].ToString();
             lblEmail.Text = row["Email"].ToString();
             lblNation.Text = row["Nationality"].ToString();
@@ -88,6 +90,22 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
            lblphone2.Text = row["Contact"].ToString();
             lblocc2.Text = row["Occupation"].ToString();
             
+        }
+
+        DataView publish = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
+
+        foreach (DataRowView drv in publish)
+        {
+            DataRow row = drv.Row;
+
+            lblpaper.Text = row["title"].ToString();
+            lblTypeAutho.Text = row["type_authorship"].ToString();
+            lblType.Text = row["type"].ToString();
+            lblimpact.Text = row["impact_factor"].ToString();
+            lblStatusPaper.Text = row["status_paper"].ToString();
+            lblAuthor.Text = row["authors"].ToString();
+
+
         }
 
     }

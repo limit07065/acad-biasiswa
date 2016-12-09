@@ -12,43 +12,48 @@ public partial class UGStudent_Personal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      /*  getData();
-        Session["matricNo"] = "MC123456";*/
+        getData();
+        Session["matricNo"] = "A14CS0095";
     }
 
-  /*  protected void getData()
+  protected void getData()
     {
-        DataView parent1 = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+        DataView stud_Address = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
 
-        foreach (DataRowView drv in parent1)
+        foreach (DataRowView drv in stud_Address)
         {
             DataRow row = drv.Row;
-            lblname.Text = row["Name"].ToString();
-            lblAdd.Text = row["Address"].ToString();
-            lblHp.Text = row["phone"].ToString();
-            lblJob.Text = row["Occupation"].ToString();
-            lblSal.Text = row["Salary"].ToString();
+            lblSadd.Text = row["Address1"].ToString();
+            lblSadd1.Text = row["Address2"].ToString();
+            lblPost.Text = row["Postcode"].ToString();
+            lblCity.Text = row["City"].ToString();
+            lblState.Text = row["State"].ToString();
+            
+        }
+
+        DataView parentF = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView drv in parentF)
+        {
+            DataRow row = drv.Row;
+
+            lblFname.Text = row["Name"].ToString();
+            lblFOcc.Text = row["Occupation"].ToString();
+            lblFsalary.Text = row["Salary"].ToString();
+            lblphone.Text = row["Contact"].ToString();
+            
 
         }
 
-        DataView parent2 = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
-        foreach (DataRowView drv in parent2)
-        {
-            DataRow row = drv.Row;
-
-            lblname2.Text = row["Name"].ToString();
-           lblSal2.Text = row["Salary"].ToString();
-           lblJob2.Text = row["Occupation"].ToString();
-
+        DataView parentAdd = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView drv in parentAdd)
+        { DataRow row = drv.Row;
+        lblFadd.Text = row["Address1"].ToString();
+        lblFpost.Text = row["Postcode"].ToString();
+        lblFstate.Text = row["State"].ToString();
+        lblFcity.Text = row["City"].ToString();
+   
         }
-    }
-    protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
+      
     }
     
-    protected void GridView2_SelectedIndexChanged1(object sender, EventArgs e)
-    {
-
-    }*/
 }

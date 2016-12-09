@@ -10,6 +10,14 @@
             <asp:QueryStringParameter Name="Session" QueryStringField="ses" Type="String" />
             <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
         </SelectParameters>
+    </asp:SqlDataSource>    
+     <asp:SqlDataSource ID="sql" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+        
+        SelectCommand="SELECT * FROM [STAFF] WHERE ([Staff_No] = @Staff_No)">
+        <SelectParameters>
+            <asp:SessionParameter Name="Staff_No" SessionField="staffNo" Type="String" />
+        </SelectParameters>
     </asp:SqlDataSource>
     <%//Datasource to get student basic info %>
     <asp:SqlDataSource ID="SqlDataSourceStudent" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
@@ -51,7 +59,7 @@
             <div class="col-sm-8" id="supervisor-action">
                 <div>
                     <br />
-                    <a href="#" class="btn btn-default">View Full Info</a>
+                    <a href="#" class="btn btn-default">View Form</a>
                 </div>
                 <%// datasource to get supervisor recommendation %>
                 <asp:SqlDataSource ID="SqlDataSourceSupervisorRecommendation" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"

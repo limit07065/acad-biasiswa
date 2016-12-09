@@ -6,20 +6,21 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class SPS_Default : System.Web.UI.Page
 {
+    protected static string ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
+    protected static SqlConnection con = new SqlConnection(ConnectionString);
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             ddlSession.SelectedValue = "20162017";
             ddlSemester.SelectedValue = "1";
-       
-
         }
-        
-        
     } 
 
     protected void btnSelectCurrent_Click(object sender, EventArgs e)
@@ -39,7 +40,7 @@ public partial class SPS_Default : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             DataRowView rv = (DataRowView)e.Row.DataItem;
-            
+
 
             LinkButton viewStuInfo = e.Row.FindControl("viewStuInfo") as LinkButton;
             string jsFunction1 = String.Format("viewStuInfo('{0}');", e.Row.Cells[3].Text.Trim());
@@ -58,6 +59,34 @@ public partial class SPS_Default : System.Web.UI.Page
             string jsFunction3 = String.Format("viewStatus('{0}', '{1}');", e.Row.Cells[3].Text.Trim(), e.Row.Cells[5].Text.Trim());
             viewStatus.Attributes.Add("OnClick", jsFunction3);
             viewStatus.Text = rv["App_Status"].ToString();
+
+            if (rv["App_Status"].ToString().Equals("Penyelia telah kemaskini permohonan"))
+            {
+                changeBackground((int)rv["App_No"], viewStatus);
+            }
+        }
+    }
+
+    protected void changeBackground(int appId, LinkButton viewStatus)
+    {
+        string query = String.Format("SELECT [recommendation] FROM [SUPERVISOR_RECOMMENDATION] WHERE [id] = '{0}'", appId);
+        SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+
+        DataSet ds = new DataSet();
+        adapter.Fill(ds, "info");
+
+        DataTable dt = ds.Tables["info"];
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            if ((int)dr["recommendation"] == 1)
+            {
+                viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#c7fcc2");
+            }
+            else
+            {
+                viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#fcc2cf");
+            }   
         }
     }
 }
