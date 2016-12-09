@@ -108,7 +108,9 @@
             </td>
             <td class="tdrow">
                 <!-- Linking to print preview of application form -->
-                <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default" />
+
+                <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default"/>
+
             </td>
         </tr>
         <tr>
@@ -122,8 +124,9 @@
                 &nbsp;Mark:
             </td>
             <td class="tdrow">
-                <asp:Label ID="lblMark" runat="server" Text=""></asp:Label>&nbsp;
-                <asp:Button ID="btnMark" runat="server" Text="Mark" UseSubmitBehavior="False" CssClass="btn btn-default" />
+
+                <a href="#" onclick="viewMark('<%= applicationNo %>', '<%= shortBiaName %>')"><asp:Label ID="lblMark" runat="server" Text=""></asp:Label></a>
+
             </td>
         </tr>
         <tr>
@@ -163,8 +166,8 @@
                     <br />
                     <asp:Button ID="btnChange" runat="server" OnClick="Change_Status" Text="Update" CssClass="btn btn-default" />
                     &nbsp;&nbsp;
-                    <button id="btnDismiss" onclick="show(); return false;">
-                        Dismiss</button>
+                    <button id="btnDismiss" onclick="show(); return false;" class="btn btn-default">
+                        Cancel</button>
                 </div>
             </td>
             <td class="tdtitle">
@@ -178,10 +181,10 @@
     <br />
     <div style="padding: 0 0 75 0;">
         <center>
-            <button onclick="window.print()">
+            <button onclick="window.print()" class="btn btn-default">
                 Print</button>
             |
-            <button onclick="window.close()">
+            <button onclick="window.close()" class="btn btn-default">
                 Close</button></center>
         <table style="height: 80px" align="right">
             <tr>
@@ -367,7 +370,7 @@
         });
 
         function verifyStatus() {
-            var currStatus = "<%= status %>";
+            var currStatus = "<%= recordStatus %>";
             var newStatus = $("#ddlStatus").val();
             if (currStatus[5] > newStatus[5]) {
                 alert("Cannot change to earlier status!");
