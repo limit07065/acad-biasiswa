@@ -83,13 +83,18 @@
                 <asp:TemplateField HeaderText="Type of Authorship" SortExpression="type_authorship">
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("type_authorship") %>'></asp:Label>
-                        <asp:TextBox ID="tbTypeAuthorship" runat="server" Text=''></asp:TextBox>
+                        <asp:DropDownList ID="ddlTypeAuthorship" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="0">First student author</asp:ListItem>
+                            <asp:ListItem Value="1">Second student author</asp:ListItem>
+                            <asp:ListItem Value="2">Single student author</asp:ListItem>
+                        </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Index" SortExpression="index">
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("index") %>'></asp:Label>
-                        <asp:DropDownList ID="ddlIndex" runat="server">
+                        <asp:DropDownList ID="ddlIndex" runat="server" AutoPostBack=false>
                             <asp:ListItem Value=""></asp:ListItem>
                             <asp:ListItem Value="0">SCOPUS</asp:ListItem>
                             <asp:ListItem Value="1">ISI (World of Science)</asp:ListItem>
@@ -100,21 +105,21 @@
                 <asp:TemplateField HeaderText="Status of Paper" SortExpression="status_paper">
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("status_paper") %>'></asp:Label>
-                        <asp:DropDownList ID="ddlStatusPaper" runat="server">
+                        <asp:DropDownList ID="ddlStatusPaper" runat="server" AutoPostBack=false>
                             <asp:ListItem Value=""></asp:ListItem>
-                            <asp:ListItem Value="2">Published</asp:ListItem>
-                            <asp:ListItem Value="1">In Press</asp:ListItem>
                             <asp:ListItem Value="0">Submitted</asp:ListItem>
+                            <asp:ListItem Value="1">In Press</asp:ListItem>
+                            <asp:ListItem Value="2">Published</asp:ListItem>
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Affiliation UTM" SortExpression="affiliation_UTM">
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("affiliation_UTM") %>'></asp:Label>
-                        <asp:DropDownList ID="ddlAffiliationUTM" runat="server">
-                            <asp:ListItem Value=""></asp:ListItem>
-                            <asp:ListItem Value="1">Yes</asp:ListItem>
+                        <asp:DropDownList ID="ddlAffiliationUTM" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>                            
                             <asp:ListItem Value="0">No</asp:ListItem>
+                            <asp:ListItem Value="1">Yes</asp:ListItem>
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>

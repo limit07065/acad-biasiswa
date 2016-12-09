@@ -7,6 +7,12 @@
         {
             text-decoration: underline;
         }
+        
+        .center-padding
+        {
+            padding-right: 50%;
+            padding-left: 50%;
+        }
     </style>
     <%//label %>
     <div class="row">
@@ -25,7 +31,8 @@
             <ContentTemplate>
                 <asp:GridView ID="gvScholarship" runat="server" AutoGenerateColumns="False" DataKeyNames="Matrix_No"
                     DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None"
-                    CssClass="col-sm-12" AllowSorting="True" OnRowDataBound="gvScholarship_RowDataBound">
+                    CssClass="col-sm-12" AllowSorting="True" OnRowDataBound="gvScholarship_RowDataBound"
+                    ShowHeaderWhenEmpty="true">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="Name" SortExpression="Stu_Name">
@@ -51,6 +58,10 @@
                     <HeaderStyle BackColor="#990000" ForeColor="White" />
                     <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <EmptyDataTemplate>
+                        <asp:Label CssClass="center-padding" Font-Bold="true" runat="server">
+                            No records found </asp:Label>
+                    </EmptyDataTemplate>
                     <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
                     <SortedAscendingCellStyle BackColor="#FDF5AC" />
                     <SortedAscendingHeaderStyle BackColor="#4D0000" />
