@@ -19,6 +19,16 @@ public partial class frmProcess : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            String url = Request.UrlReferrer.OriginalString;
+
+        }
+        catch (NullReferenceException enull)
+        {
+            Response.Redirect("SPS/listApplication.aspx");
+        }
+
         if (!IsPostBack)
         {
             getData();

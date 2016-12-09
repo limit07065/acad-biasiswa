@@ -152,7 +152,7 @@
                     </asp:DropDownList>
                     <br />
                     <span>Choose Date:</span><br />
-                    <asp:TextBox ID="tbDate" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbDate" runat="server" Width="100px"></asp:TextBox>
                     <script type="text/javascript">
                         function show() {
                             if ($("#statusDiv").css("display") == "none")
