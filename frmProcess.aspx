@@ -108,7 +108,11 @@
             </td>
             <td class="tdrow">
                 <!-- Linking to print preview of application form -->
+<<<<<<< HEAD
                 <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default"/>
+=======
+                <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default" />
+>>>>>>> master
             </td>
         </tr>
         <tr>
@@ -122,7 +126,12 @@
                 &nbsp;Mark:
             </td>
             <td class="tdrow">
+<<<<<<< HEAD
                 <a href="#" onclick="viewMark('<%= applicationNo %>', '<%= shortBiaName %>')"><asp:Label ID="lblMark" runat="server" Text=""></asp:Label></a>
+=======
+                <asp:Label ID="lblMark" runat="server" Text=""></asp:Label>&nbsp;
+                <asp:Button ID="btnMark" runat="server" Text="Mark" UseSubmitBehavior="False" CssClass="btn btn-default" />
+>>>>>>> master
             </td>
         </tr>
         <tr>
@@ -326,8 +335,8 @@
                         <asp:TemplateField HeaderText="Remark">
                             <EditItemTemplate>
                                 <asp:TextBox ID="tbRemark" Text='<%# Bind("Remark") %>' runat="server"></asp:TextBox>
-                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" />
-                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" />
+                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" CssClass="btn btn-default" />
+                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Remark") %>'></asp:Label>&nbsp;
