@@ -68,8 +68,8 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
-            DataSourceID="SqlDataSourcePublication" CellPadding="4" ForeColor="#333333" GridLines="Both"
-            OnRowDataBound="GridView1_RowDataBound" ShowFooter="true">
+            DataSourceID="SqlDataSourcePublication" CellPadding="4" ForeColor="#333333" OnRowDataBound="GridView1_RowDataBound"
+            ShowFooter="True">
             <AlternatingRowStyle BackColor="#f7f7ba" />
             <Columns>
                 <asp:TemplateField HeaderText="No.">
@@ -80,10 +80,49 @@
                 <asp:BoundField DataField="type" HeaderText="Type of Publication" SortExpression="type" />
                 <asp:BoundField DataField="title" HeaderText="Thesis Title" SortExpression="title" />
                 <asp:BoundField DataField="authors" HeaderText="Authors" SortExpression="authors" />
-                <asp:BoundField DataField="type_authorship" HeaderText="Type of Authorship" SortExpression="type_authorship" />
-                <asp:BoundField DataField="index" HeaderText="Index" SortExpression="index" />
-                <asp:BoundField DataField="status_paper" HeaderText="Status of Paper" SortExpression="status_paper" />
-                <asp:BoundField DataField="affiliation_UTM" HeaderText="Affiliation UTM" SortExpression="affiliation_UTM" />
+                <asp:TemplateField HeaderText="Type of Authorship" SortExpression="type_authorship">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("type_authorship") %>'></asp:Label>
+                        <asp:DropDownList ID="ddlTypeAuthorship" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="0">First student author</asp:ListItem>
+                            <asp:ListItem Value="1">Second student author</asp:ListItem>
+                            <asp:ListItem Value="2">Single student author</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Index" SortExpression="index">
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("index") %>'></asp:Label>
+                        <asp:DropDownList ID="ddlIndex" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="0">SCOPUS</asp:ListItem>
+                            <asp:ListItem Value="1">ISI (World of Science)</asp:ListItem>
+                            <asp:ListItem Value="2">Others</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Status of Paper" SortExpression="status_paper">
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("status_paper") %>'></asp:Label>
+                        <asp:DropDownList ID="ddlStatusPaper" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="0">Submitted</asp:ListItem>
+                            <asp:ListItem Value="1">In Press</asp:ListItem>
+                            <asp:ListItem Value="2">Published</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Affiliation UTM" SortExpression="affiliation_UTM">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("affiliation_UTM") %>'></asp:Label>
+                        <asp:DropDownList ID="ddlAffiliationUTM" runat="server" AutoPostBack=false>
+                            <asp:ListItem Value=""></asp:ListItem>                            
+                            <asp:ListItem Value="0">No</asp:ListItem>
+                            <asp:ListItem Value="1">Yes</asp:ListItem>
+                        </asp:DropDownList>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Mark">
                     <ItemTemplate>
                         <asp:TextBox ID="tbMark" runat="server" Width="50px"></asp:TextBox>
@@ -103,7 +142,8 @@
         <br />
         <asp:Button ID="btnUpdateMark" runat="server" Text="Update Mark" CssClass="btn btn-default"
             OnClick="Update_Mark" />
-        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-default" OnClientClick="window.close();"/>
+        <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn btn-default"
+            OnClientClick="window.close();" />
     </div>
     <script>
         function refreshParent() {

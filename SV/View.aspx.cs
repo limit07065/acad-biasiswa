@@ -17,7 +17,7 @@ public partial class SV_View : System.Web.UI.Page
             String url = Request.UrlReferrer.OriginalString;
 
         }
-        catch (NullReferenceException enull)
+        catch (NullReferenceException)
         {
             Response.Redirect("Default.aspx");
         }
@@ -57,18 +57,27 @@ public partial class SV_View : System.Web.UI.Page
 
     protected void btn_click(object sender, EventArgs e)
     {
-        DataView dv2 = (DataView)SqlDataSourceSupervisorRecommendation.Select(DataSourceSelectArguments.Empty);
-        if (dv2.Count == 0)
-        {
-            SqlDataSourceSupervisorRecommendation.Insert();
-            //requires insert to app_status_details
-            //SqlDataSourceApplication.Update();
-        }
-        else
-        {
-            SqlDataSourceSupervisorRecommendation.Update();
+        SqlDataSourceSupervisorRecommendation.Insert();
 
-        }
+        //change all previous app_status of application to inactive
+
+        sql.UpdateCommand = "UPDATE [APP_STATUS_DETAILS] SET [Active]='0' WHERE ([App_Code]=@appNo)";
+        sql.UpdateParameters.Add("appNo", Request.QueryString["app"]);
+        sql.Update();
+
+        //Insert to app_status_details
+        String remark = "Application reviewed by supervisor ";
+        DataView dv = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        remark = string.Concat(remark, dv[0]["name"].ToString());
+
+
+        sql.InsertCommand = "INSERT INTO [APP_STATUS_DETAILS] ([App_Code],[Status],[Remark],[Date]) VALUES (@appCode,@status,@remark,@date)";
+        sql.InsertParameters.Add("appCode", Request.QueryString["app"]);
+        sql.InsertParameters.Add("status", "BIA_03");
+        sql.InsertParameters.Add("remark", remark);
+        sql.InsertParameters.Add("date", DateTime.Now.ToString());
+        sql.Insert();
+
 
 
         Response.Redirect("Default.aspx");

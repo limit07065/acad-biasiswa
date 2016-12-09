@@ -10,6 +10,7 @@
         media="screen" />
     <script src="Styles/sps/jquery-ui-1.8.6.custom.min.js" type="text/javascript"></script>
     <link href="Styles/sps/sps.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body
         {
@@ -107,7 +108,7 @@
             </td>
             <td class="tdrow">
                 <!-- Linking to print preview of application form -->
-                <asp:Button ID="btnForm" runat="server" Text="View" />
+                <asp:Button ID="btnForm" runat="server" Text="View" CssClass="btn btn-default" />
             </td>
         </tr>
         <tr>
@@ -122,7 +123,7 @@
             </td>
             <td class="tdrow">
                 <asp:Label ID="lblMark" runat="server" Text=""></asp:Label>&nbsp;
-                <asp:Button ID="btnMark" runat="server" Text="Mark" UseSubmitBehavior="False" />
+                <asp:Button ID="btnMark" runat="server" Text="Mark" UseSubmitBehavior="False" CssClass="btn btn-default" />
             </td>
         </tr>
         <tr>
@@ -160,7 +161,7 @@
                     </script>
                     <br />
                     <br />
-                    <asp:Button ID="btnChange" runat="server" OnClick="Change_Status" Text="Update" />
+                    <asp:Button ID="btnChange" runat="server" OnClick="Change_Status" Text="Update" CssClass="btn btn-default" />
                     &nbsp;&nbsp;
                     <button id="btnDismiss" onclick="show(); return false;">
                         Dismiss</button>
@@ -326,8 +327,8 @@
                         <asp:TemplateField HeaderText="Remark">
                             <EditItemTemplate>
                                 <asp:TextBox ID="tbRemark" Text='<%# Bind("Remark") %>' runat="server"></asp:TextBox>
-                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" />
-                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" />
+                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" CssClass="btn btn-default" />
+                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Remark") %>'></asp:Label>&nbsp;
