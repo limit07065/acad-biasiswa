@@ -16,13 +16,13 @@ public partial class Student_UGMasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["acadUserSs"] = "201620171";
-        Session["acadUserNm"] = "LOH WEN HE";
+        Session["acadUserNm"] = "NUR AMIRA BINTI AZALI";
         Session["acadUserPr"] = "Bachelor Of Computer Science (Database Systems)";
         Session["acadUserFn"] = "Computing";
-        Session["acadUserMt"] = "A14CS0047 ";
+        Session["acadUserMt"] = "A14CS0095 ";
         Session["acadUserBs"] = "6";
         Session["acadUserNs"] = "8";
-        Session["acadUserSv"] = "Dr. Gigi Sweetiee";
+        Session["acadUserSv"] = "Dr. Rahimah";
         Session["acadUserTs"] = "Taught Course";
         Session["acadUserEm"] = "kaakasim@live.utm.my";
         Session["acadUserTl"] = "017-754943283";

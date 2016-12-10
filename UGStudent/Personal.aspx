@@ -392,57 +392,34 @@
      </div>
       <br/>
              <tr><td class="style158">
-                            <strong>ACTIVITIES</strong><br />
+                            <strong>ACADEMIC AWARDS </strong><br />
                             <table style="width: 100%;">
                                 <tr>
-                                    <td bgcolor="#990000" class="style158i" colspan="6" style="height: 24px">
-                                        <span ID="MainContent_BodyContent_Label153" 
-                                            style="color:White;font-weight:bold;">Mother</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style158i" style="height: 24px">
-                                        <span ID="MainContent_BodyContent_Label154" 
-                                            style="color:#333333;font-weight:bold;">Name</span>
-                                    </td>
-                                    <td class="style158i" style="height: 24px">
-                                        :
-                                    </td>
-                                    <td class="style158i" style="height: 24px">
-                                        &nbsp;<asp:Label ID="lblMname1" runat="server" Text="Label"></asp:Label>
-                                    </td>
-                                    <td class="style158i" style="height: 24px">
-                                        <span ID="MainContent_BodyContent_Label155" 
-                                            style="color:#333333;font-weight:bold;">Occupation</span>
-                                    </td>
-                                    <td class="style158i" style="height: 24px">
-                                        :
-                                    </td>
-                                    <td class="style158i" style="height: 24px">
-                                        &nbsp;<asp:Label ID="lblMOcc1" runat="server" Text="Label"></asp:Label>
-                                    </td>
+                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
+                                        bgcolor="#990000">
+                                        Name of Award</td>
+                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
+                                        bgcolor="#990000">
+                                        Date Recieved</td>
+                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
+                                        bgcolor="#990000">
+                                        &nbsp;Level</td>
                                 </tr>
                                 <tr>
                                     <td class="style158i">
                                         <span ID="MainContent_BodyContent_Label156" 
                                             style="color:#333333;font-weight:bold;"></span>
+                                        <asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
                                     </td>
                                     <td class="style158i">
                                         &nbsp;
+                                        <asp:Label ID="Label12" runat="server" Text="Label"></asp:Label>
                                     </td>
                                     <td class="style158i">
                                         <span ID="MainContent_BodyContent_Label157" 
                                             style="color:#333333;font-weight:normal;"></span>
+                                        <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
                                     </td>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label158" 
-                                            style="color:#333333;font-weight:bold;">Position</span>
-                                    </td>
-                                    <td class="style158i">
-                                        :
-                                    </td>
-                                    <td class="style158i">
-                                        &nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td class="style158i">
@@ -456,18 +433,6 @@
                                         <span ID="MainContent_BodyContent_Label160" 
                                             style="color:#333333;font-weight:normal;"></span>
                                     </td>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label161" 
-                                            style="color:#333333;font-weight:bold;">Salary</span>
-                                    </td>
-                                    <td class="style158i">
-                                        :
-                                    </td>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_lblMotherSalary1" 
-                                            style="color:#333333;font-weight:normal;">RM </span>
-                                        <asp:Label ID="lblMsalary1" runat="server" Text="Label"></asp:Label>
-                                    </td>
                                 </tr>
                             </table>
                             <br/>
@@ -475,107 +440,71 @@
                                 <td class="style158">
                                     <strong>CO-CURICULUM</strong>
                                     <br />
-                                    <table style="width: 100%;">
-                                        <tr>
-                                            <td bgcolor="#990000" style="height: 24px; color: #FFFFFF;">
-                                                <strong>Name</strong></td>
-                                            <td bgcolor="#990000" class="style158i" style="height: 24px; color: #FFFFFF;">
-                                                <strong>Position</strong></td>
-                                            <td bgcolor="#990000" class="style158i" style="height: 24px; color: #FFFFFF;">
-                                                <strong>&nbsp;Level</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="style158i">
-                                                <span ID="MainContent_BodyContent_Label165" 
-                                                    style="color:#333333;font-weight:bold;"></span>
-                                                <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td class="style158i">
-                                                &nbsp;
-                                                <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td class="style158i">
-                                                <span ID="MainContent_BodyContent_Label166" 
-                                                    style="color:#333333;font-weight:normal;"></span>
-                                                <asp:Label ID="Label10" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="style158i">
-                                                <span ID="MainContent_BodyContent_Label168" 
-                                                    style="color:#333333;font-weight:bold;"></span>
-                                            </td>
-                                            <td class="style158i">
-                                                &nbsp;
-                                            </td>
-                                            <td class="style158i">
-                                                <span ID="MainContent_BodyContent_Label169" 
-                                                    style="color:#333333;font-weight:normal;"></span>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+                                        CellPadding="4" DataKeyNames="Name_of_association" DataSourceID="cocuriculum" 
+                                        ForeColor="#333333" GridLines="None" Width="830px">
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <Columns>
+                                            <asp:BoundField DataField="Name_of_association" 
+                                                HeaderText="Name of Association" SortExpression="Name_of_association" />
+                                            <asp:BoundField DataField="Position" HeaderText="Position" 
+                                                SortExpression="Position" />
+                                            <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
+                                        </Columns>
+                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                        <SortedDescendingHeaderStyle BackColor="#820000" />
+                                    </asp:GridView>
+                                    <asp:SqlDataSource ID="cocuriculum" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                        SelectCommand="SELECT [Name_of_association], [Position], [Level] FROM [vw_Co-Cu] WHERE ([Matrix_No] = @Matrix_No)">
+                                        <SelectParameters>
+                                            <asp:ControlParameter ControlID="GridView2" DefaultValue="A14CS0095" 
+                                                Name="Matrix_No" PropertyName="SelectedValue" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                     <br />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="style158">
-                                    <strong>PUBLICATION</strong><br />
-                                    <table style="width: 100%;">
-                                        <tr>
-                                            <td bgcolor="#990000" class="style158i" style="color: #FFFFFF;">
-                                                <strong>&nbsp;Name Of Publication</strong></td>
-                                            <td bgcolor="#990000" class="style158i" style="color: #FFFFFF;">
-                                                <strong>Name of Jounal</strong></td>
-                                            <td bgcolor="#990000" class="style158i" 
-                                                style="color: #FFFFFF; font-weight: bold;">
-                                                Authors</td>
-                                            <td bgcolor="#990000" class="style158i" 
-                                                style="color: #FFFFFF; font-weight: bold;">
-                                                URL</td>
-                                            <td bgcolor="#990000" class="style158i" 
-                                                style="color: #FFFFFF; font-weight: bold;">
-                                                Date of Publication</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="style158i" style="width: 140px">
-                                                <span ID="MainContent_BodyContent_Label174" 
-                                                    style="color:#333333;font-weight:bold;"></span>
-                                                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td class="style158i" style="width: 142px">
-                                                &nbsp;
-                                                <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td class="style158i" style="width: 162px">
-                                                <span ID="MainContent_BodyContent_Label175" 
-                                                    style="color:#333333;font-weight:normal;"></span>
-                                                <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td class="style158i" style="width: 176px">
-                                                &nbsp;</td>
-                                            <td class="style158i">
-                                                <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="style158i" style="width: 140px">
-                                                <span ID="MainContent_BodyContent_Label177" 
-                                                    style="color:#333333;font-weight:bold;"></span>
-                                            </td>
-                                            <td class="style158i" style="width: 142px">
-                                                &nbsp;
-                                            </td>
-                                            <td class="style158i" style="width: 162px">
-                                                <span ID="MainContent_BodyContent_Label178" 
-                                                    style="color:#333333;font-weight:normal;"></span>
-                                            </td>
-                                            <td class="style158i" style="width: 176px">
-                                                &nbsp;</td>
-                                            <td class="style158i">
-                                                &nbsp;</td>
-                                        </tr>
-                                    </table>
-                                    <br />
+                                    <strong>PUBLICATION<br /> </strong>
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                                        CellPadding="4" DataSourceID="Publication" ForeColor="#333333" GridLines="None" 
+                                        Width="100%">
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <Columns>
+                                            <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
+                                            <asp:BoundField DataField="authors" HeaderText="Authors" 
+                                                SortExpression="authors" />
+                                            <asp:BoundField DataField="Date_publication" HeaderText="Date of Publication" 
+                                                SortExpression="Date_publication" />
+                                            <asp:BoundField DataField="type" HeaderText="Type" SortExpression="type" />
+                                        </Columns>
+                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                        <SortedDescendingHeaderStyle BackColor="#820000" />
+                                    </asp:GridView>
+                                    <asp:SqlDataSource ID="Publication" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                        SelectCommand="SELECT [title], [authors], [Date_publication], [type] FROM [PUBLICATION] WHERE ([matrix_no] = @matrix_no)">
+                                        <SelectParameters>
+                                            <asp:SessionParameter DefaultValue="A14CS0095" Name="matrix_no" 
+                                                SessionField="matricNo" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                 </td>
                             </tr>
                         </td>

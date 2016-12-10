@@ -14,6 +14,7 @@ public partial class UGStudent_Personal : System.Web.UI.Page
     {
         getData();
         Session["matricNo"] = "A14CS0095";
+        
     }
 
   protected void getData()
