@@ -1,8 +1,8 @@
 .thtitle {
-	 background-color: #9B0000; 
-	 height: 24px; 
-	 color: White; 
-	 text-align: center;
+	background-color: #9B0000; 
+	height: 24px; 
+	color: White; 
+	text-align: center;
 }
 
 .tdtitle {
@@ -11,6 +11,26 @@
 
 .tdrow {
 	background-color: #FFFBD6;
+}
+
+.fill_green {
+	background-color: #cfc;
+}
+
+.fill_red {
+	background-color: red;
+}
+
+.tdgreen {
+	padding:5px;
+	background-color:#cfc;
+	color:black;
+	font-size:12px;
+	border:1px solid #CCC;
+}
+
+.tdred {
+	background-color: #F8E0F7
 }
 
 .btn-custom
