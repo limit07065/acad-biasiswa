@@ -96,8 +96,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 spadding">
-                <div>
+            <div class="col-sm-3 spadding">
+                <div class="row stat-row">
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                    <HeaderTemplate>
+                        <p align="center" style="margin-top: 10px; font-size: 120%;">
+                        <strong>No of applicants</strong>
+                        </p>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <div class="col-sm-4" style="font-size:150%">
+                        <strong><%# ((System.Data.DataRowView)Container.DataItem)["Faculty"]%>:&nbsp;</strong>
+                        <span><%# ((System.Data.DataRowView)Container.DataItem)["No"]%></span>
+                    </div>
+                    </ItemTemplate>
+                    </asp:Repeater>
                     
                 </div>
             </div>
@@ -194,5 +207,6 @@
             });	
         </script>
     </div>
-    </div>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
+    SelectCommand="SELECT TOP (9) [Faculty], COUNT([Matrix_No]) AS No FROM [vw_Application] WHERE ([Session] = '201620171') GROUP BY [Faculty] ORDER BY [No] DESC"></asp:SqlDataSource>
 </asp:Content>
