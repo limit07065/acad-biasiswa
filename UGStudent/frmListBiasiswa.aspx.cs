@@ -11,4 +11,9 @@ public partial class UGStudent_frmListBiasiswa : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("instruction.aspx");
+    }
 }

@@ -511,7 +511,7 @@
                     Date of Publication
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    30 Jun 2016
+                    &nbsp;<asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>

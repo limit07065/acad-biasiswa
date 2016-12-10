@@ -472,7 +472,16 @@
                             </tr>
                             <tr>
                                 <td class="style158">
-                                    <strong>PUBLICATION<br /> </strong>
+                                    <strong>PUBLICATION<br /> 
+                                    <asp:SqlDataSource ID="Publication" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                        SelectCommand="SELECT [title], [authors], [Date_publication], [type] FROM [PUBLICATION] WHERE ([matrix_no] = @matrix_no)">
+                                        <SelectParameters>
+                                            <asp:SessionParameter DefaultValue="A14CS0095" Name="matrix_no" 
+                                                SessionField="matricNo" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                    </strong>
                                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                                         CellPadding="4" DataSourceID="Publication" ForeColor="#333333" GridLines="None" 
                                         Width="100%">
@@ -495,18 +504,15 @@
                                         <SortedDescendingCellStyle BackColor="#FCF6C0" />
                                         <SortedDescendingHeaderStyle BackColor="#820000" />
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="Publication" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                                        SelectCommand="SELECT [title], [authors], [Date_publication], [type] FROM [PUBLICATION] WHERE ([matrix_no] = @matrix_no)">
-                                        <SelectParameters>
-                                            <asp:SessionParameter DefaultValue="A14CS0095" Name="matrix_no" 
-                                                SessionField="matricNo" Type="String" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
+                                    <br />
                                 </td>
                             </tr>
                         </td>
                     </tr>       
+
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Next" 
+            Width="67px" />
+        <br />
 
     </asp:Panel>
 </asp:Content>

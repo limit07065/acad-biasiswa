@@ -99,12 +99,12 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
             DataRow row = drv.Row;
 
             lblpaper.Text = row["title"].ToString();
-            lblTypeAutho.Text = row["type_authorship"].ToString();
+           lblTypeAutho.Text = row["type_authorship"].ToString();
             lblType.Text = row["type"].ToString();
             lblimpact.Text = row["impact_factor"].ToString();
             lblStatusPaper.Text = row["status_paper"].ToString();
             lblAuthor.Text = row["authors"].ToString();
-
+            lbldate.Text = row["Date_publication"].ToString();
 
         }
 
