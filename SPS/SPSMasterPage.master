@@ -39,9 +39,9 @@
                 <asp:Label ID="lblLoggedInUser" runat="server" Text=""></asp:Label></span>&nbsp;
             <li class="profile"><a class="icon-user"></a>
                 <ul>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
-                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
+                    <li><a href="../UGStudent/" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
+                    <li><a href="../SV" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+                    <li><a href="../SPS/listApplication.aspx"><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
                 </ul>
             </li>
         </ul>
