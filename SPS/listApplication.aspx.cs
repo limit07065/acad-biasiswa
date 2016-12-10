@@ -79,13 +79,19 @@ public partial class SPS_Default : System.Web.UI.Page
 
         foreach (DataRow dr in dt.Rows)
         {
-            if ((int)dr["recommendation"] == 1)
+            switch((int)dr["recommendation"])
             {
-                viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#c7fcc2");
-            }
-            else
-            {
-                viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#fcc2cf");
+                case 2:
+                    viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#c7fcc2");
+                    break;
+
+                case 1:
+                    viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#ddffbb");
+                    break;
+
+                case 0:
+                    viewStatus.BackColor = System.Drawing.ColorTranslator.FromHtml("#fcc2cf");
+                    break;
             }   
         }
     }

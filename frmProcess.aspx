@@ -148,7 +148,7 @@
                     </asp:DropDownList>
                     <br />
                     <span>Choose Date:</span><br />
-                    <asp:TextBox ID="tbDate" runat="server" Width="100px"></asp:TextBox>
+                    <asp:TextBox ID="tbDate" runat="server"></asp:TextBox>
                     <script type="text/javascript">
                         function show() {
                             if ($("#statusDiv").css("display") == "none")
@@ -326,8 +326,8 @@
                         <asp:TemplateField HeaderText="Remark">
                             <EditItemTemplate>
                                 <asp:TextBox ID="tbRemark" Text='<%# Bind("Remark") %>' runat="server"></asp:TextBox>
-                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" CssClass="btn btn-default" />
-                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
+                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" />
+                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" />
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Remark") %>'></asp:Label>&nbsp;
