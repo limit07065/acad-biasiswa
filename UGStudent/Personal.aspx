@@ -327,7 +327,15 @@
         <tr>
              <td class="style158" bgcolor="#990000" style="color: #FFFFFF">
                             <strong>ACADEMIC BACKGROUND</strong>
-                            (Master Level)</td>
+                            (Master Level)<asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                SelectCommand="SELECT [Name_of_Institution], [Date], [CGPA], [Field_of_Study] FROM [ACADEMIC_BACK] WHERE ([Matrix_No] = @Matrix_No)">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                                        SessionField="matricNo" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+             </td>
                     </tr>
                      </table>
         </div>
@@ -342,13 +350,14 @@
                         :
                     </td>
                     <td class="style158i" style="height: 24px">
-                        &nbsp;<asp:Label ID="lblMname0" runat="server" Text="Label"></asp:Label>
+                        &nbsp;<asp:Label ID="lblSIns" runat="server" Text="Label"></asp:Label>
                     </td>
                     <td class="style158i" style="height: 24px; width: 115px;">
                         <strong>CGPA</strong>
                     </td>
                     <td class="style158i" colspan="2" style="height: 24px">
                         :
+                        <asp:Label ID="lblcgpa" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -360,12 +369,14 @@
                     <td class="style158i" style="font-weight: bold">
                         <span ID="MainContent_BodyContent_Label148" 
                             style="color:#333333;font-weight:normal;"></span>
+                        <asp:Label ID="lblSGrad" runat="server" Font-Bold="False" Text="Label"></asp:Label>
                     </td>
                     <td class="style158i" style="font-weight: bold; width: 115px">
                         Field Of Study
                     </td>
                     <td class="style158i" colspan="2">
                         :
+                        <asp:Label ID="lblField" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -393,48 +404,35 @@
       <br/>
              <tr><td class="style158">
                             <strong>ACADEMIC AWARDS </strong><br />
-                            <table style="width: 100%;">
-                                <tr>
-                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
-                                        bgcolor="#990000">
-                                        Name of Award</td>
-                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
-                                        bgcolor="#990000">
-                                        Date Recieved</td>
-                                    <td class="style158i" style="height: 24px; color: #FFFFFF; font-weight: bold;" 
-                                        bgcolor="#990000">
-                                        &nbsp;Level</td>
-                                </tr>
-                                <tr>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label156" 
-                                            style="color:#333333;font-weight:bold;"></span>
-                                        <asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
-                                    </td>
-                                    <td class="style158i">
-                                        &nbsp;
-                                        <asp:Label ID="Label12" runat="server" Text="Label"></asp:Label>
-                                    </td>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label157" 
-                                            style="color:#333333;font-weight:normal;"></span>
-                                        <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label159" 
-                                            style="color:#333333;font-weight:bold;"></span>
-                                    </td>
-                                    <td class="style158i">
-                                        &nbsp;
-                                    </td>
-                                    <td class="style158i">
-                                        <span ID="MainContent_BodyContent_Label160" 
-                                            style="color:#333333;font-weight:normal;"></span>
-                                    </td>
-                                </tr>
-                            </table>
+                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
+                                CellPadding="4" DataSourceID="Acad_Award" ForeColor="#333333" GridLines="None" 
+                                Width="829px">
+                                <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+                                    <asp:BoundField DataField="Name_of_Award" HeaderText="Name of Award" 
+                                        SortExpression="Name_of_Award" />
+                                    <asp:BoundField DataField="Date_Received" HeaderText="Date Received" 
+                                        SortExpression="Date_Received" />
+                                    <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
+                                </Columns>
+                                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                                <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                                <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                                <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                                <SortedDescendingHeaderStyle BackColor="#820000" />
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="Acad_Award" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                                SelectCommand="SELECT [Name_of_Award], [Date_Received], [Level] FROM [ACAD_AWARD] WHERE ([Matrix_No] = @Matrix_No)">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                                        SessionField="matricNo" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             <br/>
                             <tr>
                                 <td class="style158">
@@ -442,7 +440,7 @@
                                     <br />
                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
                                         CellPadding="4" DataKeyNames="Name_of_association" DataSourceID="cocuriculum" 
-                                        ForeColor="#333333" GridLines="None" Width="830px">
+                                        ForeColor="#333333" GridLines="None" Width="100%">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:BoundField DataField="Name_of_association" 

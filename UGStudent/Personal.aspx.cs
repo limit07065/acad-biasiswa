@@ -62,6 +62,20 @@ public partial class UGStudent_Personal : System.Web.UI.Page
             lblMsalary.Text = row["Salary"].ToString();
             
         }
+
+        DataView stud_Acad = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
+        foreach (DataRowView drv in stud_Acad)
+        {
+            DataRow row = drv.Row;
+            lblSIns.Text = row["Name_of_Institution"].ToString();
+            lblSGrad.Text = row["Date"].ToString();
+            lblcgpa.Text = row["CGPA"].ToString();
+            lblField.Text = row["Field_of_Study"].ToString();
+
+
+
+        }
+
       
     }
     
