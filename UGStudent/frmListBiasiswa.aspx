@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="frmListBiasiswa.aspx.cs" Inherits="UGStudent_frmListBiasiswa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" Runat="Server">
-<link href="../Styles/css/ListBiasiswa.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/css/ListBiasiswa.css" rel="stylesheet" type="text/css" />
 <script src="../Styles/js/ListBiasiswa.js" type="text/javascript"></script>
 <div id="cssmenu2"></div>
 <div>

@@ -690,55 +690,7 @@
             </table>
             <br />
             <hr />
-            <b>SUPERVISOR'S RECOMMENDATION</b><br />
-            <br />
-            I support this application.
-            <h2 style='background-color: red; color: white; padding: 5px; text-align: center'>
-                N/A</h2>
-            <br />
-            She is an excellent student. During her Master by Research study (under my supervision
-            and graduated last semester), she has published 2 journals and 1 conference paper,
-            and another journal currently under review. Thus, I strongly recommend her application
-            for Zamalah scholarship.
-            <br />
-            <table width="100%">
-                <tr>
-                    <td width="50%" style="font-size: 10px; padding-left: 5px">
-                        <br />
-                        <br />
-                        <br />
-                        ..........................<br />
-                        <b>Date</b>
-                    </td>
-                    <td width="50%" style="font-size: 10px; padding: 5px">
-                        <br />
-                        ..........................<br />
-                        <b>Supervisor's Signature</b>
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-            <b>FACULTY'S VERIFICATION</b><br />
-            <br />
-            I would like to verify that the applicant is currently a research student at my
-            faculty.
-            <h2 style='background-color: red; padding: 5px; color: white; text-align: center'>
-                N/A</h2>
-            <br />
-            <table width="100%">
-                <tr>
-                    <td width="50%" style="font-size: 10px; padding-left: 5px">
-                        <br />
-                        <br />
-                        <br />
-                        ..........................<br />
-                        <b>Date</b>
-                    </td>
-                    <td width="50%" style="font-size: 10px; padding: 5px">
-                        <br />
-                        ..........................<br />
-                        <b>Deputy Dean's Signature</b>
+            
                     </td>
                 </tr>
             </table>
