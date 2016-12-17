@@ -4,14 +4,12 @@
 <html>
 <head runat="server">
 <title>Detail AIMS</title>
-<script type="text/javascript" src="http://spsapp3.utm.my:8080/aimsinfo/js/jquery-1.4.2.min.js"></script>
-<link href="http://spsapp3.utm.my:8080/aimsinfo/css/blitzer/jquery-ui-1.8.6.custom.css"
-    rel="stylesheet" media="screen" />
-<link href="http://spsapp3.utm.my:8080/aimsinfo/css/sps.css" rel="stylesheet" media="screen" />
-<link href="http://spsapp3.utm.my:8080/aimsinfo/css/gsmsv2.css" rel="stylesheet"
-    media="screen" />
+<script type="text/javascript" src="../Styles/sps/jquery-1.4.2.min.js"></script>
+<link href="../Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
+<link href="../Styles/sps/sps.css" rel="stylesheet" media="screen" />
+<link href="../Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
 <link rel="shortcut icon" href="~/styles/images/utm.ico" />
-<script type="text/javascript" src="http://spsapp3.utm.my:8080/aimsinfo/js/jquery-ui-1.8.6.custom.min.js"></script>
+<script type="text/javascript" src="../Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".button").button();
@@ -44,7 +42,7 @@
                     <asp:label id="lblName" runat="server" text=""></asp:label>
                 </td>
                 <td rowspan="8" class="tdrow">
-                    <img width="192" alt="Photo" border="0" height="256" src="Styles/images/nophoto.png" />
+                    <img width="192" alt="Photo" border="0" height="256" src="../Styles/images/nophoto.png" />
                 </td>
             </tr>
             <tr>

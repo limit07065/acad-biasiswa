@@ -3,18 +3,14 @@
 <html>
 <head id="Head1" runat="server">
     <title>Marks </title>
-    <script type="text/javascript" src="Styles/sps/jquery-1.4.2.min.js"></script>
-    <link href="Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
+    <script type="text/javascript" src="../Styles/sps/jquery-1.4.2.min.js"></script>
+    <link href="../Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" media="screen" />
     <!--<link href="Styles/bootsrap/bootstrap.min.css" rel="stylesheet" media="screen" />-->
-    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" media="screen" />
-    <link href="Styles/sps/sps.css" rel="stylesheet" media="screen" />
-    <link href="Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
+    <link href="../Styles/sps/bootstrap-btn-min.css" rel="stylesheet" media="screen" />
+    <link href="../Styles/sps/sps.css" rel="stylesheet" media="screen" />
+    <link href="../Styles/sps/gsmsv2.css" rel="stylesheet" media="screen" />
     <link rel="shortcut icon" href="~/styles/images/utm.ico" />
-    <script type="text/javascript" src="Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
-    <script type="text/javascript">
-       
-        
-    </script>
+    <script type="text/javascript" src="../Styles/sps/jquery-ui-1.8.6.custom.min.js"></script>
 </head>
 <body>
     <form runat="server">

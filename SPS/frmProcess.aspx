@@ -4,13 +4,13 @@
 <head runat="server">
     <title>Student Application Update</title>
     <link rel="shortcut icon" href="~/styles/images/utm.ico" />
-    <script type="text/javascript" src="http://spsapp3.utm.my:8080/aimsinfo/js/jquery-1.4.2.min.js"></script>
-    <link href="Styles/css/addon.css" rel="stylesheet" type="text/css" />
-    <link href="Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css"
+    <script type="text/javascript" src="../Styles/sps/jquery-1.4.2.min.js"></script>
+    <link href="../Styles/css/addon.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/sps/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css"
         media="screen" />
-    <script src="Styles/sps/jquery-ui-1.8.6.custom.min.js" type="text/javascript"></script>
-    <link href="Styles/sps/sps.css" rel="stylesheet" type="text/css" />
-    <link href="Styles/sps/bootstrap-btn-min.css" rel="stylesheet" type="text/css" />
+    <script src="../Styles/sps/jquery-ui-1.8.6.custom.min.js" type="text/javascript"></script>
+    <link href="../Styles/sps/sps.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/sps/bootstrap-btn-min.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body
         {
@@ -49,7 +49,7 @@
                     <asp:Label ID="lblName" runat="server" Text=""></asp:Label></a>
             </td>
             <td bgcolor="white" rowspan="7" width="17%">
-                <img alt="Photo" width="152" height="202" border="0" src="Styles/images/nophoto.png" />
+                <img alt="Photo" width="152" height="202" border="0" src="../Styles/images/nophoto.png" />
             </td>
         </tr>
         <tr>
@@ -325,9 +325,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Remark">
                             <EditItemTemplate>
-                                <asp:TextBox ID="tbRemark" Text='<%# Bind("Remark") %>' runat="server"></asp:TextBox>
-                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" />
-                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" />
+                                <asp:TextBox ID="tbRemark" Text='<%# Bind("Remark") %>' runat="server" Width="250px"></asp:TextBox>
+                                &nbsp;<asp:Button ID="btnUpdate" CommandName="Update" runat="server" Text="Save" CssClass="btn btn-default" />
+                                &nbsp;<asp:Button ID="btnCancel" CommandName="Cancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblComment" runat="server" Text='<%# Eval("Remark") %>'></asp:Label>&nbsp;
