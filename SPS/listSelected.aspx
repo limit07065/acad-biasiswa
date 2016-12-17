@@ -16,10 +16,25 @@
         </ul>
     </div>
     <div>
-        <p style="text-align: center; margin-top: 10px">
+        <p style="text-align: center; margin: 15px 0 0 0;">
             <asp:Label ID="lblAdd" runat="server" Text="Matrix No: "></asp:Label>
             <asp:TextBox ID="tbAdd" runat="server" Width="350px"></asp:TextBox>
-            &nbsp;&nbsp;<asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="Add_Selected" UseSubmitBehavior="False" />
+            &nbsp;&nbsp;<asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" UseSubmitBehavior="False" />
+        </p>
+        <p>
+            <span style="float: left">
+            <table>
+                <tr>
+                    <td bgcolor="#FF1C00"></td>
+                    <td>Selected & not yet inform the applicant</td>
+                    <td bgcolor="#FFF700"></td>
+                    <td>Informed & applicant not yet reply</td>
+                    <td bgcolor="#57FF00"></td>
+                    <td>Applicant accepted the offer</td>
+                </tr>    
+            </table>
+            </span>
+            <span style="float: right"><asp:Button ID="btnInform" runat="server" Text="Send inform email" OnClick="btnInform_Click" UseSubmitBehavior="False" /></span>
         </p>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>

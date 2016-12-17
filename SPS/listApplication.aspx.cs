@@ -112,11 +112,18 @@ public partial class SPS_Default : System.Web.UI.Page
 
         // Toggle (show / hide) btnSelect
         if (btnSelect.Visible == false)
+        {
             btnSelect.Visible = true;
+            SqlDataSource1.FilterParameters["Selected"].DefaultValue = "0";
+        }
         else
+        {
             btnSelect.Visible = false;
+            SqlDataSource1.FilterParameters["Selected"].DefaultValue = "";
+        }
+            
         
-        SqlDataSource1.FilterParameters["Selected"].DefaultValue = "0";
+        
     }
 
     protected void btnSelect_Click(object sender, EventArgs e)
