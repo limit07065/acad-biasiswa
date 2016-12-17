@@ -11,36 +11,11 @@ using System.Data;
 public partial class SPS_frmSelected : System.Web.UI.Page
 {
     protected static string ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
+    protected static IList<string> uninformed = new List<string>();
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
-    }
-
-    protected void Add_Selected(object sender, EventArgs e)
-    {
-        string matrix = tbAdd.Text.ToUpper();
-        
-        string query = String.Format("UPDATE [APPLICATION] SET [Selected] = '1' WHERE [Session] = '201620171' AND [Matrix_No] = '{0}'", matrix);
-
-        using (SqlConnection con = new SqlConnection(ConnectionString))
-        {
-            SqlCommand cmd = new SqlCommand(query, con);
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            { }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-            }
-        }
-
-        GridView1.DataBind();
     }
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -54,7 +29,8 @@ public partial class SPS_frmSelected : System.Web.UI.Page
             switch (rv["Selected"].ToString())
             { 
                 case "1":
-                    lblSelected.Text = "Selected";
+                    lblSelected.Text = "Not informed";
+                    uninformed.Add(rv["App_No"].ToString().Trim());
                     lblSelected.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF1C00");
                     break;
 
@@ -87,5 +63,61 @@ public partial class SPS_frmSelected : System.Web.UI.Page
             viewStatus.Attributes.Add("OnClick", jsFunction3);
             viewStatus.Text = rv["App_Status"].ToString();
         }
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        string matrix = tbAdd.Text.ToUpper();
+
+        string query = String.Format("UPDATE [APPLICATION] SET [Selected] = '1' WHERE [Session] = '201620171' AND [Matrix_No] = '{0}'", matrix);
+
+        using (SqlConnection con = new SqlConnection(ConnectionString))
+        {
+            SqlCommand cmd = new SqlCommand(query, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+        }
+
+        GridView1.DataBind();
+    }
+
+    protected void btnInform_Click(object sender, EventArgs e)
+    {
+        string query;
+        SqlCommand cmd;
+
+        foreach (string appNo in uninformed)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                query = String.Format("UPDATE [APPLICATION] SET [Selected] = '2' WHERE [App_No] = '{0}'", appNo);
+                cmd = new SqlCommand(query, con);
+
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                { }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
+        GridView1.DataBind();
     }
 }
