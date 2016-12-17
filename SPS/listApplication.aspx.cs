@@ -41,7 +41,6 @@ public partial class SPS_Default : System.Web.UI.Page
         {
             DataRowView rv = (DataRowView)e.Row.DataItem;
 
-
             LinkButton viewStuInfo = e.Row.FindControl("viewStuInfo") as LinkButton;
             string jsFunction1 = String.Format("viewStuInfo('{0}');", e.Row.Cells[3].Text.Trim());
             viewStuInfo.Attributes.Add("OnClick", jsFunction1);
@@ -94,5 +93,51 @@ public partial class SPS_Default : System.Web.UI.Page
                     break;
             }   
         }
+    }
+
+    protected void btnToggle_Click(object sender, EventArgs e)
+    {
+
+        // Toggle (show / hide) checkboxes
+        foreach (DataControlField col in GridView1.Columns)
+        {
+            if (col.HeaderText.Equals("Selected"))
+            {
+                if (col.Visible == false)
+                    col.Visible = true;
+                else
+                    col.Visible = false;
+            }
+        }
+
+        // Toggle (show / hide) btnSelect
+        if (btnSelect.Visible == false)
+            btnSelect.Visible = true;
+        else
+            btnSelect.Visible = false;
+        
+        SqlDataSource1.FilterParameters["Selected"].DefaultValue = "0";
+    }
+
+    protected void btnSelect_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            // Access the CheckBox
+            CheckBox cb = (CheckBox)row.FindControl("cbSelected");
+            if (cb != null && cb.Checked)
+            {
+                try
+                {
+                    SqlDataSource1.UpdateParameters["App_No"].DefaultValue = GridView1.DataKeys[row.DataItemIndex]["App_No"].ToString();
+                    SqlDataSource1.Update();
+                }
+                catch (SqlException ex)
+                {
+                }
+            }
+        }
+
+        Response.Redirect("listSelected.aspx");
     }
 }
