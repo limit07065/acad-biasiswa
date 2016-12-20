@@ -5,19 +5,20 @@
     <style>
         a:hover
         {
-            text-decoration: underline;    
+            text-decoration: underline;
         }
     </style>
     <div id="cssmenu2">
         <ul style="font-size: small">
             <li class="active"><a href=""><span class="fa fa-navicon"></span>&nbsp;Application List</a></li>
+            <li><a href="listSelected.aspx"><span class="fa fa-navicon"></span>&nbsp;Selected List</a></li>
         </ul>
     </div>
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="True" UpdateMode="Conditional">
-            <ContentTemplate> 
+            <ContentTemplate>
                 <table style="width: 100%;">
                     <tr>
                         <td style="width: 50%">
@@ -126,15 +127,26 @@
                                 <asp:ListItem Value="176">International Doctorial Fellowship</asp:ListItem>
                                 <asp:ListItem Value="177">Postgraduate National Fund</asp:ListItem>
                             </asp:DropDownList>
-                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <asp:Button ID="btnToggle" runat="server" Text="Select Success Applicant" onclick="btnToggle_Click" />
+                            <asp:Button ID="btnSelect" runat="server" Text="Add Selected Applicant" OnClientClick=" if(!confirmMsg()) return false; "
+                                onclick="btnSelect_Click" Visible="False" />
+                            <script type="text/javascript">
+                                //Add in to prevent error in ASP OnClientClick 
+                                function confirmMsg() {
+                                    return confirm("Are you sure to add these applicant(s) to selected list?");
+                                }
+                            </script>
                         </td>
                     </tr>
                 </table>
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
                     CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"
-                    ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" 
-                    EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;" 
-                    DataKeyNames="App_No, Short_Name"  OnRowDataBound="GridView1_RowDataBound">
+                    ShowHeaderWhenEmpty="True" Width="100%" AutoGenerateColumns="False" EmptyDataText="&lt;strong&gt;&lt;center&gt;No record found&lt;/center&gt;&lt;/strong&gt;"
+                    DataKeyNames="App_No, Short_Name" OnRowDataBound="GridView1_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="No">
@@ -142,35 +154,35 @@
                                 <%# Container.DataItemIndex + 1 %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Faculty" HeaderText="Faculty" 
-                            SortExpression="Faculty" />
+                        <asp:BoundField DataField="Faculty" HeaderText="Faculty" SortExpression="Faculty" />
                         <asp:TemplateField HeaderText="Name" SortExpression="Stu_Name">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewStuInfo" runat="server"></asp:LinkButton>
+                                <asp:LinkButton ID="viewStuInfo" runat="server"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Matrix_No" HeaderText="Matrix No" 
-                            SortExpression="Matrix_No" />
+                        <asp:BoundField DataField="Matrix_No" HeaderText="Matrix No" SortExpression="Matrix_No" />
                         <asp:TemplateField HeaderText="App. Date" SortExpression="App_Date">
                             <ItemTemplate>
-                            <asp:Label runat="server" ID="lblDate"></asp:Label>
+                                <asp:Label ID="lblDate" runat="server"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Session" HeaderText="Session" 
-                            SortExpression="Session" />
-                        <asp:BoundField DataField="Program" HeaderText="Program" 
-                            SortExpression="Program" />
-                        <asp:BoundField DataField="Nationality" HeaderText="Nationality" 
-                            SortExpression="Nationality" />
+                        <asp:BoundField DataField="Session" HeaderText="Session" SortExpression="Session" />
+                        <asp:BoundField DataField="Program" HeaderText="Program" SortExpression="Program" />
+                        <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                         <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                         <asp:TemplateField HeaderText="Mark" SortExpression="Mark">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewMark" runat="server"></asp:LinkButton>
+                                <asp:LinkButton ID="viewMark" runat="server"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="App. Status" SortExpression="App_Status">
                             <ItemTemplate>
-                            <asp:LinkButton ID="viewStatus" runat="server" ></asp:LinkButton>
+                                <asp:LinkButton ID="viewStatus" runat="server"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Selected" Visible="false">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="cbSelected" runat="server" onclick="Check_Click(this)" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -185,43 +197,66 @@
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
                     <SortedDescendingHeaderStyle BackColor="#820000" />
                 </asp:GridView>
-             </ContentTemplate>
+            </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        EnableCaching="false"
-        DataSourceMode="DataSet"
-        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-        SelectCommand="SELECT * FROM [vw_Application]"
-        FilterExpression="(Bia_Code LIKE '%{0}%') AND (Fac_Code LIKE '%{1}%') AND (Session LIKE '%{2}{3}%') AND (Status_Code LIKE '%{4}%') AND ((Stu_Name LIKE '%{5}%') OR (Matrix_No LIKE '%{5}%'))">
+
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" EnableCaching="false" DataSourceMode="DataSet"
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" SelectCommand="SELECT * FROM [vw_Application]"
+        FilterExpression="(Bia_Code LIKE '%{0}%') AND (Fac_Code LIKE '%{1}%') AND (Session LIKE '%{2}{3}%') AND (CONVERT(Selected, System.String) LIKE '%{4}%') AND (Status_Code LIKE '%{5}%') AND ((Stu_Name LIKE '%{6}%') OR (Matrix_No LIKE '%{6}%'))"
+        UpdateCommand = "UPDATE [APPLICATION] SET [Selected] = '1' WHERE [Session] = '201620171' AND [App_No] = @App_No">
         <FilterParameters>
-            <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" 
-                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false"  />
-            <asp:ControlParameter ControlID="ddlFaculty" Name="Fac_Code" 
-                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="ddlSession" Name="Session"
-                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="ddlSemester" Name="Semester"
-                PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="ddlStatus" Name="App_Status" 
-               PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="searchBar" Name="Keyword" 
-               PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlType" Name="Bia_Code" PropertyName="SelectedValue"
+                Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlFaculty" Name="Fac_Code" PropertyName="SelectedValue"
+                Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSession" Name="Session" PropertyName="SelectedValue"
+                Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="ddlSemester" Name="Semester" PropertyName="SelectedValue"
+                Type="String" ConvertEmptyStringToNull="false" />
+            <asp:Parameter Name="Selected" Type="String" DefaultValue="" ConvertEmptyStringToNull="False" /> 
+            <asp:ControlParameter ControlID="ddlStatus" Name="App_Status" PropertyName="SelectedValue"
+                Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="searchBar" Name="Keyword" PropertyName="Text" Type="String"
+                ConvertEmptyStringToNull="false" />
         </FilterParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="App_No" Type="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
     <br />
-
     <script type="text/javascript">
         function viewStuInfo(str) {
-            window.open("../frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
+            window.open("frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
         }
 
         function viewStatus(matrixNo, session) {
-            window.open("../frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
+            window.open("frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
         }
 
         function viewMark(str, str2) {
-            window.open("../frmMark.aspx?appNo=" + str + "&type=" + str2, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+            window.open("frmMark.aspx?appNo=" + str + "&type=" + str2, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+        }
+    </script>
+    <script type="text/javascript">
+        /* Toggle row colour when selected */
+        function Check_Click(objRef) {
+            //Get the Row based on checkbox
+            var row = objRef.parentNode.parentNode;
+            if (objRef.checked) {
+                //If checked change color
+                row.style.backgroundColor = "orange";
+            }
+            else {
+                //If not checked change back to original color
+                if (row.rowIndex % 2 == 0) {
+                    //Alternating Row Color
+                    row.style.backgroundColor = "White";
+                }
+                else {
+                    row.style.backgroundColor = "#FFFBD6";
+                }
+            }
         }
     </script>
 </asp:Content>
