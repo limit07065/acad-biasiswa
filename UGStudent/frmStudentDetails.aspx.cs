@@ -81,7 +81,7 @@ public partial class UGStudent_Personal : System.Web.UI.Page
 
   protected void Button1_Click(object sender, EventArgs e)
   {
-      Response.Redirect("frmDeclare.aspx");
+      Response.Redirect("frmStudentActivities.aspx");
 
   }
 }

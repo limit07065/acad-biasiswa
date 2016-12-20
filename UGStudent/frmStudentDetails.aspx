@@ -1,16 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="Personal.aspx.cs" Inherits="UGStudent_Personal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="frmStudentDetails.aspx.cs" Inherits="UGStudent_Personal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" Runat="Server">
+       
     <asp:Panel ID="Panel1" runat="server">
-     <div id="cssmenu2">
+     <p align="center" 
+        style="font-style: normal; font-variant: normal; text-transform: uppercase; font-weight: normal;">UTM ZAMALAH Scholarship Application</p>
+        <br/>  <div id="cssmenu2">
         <ul style="font-size: small">
-            <li class="active"><a href="Personal.aspx"><span class="fa fa-user"></span> Personal Details</a></li>
-         
-            <li><a href="frmDeclare.aspx"><span class="fa fa-user"></span> Student Declaration</a></li>
+            <li  class="active"><a href="frmStudentDetails.aspx"><span class="fa fa-user"></span> Personal Details</a></li>
+            <li><a href="frmStudentActivities.aspx"><span class="fa fa-user"></span> Activities</a></li>
+            <li><a href="frmStudentDeclare.aspx"><span class="fa fa-user"></span> Student Declaration</a></li>
             </ul>
     </div>
-        
-        <div>
+   
+         <div>
         <table style="width: 100%;">
                 <tr>
                     <td class="style158" style="height: 24px" bgcolor="#990000" colspan="6">
@@ -307,20 +310,6 @@
                             <asp:Label ID="lblMsalary" runat="server" Text="Label"></asp:Label>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="style158i">
-                            &nbsp;</td>
-                        <td class="style158i">
-                            &nbsp;</td>
-                        <td class="style158i">
-                            &nbsp;</td>
-                        <td class="style158i">
-                            &nbsp;</td>
-                        <td class="style158i">
-                            &nbsp;</td>
-                        <td class="style158i">
-                            &nbsp;</td>
-                    </tr>
                 </table>
             </td>
         </tr>
@@ -402,114 +391,7 @@
 	        
      </div>
       <br/>
-             <tr><td class="style158">
-                            <strong>ACADEMIC AWARDS </strong><br />
-                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
-                                CellPadding="4" DataSourceID="Acad_Award" ForeColor="#333333" GridLines="None" 
-                                Width="829px">
-                                <AlternatingRowStyle BackColor="White" />
-                                <Columns>
-                                    <asp:BoundField DataField="Name_of_Award" HeaderText="Name of Award" 
-                                        SortExpression="Name_of_Award" />
-                                    <asp:BoundField DataField="Date_Received" HeaderText="Date Received" 
-                                        SortExpression="Date_Received" />
-                                    <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-                                </Columns>
-                                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                <SortedDescendingHeaderStyle BackColor="#820000" />
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="Acad_Award" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                                SelectCommand="SELECT [Name_of_Award], [Date_Received], [Level] FROM [ACAD_AWARD] WHERE ([Matrix_No] = @Matrix_No)">
-                                <SelectParameters>
-                                    <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
-                                        SessionField="matricNo" Type="String" />
-                                </SelectParameters>
-                            </asp:SqlDataSource>
-                            <br/>
-                            <tr>
-                                <td class="style158">
-                                    <strong>CO-CURICULUM</strong>
-                                    <br />
-                                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-                                        CellPadding="4" DataKeyNames="Name_of_association" DataSourceID="cocuriculum" 
-                                        ForeColor="#333333" GridLines="None" Width="100%">
-                                        <AlternatingRowStyle BackColor="White" />
-                                        <Columns>
-                                            <asp:BoundField DataField="Name_of_association" 
-                                                HeaderText="Name of Association" SortExpression="Name_of_association" />
-                                            <asp:BoundField DataField="Position" HeaderText="Position" 
-                                                SortExpression="Position" />
-                                            <asp:BoundField DataField="Level" HeaderText="Level" SortExpression="Level" />
-                                        </Columns>
-                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                        <SortedDescendingHeaderStyle BackColor="#820000" />
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="cocuriculum" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                                        SelectCommand="SELECT [Name_of_association], [Position], [Level] FROM [vw_Co-Cu] WHERE ([Matrix_No] = @Matrix_No)">
-                                        <SelectParameters>
-                                            <asp:ControlParameter ControlID="GridView2" DefaultValue="A14CS0095" 
-                                                Name="Matrix_No" PropertyName="SelectedValue" Type="String" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
-                                    <br />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="style158">
-                                    <strong>PUBLICATION<br /> 
-                                    <asp:SqlDataSource ID="Publication" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                                        SelectCommand="SELECT [title], [authors], [Date_publication], [type] FROM [PUBLICATION] WHERE ([matrix_no] = @matrix_no)">
-                                        <SelectParameters>
-                                            <asp:SessionParameter DefaultValue="A14CS0095" Name="matrix_no" 
-                                                SessionField="matricNo" Type="String" />
-                                        </SelectParameters>
-                                    </asp:SqlDataSource>
-                                    </strong>
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                                        CellPadding="4" DataSourceID="Publication" ForeColor="#333333" GridLines="None" 
-                                        Width="100%">
-                                        <AlternatingRowStyle BackColor="White" />
-                                        <Columns>
-                                            <asp:BoundField DataField="title" HeaderText="Title" SortExpression="title" />
-                                            <asp:BoundField DataField="authors" HeaderText="Authors" 
-                                                SortExpression="authors" />
-                                            <asp:BoundField DataField="Date_publication" HeaderText="Date of Publication" 
-                                                SortExpression="Date_publication" />
-                                            <asp:BoundField DataField="type" HeaderText="Type" SortExpression="type" />
-                                        </Columns>
-                                        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                                        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                                        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                                        <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                                        <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                                        <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                                        <SortedDescendingHeaderStyle BackColor="#820000" />
-                                    </asp:GridView>
-                                    <br />
-                                </td>
-                            </tr>
-                        </td>
-                    </tr>       
-
+           
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Next" 
             Width="67px" />
         <br />

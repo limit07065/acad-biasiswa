@@ -14,7 +14,7 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         if (IsValid == true)
-            Response.Redirect("YourFileHere1.aspx");
+            Response.Redirect("frmHome.aspx");
     }
 
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
