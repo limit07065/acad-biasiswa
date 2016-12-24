@@ -1,11 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="frmDeclare.aspx.cs" Inherits="UGStudent_frmDeclare" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="frmStudentDeclare.aspx.cs" Inherits="UGStudent_frmDeclare" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" Runat="Server">
+ 
 <div id="cssmenu2">
-        <ul style="font-size: small; top: 1px; left: -4px; height: 16px;">
-            <li><a href="Personal.aspx"><span class="fa fa-user"></span> Personal Details</a></li>
-            
-            <li  class="active"><a href="frmDeclare.aspx"><span class="fa fa-user"></span> Student Declaration</a></li>
+       <p align="center" style="font-style: normal; font-variant: normal; text-transform: uppercase; font-weight: normal; ">UTM ZAMALAH Scholarship Application</p>
+        <br/> <ul style="font-size: small; top: 1px; left: -4px; height: 16px;">
+            <li><a href="frmStudentDetails.aspx"><span class="fa fa-user"></span> Personal Details</a></li>
+            <li><a href="frmStudentActivities.aspx"><span class="fa fa-user"></span> Activities</a></li>
+            <li  class="active"><a href="frmStudentDeclare.aspx"><span class="fa fa-user"></span> Student Declaration</a></li>
             </ul></div>
 
     <div>
@@ -13,7 +15,7 @@
             <tr __designer:mapid="78e">
                 <td __designer:mapid="78f">
                     1. Please check all your information again.<asp:HyperLink ID="HyperLink2" 
-                runat="server" NavigateUrl="~/UGStudent/frmPersonal.aspx" Target="_blank">View Complete Form</asp:HyperLink>
+                runat="server" NavigateUrl="~/UGStudent/frmCompleteForm.aspx" Target="_blank">View Complete Form</asp:HyperLink>
                 </td>
                 <td __designer:mapid="791">
                     &nbsp;</td>
