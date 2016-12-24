@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="instruction.aspx.cs" Inherits="UGStudent_instruction" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UGStudent/UGMasterPage.master" AutoEventWireup="true" CodeFile="frmInstruction.aspx.cs" Inherits="UGStudent_instruction" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" Runat="Server">
+    <div id="cssmenu2"></div>
     <asp:Panel ID="Panel1" runat="server" Font-Bold="True" Font-Overline="False" 
         CssClass="btn-toolbar">
         <asp:Label ID="Label3" runat="server" Font-Overline="False" 

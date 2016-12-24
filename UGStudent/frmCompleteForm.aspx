@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="frmPersonal.aspx.cs" Inherits="UGStudent_frmPersonal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="frmCompleteForm.aspx.cs" Inherits="UGStudent_frmPersonal" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,23 +15,41 @@
         }
         .style4
         {
-            width: 132px;
-            height: 164px;
+            width: 151px;
+            height: 181px;
+        }
+        .style5
+        {
+            height: 24px;
+        }
+        .style6
+        {
+            height: 36px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <asp:SqlDataSource 
-                        ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT * FROM [StudentData] WHERE ([Matric] = @Matric)">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                SessionField="matricNo" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
     <div>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            SelectCommand="SELECT * FROM [vw_StuInfo] WHERE ([Matrix_No] = @Matrix_No)">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            
+            SelectCommand="SELECT * FROM [ADDRESS] WHERE (([Address_Type] = @Address_Type) AND ([Matrix_No] = @Matrix_No))">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="1" Name="Address_Type" 
+                    SessionField="addType" Type="Int16" />
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
+                    SessionField="matricNo" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <table style="width: 100%">
             <tr>
                 <td valign="top">
@@ -50,7 +68,7 @@
                 </td>
                 <td valign="top">
                     &nbsp;
-                    <img alt="" class="style4" src="../Styles/images/photo/studPic.PNG" /></td>
+                    <img alt="" class="style4" src="../Styles/images/nophoto.png" /></td>
             </tr>
             <tr>
                 <td colspan="2" style="font-size: 10px; padding: 5px">
@@ -128,11 +146,7 @@
                     <td style="font-size: 10px; padding: 5px">
                         <b>Present Age</b><br />
                         <br />
-                        <asp:Label ID="lblyear" runat="server" Text="Label"></asp:Label>
-&nbsp;years 
-                        <asp:Label ID="lblmonth" runat="server" Text="Label"></asp:Label>
-&nbsp;months
-                    </td>
+                        21 years</td>
                     <td style="font-size: 10px; padding: 5px">
                         <b>Nationality</b><br />
                         <br />
@@ -143,12 +157,12 @@
                 <td valign="top" style="font-size: 10px; padding: 5px" colspan="2">
                     <b>Passport or IC No</b><br />
                     <br />
-                    <asp:Label ID="lblIc" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblIC" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Martial Status</b><br />
                     <br />
-                    BUJANG
+                    <asp:Label ID="lblMStatus" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Religion</b><br />
@@ -157,16 +171,14 @@
                 </td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            
-            
-            SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+            SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
             <SelectParameters>
-                <asp:SessionParameter Name="Gender" SessionField="parent1" Type="Int32" 
-                    DefaultValue="1" />
-                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                    SessionField="matricNo" Type="String" />
+                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
+                    SessionField="matric_p1" Type="String" />
+                <asp:SessionParameter DefaultValue="Father" Name="Relation" 
+                    SessionField="Relation" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br style="page-break-after: always">
@@ -188,16 +200,16 @@
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     &nbsp;
                     
                     <asp:Label ID="lblguard1" runat="server" Text="Label"></asp:Label>
                     
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     &nbsp;<asp:Label ID="lblIC1" runat="server" Text="Label"></asp:Label>
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     <asp:Label ID="lblNation1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -220,7 +232,7 @@
                     <asp:Label ID="lblphone1" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;
+                    &nbsp;RM&nbsp;
                     <asp:Label ID="lblSalary1" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -237,17 +249,17 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px" colspan="3">
-                    &nbsp;<asp:SqlDataSource ID="SqlDataSource3" 
-                        runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                        SelectCommand="SELECT * FROM [Guardian] WHERE (([Gender] = @Gender) AND ([Matric] = @Matric))">
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                        SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
                         <SelectParameters>
-                            <asp:SessionParameter DefaultValue="2" Name="Gender" SessionField="parent2" 
-                                Type="Int32" />
-                            <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                                SessionField="matricNo" Type="String" />
+                            <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
+                                SessionField="matric_p2" Type="String" />
+                            <asp:SessionParameter DefaultValue="Mother" Name="Relation" 
+                                SessionField="Relation2" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-&nbsp;</td>
+                    &nbsp;&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="4" style="font-size: 10px; padding: 5px">
@@ -296,6 +308,7 @@
                     <asp:Label ID="lblphone2" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
+                    RM
                     <asp:Label ID="lblSalary2" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
@@ -477,6 +490,14 @@
             <tr>
                 <td colspan="4" style="padding: 10px; font-size: 10px">
                     <strong>G. PAPER PUBLICATION</strong>
+                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+                        SelectCommand="SELECT * FROM [vw_List_Publication] WHERE ([matrix_no] = @matrix_no)">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="A14CS0047" Name="matrix_no" 
+                                SessionField="matricNo" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -484,14 +505,13 @@
                     <b>(1)</b> Title of Paper
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    Enhanced Design of Two-Section Microstrip-Slot Branch Line Coupler with the Overlapped
-                    Lambda/4 Open Circuited Lines at Ports
+                    <asp:Label ID="lblpaper" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" width="10%">
                     Date of Publication
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    30 Jun 2016
+                    &nbsp;<asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -499,7 +519,7 @@
                     Author(s)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1)Saiyidah Munirah Binti Sazali 2) Norhudah Seman
+                    <asp:Label ID="lblAuthor" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     Journal Indexed In
@@ -513,13 +533,13 @@
                     <strong>Type of Authorship</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    First Student Author
+                    <asp:Label ID="lblTypeAutho" runat="server" Text="Label"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
                     <strong>Type of Publication</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Journal
+                    &nbsp;<asp:Label ID="lblType" runat="server" Text="Label"></asp:Label>
                     <br />
                     <br />
                     <input type="checkbox" readonly name="utm" id="utm" value="1" />
@@ -531,7 +551,7 @@
                     <strong>Status of Paper</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    Published
+                    <asp:Label ID="lblStatusPaper" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -581,261 +601,24 @@
                     Impact Factor (if any)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    1.21
+                    <asp:Label ID="lblimpact" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     Remarks
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     null
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     Attach a copy of paper as proof
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style6">
                     <b>Documents:</b><i>empty</i>
                 </td>
             </tr>
-            <tr>
-                <td width="10%" style="font-size: 10px; padding: 5px">
-                    <b>(2)</b> Title of Paper
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Design of a Complex Ratio Measuring Unit Using Enhanced Branch-Line Coupler for
-                    Wireless Communication Applications
-                </td>
-                <td style="font-size: 10px; padding: 5px" width="10%">
-                    Date of Publication
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    31 Dec 2016
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Author(s)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    1) Saiyidah Munirah Binti Sazali 2) Norhudah Seman
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Journal Indexed In
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    SCOPUS
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Type of Authorship</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    First Student Author
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <strong>Type of Publication</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Journal
-                    <br />
-                    <br />
-                    <input type="checkbox" readonly name="utm" id="utm" value="1" />
-                    affiliation UTM
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Status of Paper</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Published
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="3">
-                    Name of Journal or Proceedings
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Jurnal Teknologi
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Volume
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    77
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px" width="21%">
-                                Name of Publisher
-                            </td>
-                            <td style="font-size: 10px; padding: 5px" width="79%">
-                                Penerbit Universiti Teknologi Malaysia&nbsp;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px">
-                                URL of Journal
-                            </td>
-                            <td style="font-size: 10px; padding: 5px">
-                                -&nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Pages
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    61-67
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Impact Factor (if any)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    0.43
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Remarks
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Attach a copy of paper as proof
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <b>Documents:</b><i>empty</i>
-                </td>
-            </tr>
-            <tr>
-                <td width="10%" style="font-size: 10px; padding: 5px">
-                    <b>(3)</b> Title of Paper
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Wideband Six-Port Reflectometer Design Formed By Enhanced Branch Line Coupler
-                </td>
-                <td style="font-size: 10px; padding: 5px" width="10%">
-                    Date of Publication
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    17 Feb 2015
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Author(s)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    1)N.A.M. Shukor 2)N. Seman 3)D.N.A. Zaidel
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Journal Indexed In
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    -
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Type of Authorship</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    First Student Author
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <strong>Type of Publication</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    Conference
-                    <br />
-                    <br />
-                    <input type="checkbox" readonly name="utm" id="utm" value="1" />
-                    affiliation UTM
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    <strong>Status of Paper</strong>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Published
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="3">
-                    Name of Journal or Proceedings
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    2014 Asia-Pacific Conference on Applied Electromagnetics, APACE 2014
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Volume
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px" width="21%">
-                                Name of Publisher
-                            </td>
-                            <td style="font-size: 10px; padding: 5px" width="79%">
-                                Institute of Electrical and Electronics Engineers Inc.&nbsp;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size: 10px; padding: 5px">
-                                URL of Journal
-                            </td>
-                            <td style="font-size: 10px; padding: 5px">
-                                -&nbsp;
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Pages
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    63-66
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Impact Factor (if any)
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    Remarks
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    null
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    Attach a copy of paper as proof
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <b>Documents:</b><i>empty</i>
-                </td>
-            </tr>
-        </table>
+            </table>
         <br />
         <br>
         <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
@@ -856,32 +639,13 @@
                     Level</th>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
-                    1
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblacname" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lblLevel" runat="server" Text="Label"></asp:Label>
-                </td>
+                <td style="font-size: 10px; padding: 5px" align="center" colspan="4">
+                    &nbsp; &nbsp;-No Records-</td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT * FROM [koku_awd_Acad_code] WHERE ([Matric] = @Matric)">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="MC123456" Name="Matric" 
-                    SessionField="matricNo" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <br />
         </table><br>
         <td style="font-size: 10px; padding: 5px" align="center">
-            <asp:Label ID="lblAc" runat="server" Text="Label"></asp:Label>
             <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
                 <tr>
                     <td style="padding: 10px; font-size: 10px">
@@ -916,7 +680,8 @@
                         <b>Date</b>
                     </td>
                     <td style="font-size: 10px; padding: 5px" width="50%; padding-left:5px">
-                        Saiyidha Munirah Binti Sazali<br />
+                        <asp:Label ID="lblSign" runat="server" Text="Label"></asp:Label>
+                        <br />
                         ..........................<br />
                         <b>Applicant's Signature</b>
                     </td>
@@ -924,58 +689,7 @@
             </table>
             <br />
             <hr />
-            <b>SUPERVISOR'S RECOMMENDATION</b><br />
-            <br />
-            I support this application.
-            <h2 style='background-color: red; color: white; padding: 5px; text-align: center'>
-                N/A</h2>
-            <br />
-            She is an excellent student. During her Master by Research study (under my supervision
-            and graduated last semester), she has published 2 journals and 1 conference paper,
-            and another journal currently under review. Thus, I strongly recommend her application
-            for Zamalah scholarship.
-            <br />
-            <table width="100%">
-                <tr>
-                    <td width="50%" style="font-size: 10px; padding-left: 5px">
-                        <br />
-                        <br />
-                        07 September 2016<br />
-                        ..........................<br />
-                        <b>Date</b>
-                    </td>
-                    <td width="50%" style="font-size: 10px; padding: 5px">
-                        Dr Norhudah Binti Seman ,<br />
-                        Pusat Komunikasi Wayarles,<br />
-                        Fakulti Kejuruteraan Elektrik<br />
-                        ..........................<br />
-                        <b>Supervisor's Signature</b>
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <hr />
-            <b>FACULTY'S VERIFICATION</b><br />
-            <br />
-            I would like to verify that the applicant is currently a research student at my
-            faculty.
-            <h2 style='background-color: red; padding: 5px; color: white; text-align: center'>
-                N/A</h2>
-            <br />
-            <table width="100%">
-                <tr>
-                    <td width="50%" style="font-size: 10px; padding-left: 5px">
-                        <br />
-                        <br />
-                        14 September 2016<br />
-                        ..........................<br />
-                        <b>Date</b>
-                    </td>
-                    <td width="50%" style="font-size: 10px; padding: 5px">
-                        Prof.ir.dr. Mohd Wazir Bin Mustafa ,<br />
-                        Fakulti Kejuruteraan Elektrik<br />
-                        ..........................<br />
-                        <b>Deputy Dean's Signature</b>
+            
                     </td>
                 </tr>
             </table>
