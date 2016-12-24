@@ -646,7 +646,6 @@
         <br />
         </table><br>
         <td style="font-size: 10px; padding: 5px" align="center">
-            <asp:Label ID="lblAc" runat="server" Text="Label"></asp:Label>
             <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
                 <tr>
                     <td style="padding: 10px; font-size: 10px">
