@@ -11,104 +11,123 @@ using System.Configuration;
 
 public partial class UGStudent_frmPersonal : System.Web.UI.Page
 {
-    protected string session;
-    protected DataTable dt;
-    protected DataSet ds;
     protected static string ConnectionString = ConfigurationManager.ConnectionStrings["LocalDB"].ConnectionString;
-    protected static SqlConnection con = new SqlConnection(ConnectionString);
+   protected static SqlConnection con = new SqlConnection(ConnectionString); 
+   protected DataTable dt;
+    protected DataSet ds;
+    protected SqlDataAdapter adapter;
+   protected string matrixNo;
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
         getData();
-        Session["matricNo"] = "A14CS0095";
-        Session["matric_p1"] = "A14CS0095";
-        Session["Relation"] = "Father";
+       /*Session["Relation"] = "Father";
         Session["Relation2"] = "Mother";
 
-
+        Query mat querystring*/
     }
 
     protected void getData()
     {
+        //Get matrix no from Http POST data
+        matrixNo = Request.QueryString["matrixNo"];
 
+        //Creating several database queries
+        string stuQuery = String.Format("SELECT * FROM [vw_StuInfo] WHERE [Matrix_No] = '{0}'", matrixNo);
+        string addrQuery = String.Format("SELECT * FROM [ADDRESS] WHERE [Matrix_No] = '{0}'", matrixNo);
+        string parentQuery = String.Format("SELECT * FROM [GUARDIAN] WHERE [Matrix_No]= '{0}'", matrixNo);
+        string publishQuery = String.Format("SELECT * FROM [PUBLICATION] WHERE [Matrix_No]='{0}'", matrixNo);
 
-        DataView studentInfo = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        //Creating data adapter for each query
+        SqlDataAdapter stuAdapter = new SqlDataAdapter(stuQuery, con);
+        SqlDataAdapter addrAdapter = new SqlDataAdapter(addrQuery, con);
+        SqlDataAdapter parentAdapter = new SqlDataAdapter(parentQuery, con);
+        SqlDataAdapter publishAdapter = new SqlDataAdapter(publishQuery, con);
 
-        foreach (DataRowView drv in studentInfo)
+        //Add all query results into dataset with specific datatable name
+        ds = new DataSet();
+        stuAdapter.Fill(ds, "stuInfo");
+        addrAdapter.Fill(ds, "Addr");
+        parentAdapter.Fill(ds, "parent");
+        publishAdapter.Fill(ds, "Publication");
+        
+
+        //Fill in student info from dataset
+        dt = ds.Tables["stuInfo"];
+
+        foreach (DataRow dr in dt.Rows)
         {
-            DataRow row = drv.Row;
-            lblName.Text = row["Name"].ToString();
-            lblSign.Text = row["Name"].ToString();
-            lblPhone.Text = row["Contact"].ToString();
-            lblEmail.Text = row["Email"].ToString();
-            lblNation.Text = row["Nationality"].ToString();
-            lblRel.Text = row["Religion"].ToString();
-            lblIC.Text = row["IC_Passport"].ToString();
-            lblDob.Text = row["DOB"].ToString();
-            lblplace.Text = row["State_Birth"].ToString();
-            lblmatric.Text = row["Matrix_No"].ToString();
-            lblMStatus.Text = row["Description"].ToString();
-
-
-
-        }
-
-      DataView studAdd = (DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
-
-        foreach (DataRowView drv in studAdd)
-        {
-            DataRow row = drv.Row;
-            lblAdd.Text = row["Address1"].ToString() + " " + row["Address2"].ToString() + ", " + row["Postcode"].ToString() + ", " + row["City"].ToString() + ", " + row["State"].ToString();
-            lblAdd1.Text = row["Address1"].ToString() + " " + row["Address2"].ToString() + ", " + row["Postcode"].ToString() + ", " + row["City"].ToString() + ", " + row["State"].ToString();
-        }
-
-
-        DataView parentInfo = (DataView)SqlDataSource3.Select(DataSourceSelectArguments.Empty);
-
-        foreach (DataRowView drv in parentInfo)
-        {
-            DataRow row = drv.Row;
-
-            lblguard1.Text = row["Name"].ToString();
-            lblIC1.Text = row["IC"].ToString();
-            lblNation1.Text = row["Nationality"].ToString();
-             lblSalary1.Text = row["Salary"].ToString();
-           lblphone1.Text = row["Contact"].ToString();
-            lblocc1.Text = row["Occupation"].ToString();
-        }
-
-       DataView parentInfo2 = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
-
-        foreach (DataRowView drv in parentInfo2)
-        {
-            DataRow row = drv.Row;
-
-            lblguard2.Text = row["Name"].ToString();
-            lblIC2.Text = row["IC"].ToString();
-            lblNation2.Text = row["Nationality"].ToString();
-             lblSalary2.Text = row["Salary"].ToString();
-           lblphone2.Text = row["Contact"].ToString();
-            lblocc2.Text = row["Occupation"].ToString();
+            lblName.Text = dr["Name"].ToString();
+            lblDob.Text = ((DateTime)dr["DOB"]).ToString("dd-MMM-yyyy");
+            lblRel.Text = dr["Religion"].ToString();
+            lblNation.Text = dr["Nationality"].ToString();
+            lblIC.Text = dr["IC_Passport"].ToString();
+            lblmatric.Text = dr["Matrix_No"].ToString();
+            lblEmail.Text = dr["Email"].ToString();
+            lblPhone.Text =dr["Contact"].ToString();
+            lblplace.Text = dr["State_Birth"].ToString();
             
         }
 
-        DataView publish = (DataView)SqlDataSource5.Select(DataSourceSelectArguments.Empty);
+        //Fill in addresses 
+        dt = ds.Tables["Addr"];
 
-        foreach (DataRowView drv in publish)
+        foreach (DataRow dr in dt.Rows)
         {
-            DataRow row = drv.Row;
+            if (dr["Address_Type"].ToString() == "1")
+            {
+                lblAdd.Text = dr["Address1"].ToString()+","+dr["Address2"].ToString()+","+dr["Postcode"].ToString() +","+ dr["City"].ToString()+", "+ dr["State"].ToString();
+             }
+            else if (dr["Address_Type"].ToString() == "4")
+            {
+                lblAdd1.Text = dr["Address1"].ToString()+","+dr["Address2"].ToString()+","+dr["Postcode"].ToString() +","+ dr["City"].ToString()+", "+ dr["State"].ToString();
+             
+            }
+        }
 
-            lblpaper.Text = row["title"].ToString();
-           lblTypeAutho.Text = row["type_authorship"].ToString();
-            lblType.Text = row["type"].ToString();
-            lblimpact.Text = row["impact_factor"].ToString();
-            lblStatusPaper.Text = row["status_paper"].ToString();
-            lblAuthor.Text = row["authors"].ToString();
-            lbldate.Text = row["Date_publication"].ToString();
+         dt = ds.Tables["parent"];
+        foreach (DataRow dr in dt.Rows)
+        { 
+            if(dr["Relation"].ToString()=="Father")
+            {
+                lblguard1.Text = dr["Name"].ToString();
+                lblIC1.Text = dr["IC"].ToString();
+                lblNation1.Text = dr["Nationality"].ToString();
+                lblSalary1.Text = dr["Salary"].ToString();
+                lblphone1.Text = dr["Contact"].ToString();
+                lblocc1.Text = dr["Occupation"].ToString();
+            }
+            else if(dr["Relation"].ToString()=="Mother")
+            {
+                lblguard2.Text = dr["Name"].ToString();
+                lblIC2.Text = dr["IC"].ToString();
+                lblNation2.Text = dr["Nationality"].ToString();
+                lblSalary2.Text = dr["Salary"].ToString();
+                lblphone2.Text = dr["Contact"].ToString();
+                lblocc2.Text = dr["Occupation"].ToString();
+            }
+        }
 
+
+        dt = ds.Tables["Publication"];
+        foreach (DataRow dr in dt.Rows)
+        {
+            lblpaper.Text = dr["title"].ToString();
+            lblTypeAutho.Text = dr["type_authorship"].ToString();
+            lblType.Text = dr["type"].ToString();
+            lblimpact.Text = dr["impact_factor"].ToString();
+            lblStatusPaper.Text = dr["status_paper"].ToString();
+            lblAuthor.Text = dr["authors"].ToString();
+            lbldate.Text = dr["Date_publication"].ToString();
         }
 
     }
-}
+      
+
+
+
+    }
+
 
 

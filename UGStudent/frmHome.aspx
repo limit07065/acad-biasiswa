@@ -30,9 +30,9 @@
 			<td colspan="7">
                 <table style="width: 100%">
                     <tr>
-                        <td bgcolor="#990000" style="color: #FFFFFF">
+                        <td bgcolor="#990000" style="color: #FFFFFF; width: 166px;">
                             Application</td>
-                        <td bgcolor="#990000" style="color: #FFFFFF">
+                        <td bgcolor="#990000" style="color: #FFFFFF; width: 152px;">
                             Date</td>
                         <td bgcolor="#990000" style="color: #FFFFFF">
                             Status</td>
@@ -41,13 +41,20 @@
                     </tr>
                     <tr>
                         <td bgcolor="#FFFFCC" style="width: 166px">
-                            UTM Zamalah Scholarship</td>
+                            UTM Zamalah Scholarship<br />
+                            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                        </td>
                         <td bgcolor="#FFFFCC" style="width: 152px">
-                            08/12/2016</td>
+                            08/12/2016<br />
+                            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                        </td>
                         <td bgcolor="#FFFFCC" style="width: 222px">
-                            Submited</td>
+                            Submited<br />
+                            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+                        </td>
                         <td bgcolor="#FFFFCC">
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="frmCompleteForm.aspx">View Full Form</asp:HyperLink>
+                            <br />
                         </td>
                     </tr>
                 </table>

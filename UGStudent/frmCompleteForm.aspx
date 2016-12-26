@@ -31,25 +31,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-            SelectCommand="SELECT * FROM [vw_StuInfo] WHERE ([Matrix_No] = @Matrix_No)">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
-                    SessionField="matricNo" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-            
-            SelectCommand="SELECT * FROM [ADDRESS] WHERE (([Address_Type] = @Address_Type) AND ([Matrix_No] = @Matrix_No))">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="1" Name="Address_Type" 
-                    SessionField="addType" Type="Int16" />
-                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
-                    SessionField="matricNo" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <table style="width: 100%">
             <tr>
                 <td valign="top">
@@ -109,40 +90,40 @@
             <tr>
                 <td colspan="4" style="font-size: 10px; padding: 5px" class="style2">
                     <b>Name</b><br />
-                    <asp:Label ID="lblName" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblName" runat="server"></asp:Label>
                     <br />
                 </td>
             </tr>
             <tr>
                 <td width="50%" style="font-size: 10px; padding: 5px" colspan="3">
                     <b>Permanent Address</b><br />
-                    <asp:Label ID="lblAdd" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblAdd" runat="server"></asp:Label>
                     <br />
                 </td>
                 <td width="50%" style="font-size: 10px; padding: 5px" valign="top">
                     <b>Contact Telephone No</b><br />
                     <br />
-                    <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblPhone" runat="server"></asp:Label>
             </tr>
             <tr>
                 <td colspan="3" style="font-size: 10px; padding: 5px">
                     <b>Correspondence Address</b><br />
                     <br />
-                    <asp:Label ID="lblAdd1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblAdd1" runat="server"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>E-mail</b><br />
                     <br />
-                    <asp:Label ID="lblEmail" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblEmail" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" style="font-size: 10px; padding: 5px" valign="top">
                     <b>Date and Place Of Birth</b><br />
                     <br />
-                    <asp:Label ID="lblDob" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblDob" runat="server"></asp:Label>
                     ,
-                    <asp:Label ID="lblplace" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblplace" runat="server"></asp:Label>
                     <td style="font-size: 10px; padding: 5px">
                         <b>Present Age</b><br />
                         <br />
@@ -150,37 +131,27 @@
                     <td style="font-size: 10px; padding: 5px">
                         <b>Nationality</b><br />
                         <br />
-                        <asp:Label ID="lblNation" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblNation" runat="server"></asp:Label>
                     </td>
             </tr>
             <tr>
                 <td valign="top" style="font-size: 10px; padding: 5px" colspan="2">
                     <b>Passport or IC No</b><br />
                     <br />
-                    <asp:Label ID="lblIC" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblIC" runat="server"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Martial Status</b><br />
                     <br />
-                    <asp:Label ID="lblMStatus" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblMStatus" runat="server"></asp:Label>
                 </td>
                 <td valign="top" style="font-size: 10px; padding: 5px">
                     <b>Religion</b><br />
                     <br />
-                    <asp:Label ID="lblRel" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblRel" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-            SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
-                    SessionField="matric_p1" Type="String" />
-                <asp:SessionParameter DefaultValue="Father" Name="Relation" 
-                    SessionField="Relation" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <br style="page-break-after: always">
         <table width="95%" align="center" border="1" cellpadding="0" cellspacing="0">
             <tr>
@@ -189,13 +160,13 @@
                 </td>
             </tr>
             <tr>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     <b>Parents/Guardian Name :</b>
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     <b>IC No. :</b>
                 </td>
-                <td style="font-size: 10px; padding: 5px">
+                <td style="font-size: 10px; padding: 5px" class="style5">
                     <b>Nationality :</b>
                 </td>
             </tr>
@@ -203,14 +174,14 @@
                 <td style="font-size: 10px; padding: 5px" class="style5">
                     &nbsp;
                     
-                    <asp:Label ID="lblguard1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblguard1" runat="server"></asp:Label>
                     
                 </td>
                 <td style="font-size: 10px; padding: 5px" class="style5">
-                    &nbsp;<asp:Label ID="lblIC1" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lblIC1" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" class="style5">
-                    <asp:Label ID="lblNation1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblNation1" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -226,14 +197,15 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lblocc1" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lblocc1" 
+                        runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblphone1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblphone1" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     &nbsp;RM&nbsp;
-                    <asp:Label ID="lblSalary1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblSalary1" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -249,16 +221,6 @@
             </tr>
             <tr>
                 <td style="font-size: 10px; padding: 5px" colspan="3">
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                        SelectCommand="SELECT * FROM [GUARDIAN] WHERE (([Matirx_No] = @Matirx_No) AND ([Relation] = @Relation))">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="A14CS0095" Name="Matirx_No" 
-                                SessionField="matric_p2" Type="String" />
-                            <asp:SessionParameter DefaultValue="Mother" Name="Relation" 
-                                SessionField="Relation2" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
                     &nbsp;&nbsp;</td>
             </tr>
             <tr>
@@ -282,10 +244,10 @@
                     &nbsp;<asp:Label ID="lblguard2" runat="server" Text="lblguard2"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lblIC2" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lblIC2" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lblNation2" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lblNation2" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -302,14 +264,14 @@
             <tr>
                 <td style="font-size: 10px; padding: 5px">
                     &nbsp;
-                    <asp:Label ID="lblocc2" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblocc2" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblphone2" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblphone2" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     RM
-                    <asp:Label ID="lblSalary2" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblSalary2" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -363,7 +325,7 @@
                 <td style="font-size: 10px; padding: 5px">
                     <b>Matric No</b><br />
                     <br />
-                    <asp:Label ID="lblmatric" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblmatric" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -490,14 +452,6 @@
             <tr>
                 <td colspan="4" style="padding: 10px; font-size: 10px">
                     <strong>G. PAPER PUBLICATION</strong>
-                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-                        SelectCommand="SELECT * FROM [vw_List_Publication] WHERE ([matrix_no] = @matrix_no)">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="A14CS0047" Name="matrix_no" 
-                                SessionField="matricNo" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -505,13 +459,13 @@
                     <b>(1)</b> Title of Paper
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblpaper" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblpaper" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" width="10%">
                     Date of Publication
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    &nbsp;<asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lbldate" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -519,7 +473,7 @@
                     Author(s)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblAuthor" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblAuthor" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
                     Journal Indexed In
@@ -533,13 +487,13 @@
                     <strong>Type of Authorship</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblTypeAutho" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblTypeAutho" runat="server"></asp:Label>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
                     <strong>Type of Publication</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px" rowspan="2">
-                    &nbsp;<asp:Label ID="lblType" runat="server" Text="Label"></asp:Label>
+                    &nbsp;<asp:Label ID="lblType" runat="server"></asp:Label>
                     <br />
                     <br />
                     <input type="checkbox" readonly name="utm" id="utm" value="1" />
@@ -551,7 +505,7 @@
                     <strong>Status of Paper</strong>
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblStatusPaper" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblStatusPaper" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -601,7 +555,7 @@
                     Impact Factor (if any)
                 </td>
                 <td style="font-size: 10px; padding: 5px">
-                    <asp:Label ID="lblimpact" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblimpact" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -680,7 +634,7 @@
                         <b>Date</b>
                     </td>
                     <td style="font-size: 10px; padding: 5px" width="50%; padding-left:5px">
-                        <asp:Label ID="lblSign" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblSign" runat="server"></asp:Label>
                         <br />
                         ..........................<br />
                         <b>Applicant's Signature</b>
