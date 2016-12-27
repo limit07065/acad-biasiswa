@@ -146,6 +146,20 @@
                                                 <asp:Label ID="lblNationality" runat="server" Text='<%# FormatlblNationality(Eval("Nationality_Limit")) %>'></asp:Label>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td class="tdtitle">
+                                                Starting Date
+                                            </td>
+                                            <td class="tdrow">
+                                                <%# Eval("Start_Date", "{0:dd-MMM-yyyy}") %>
+                                            </td>
+                                            <td class="tdtitle">
+                                                Ending Date
+                                            </td>
+                                            <td class="tdrow">
+                                                <%# Eval("End_Date", "{0:dd-MMM-yyyy}") %>
+                                            </td>
+                                        </tr>
                                     </table>
                                     </div>
                                     <div class="modal-footer">
@@ -244,6 +258,20 @@
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td class="tdtitle">
+                                                Starting Date (DD-MMM-YYYY)
+                                            </td>
+                                            <td class="tdrow">
+                                                <asp:TextBox ID="tbStart" Text="<%# Bind('Start_Date', '{0:dd-MMM-yyyy}') %>" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td class="tdtitle">
+                                                Ending Date (DD-MMM-YYYY)
+                                            </td>
+                                            <td class="tdrow">
+                                                <asp:TextBox ID="tbEnd" Text="<%# Bind('End_Date', '{0:dd-MMM-yyyy}') %>" runat="server"></asp:TextBox>
+                                            </td>
+                                        </tr>
                                     </table>
                                     </div>
                                     <div class="modal-footer">
@@ -274,7 +302,7 @@
                     </asp:UpdatePanel>
                     <asp:SqlDataSource ID="formDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
                         SelectCommand="SELECT * FROM [CODE_SCHOLARSHIP] WHERE ([Code] = @Code)" 
-                        UpdateCommand="UPDATE [CODE_SCHOLARSHIP] SET [Age_Limit] = @Age_Limit, [Sem_Limit] = @Sem_Limit, [Job_Limit] = @Job_Limit, [CPA_Limit] = @CPA_Limit, [Reg_Limit] = @Reg_Limit, [Nationality_Limit] = @Nationality_Limit WHERE [Code] = @Code">
+                        UpdateCommand="UPDATE [CODE_SCHOLARSHIP] SET [Age_Limit] = @Age_Limit, [Sem_Limit] = @Sem_Limit, [Job_Limit] = @Job_Limit, [CPA_Limit] = @CPA_Limit, [Reg_Limit] = @Reg_Limit, [Nationality_Limit] = @Nationality_Limit, [Start_Date] = @Start_Date, [End_Date] = @End_Date WHERE [Code] = @Code">
                         <SelectParameters>
                             <asp:Parameter Name="Code" />
                         </SelectParameters>

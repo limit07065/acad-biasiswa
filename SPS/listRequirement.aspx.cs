@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
  
 public partial class SPSRequirement_Default : System.Web.UI.Page
 {
@@ -10,6 +11,17 @@ public partial class SPSRequirement_Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+    }
+
+    protected void FormView1_DataBound(object sender, EventArgs e)
+    {
+        DataRowView rv = FormView1.DataItem as DataRowView;
+
+        TextBox tbStart = FormView1.FindControl("tbStart") as TextBox;
+        tbStart.Text = ((DateTime)rv["Start_Date"]).ToString("dd-MMM-yyyy");
+
+        TextBox tdEnd = FormView1.FindControl("tdEnd") as TextBox;
+        tdEnd.Text = ((DateTime)rv["End_Date"]).ToString("dd-MMM-yyyy");
     }
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
