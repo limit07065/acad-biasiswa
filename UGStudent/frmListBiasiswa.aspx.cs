@@ -15,5 +15,14 @@ public partial class UGStudent_frmListBiasiswa : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.Redirect("frmInstruction.aspx");
+        Session["scholarshipType"] = "174A";
     }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("frmInstruction.aspx");
+        Session["scholarshipType"] = "176";
+    }
+
+   
 }

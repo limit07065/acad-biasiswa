@@ -59,7 +59,7 @@
             <div class="col-sm-8" id="supervisor-action">
                 <div>
                     <br />
-                    <a href="#" class="btn btn-default">View Form</a>
+                     <asp:LinkButton ID="btnCompleteForm" runat="server" CssClass="btn btn-default" Text="Complete Form" ></asp:LinkButton>
                 </div>
                 <%// datasource to get supervisor recommendation %>
                 <asp:SqlDataSource ID="SqlDataSourceSupervisorRecommendation" runat="server" ConnectionString="<%$ ConnectionStrings:LocalDB %>"
@@ -101,4 +101,13 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function viewCompleteForm(str) {
+            window.open("../UGStudent/frmCompleteForm.aspx?mat=" + str, 'Complete Form', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes');
+        }
+
+    </script>
 </asp:Content>
+
+
