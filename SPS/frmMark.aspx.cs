@@ -25,7 +25,7 @@ public partial class frmMark : System.Web.UI.Page
         }
         catch (NullReferenceException enull)
         {
-            Response.Redirect("SPS/listApplication.aspx");
+            Response.Redirect("listApplication.aspx");
         }
 
         if (!IsPostBack)
@@ -37,6 +37,8 @@ public partial class frmMark : System.Web.UI.Page
         btnPublication.Attributes.Add("OnClick", jsFunction1);
         string jsFunction2 = "window.close()";
         btnCancel.Attributes.Add("OnClick", jsFunction2);
+        string jsFunction3 = String.Format("viewCompleteForm('{0}');", Request.QueryString["mat"]);
+        btnView.Attributes.Add("OnClick", jsFunction3);
        
         
 

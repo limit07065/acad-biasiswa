@@ -19,7 +19,7 @@ public partial class frmPublication : System.Web.UI.Page
         }
         catch (NullReferenceException)
         {
-            Response.Redirect("SPS/listApplication.aspx");
+            Response.Redirect("listApplication.aspx");
         }
 
         if (!IsPostBack)

@@ -26,7 +26,7 @@ public partial class frmProcess : System.Web.UI.Page
         }
         catch (NullReferenceException enull)
         {
-            Response.Redirect("SPS/listApplication.aspx");
+            Response.Redirect("listApplication.aspx");
         }
 
         if (!IsPostBack)
@@ -44,6 +44,10 @@ public partial class frmProcess : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(ConnectionString))
         {
+            string jsFunction = String.Format("viewCompleteForm('{0}');", matrixNo);
+            btnForm.Attributes.Add("OnClick", jsFunction);
+
+
             string stuQuery = String.Format("SELECT * FROM [vw_StuInfo] WHERE [Matrix_No] = '{0}'", matrixNo);
             adapter = new SqlDataAdapter(stuQuery, con);
             adapter.Fill(ds, "stuInfo");

@@ -30,7 +30,7 @@
             <%= Request.QueryString["type"] %>
         </div>
         <br />
-        <asp:Button ID="Button1" runat="server" Text="View" CssClass="btn btn-default" />
+        <asp:Button ID="btnView" runat="server" Text="View" CssClass="btn btn-default" />
         <asp:Button ID="btnPublication" runat="server" Text="List of Publication" CssClass="btn btn-default" />
         <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Save" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" />
@@ -492,7 +492,6 @@
                         President
                     </td>
                     <td class="tdrow">
-                        
                         <asp:TextBox runat="server" name="coPresident" ID="coPresident"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -505,7 +504,6 @@
                         Vice President
                     </td>
                     <td class="tdrow">
-                        
                         <asp:TextBox runat="server" name="coVicePresident" ID="coVicePresident"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -518,7 +516,6 @@
                         Bursar/Vice Bursar
                     </td>
                     <td class="tdrow">
-                      
                         <asp:TextBox runat="server" name="coBursar" ID="coBursar"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -531,7 +528,6 @@
                         Secretary/Vice Secretary
                     </td>
                     <td class="tdrow">
-                       
                         <asp:TextBox runat="server" name="coSecretary" ID="coSecretary"></asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -544,7 +540,6 @@
                         Committee
                     </td>
                     <td class="tdrow">
-                       
                         <asp:TextBox runat="server" name="coCommittee" ID="coCommittee"> </asp:TextBox>
                     </td>
                     <td class="tdrow">
@@ -660,7 +655,13 @@
                 }
                 window.close();
             }
-            
+
+
+            function viewCompleteForm(str) {
+                window.open("../UGStudent/frmCompleteForm.aspx?mat=" + str, 'Complete Form', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes');
+            }
+
+    
         </script>
 </body>
 </html>

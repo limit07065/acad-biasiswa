@@ -30,9 +30,8 @@ public partial class UGStudent_frmPersonal : System.Web.UI.Page
 
     protected void getData()
     {
-
-
-        DataView studentInfo = (DataView)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
+        
+        DataView studentInfo = (DataView)sqlStudent.Select(DataSourceSelectArguments.Empty);
 
         foreach (DataRowView drv in studentInfo)
         {
