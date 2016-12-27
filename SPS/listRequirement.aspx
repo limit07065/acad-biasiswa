@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SPS/SPSMasterPage.master" AutoEventWireup="true"
     CodeFile="listRequirement.aspx.cs" Inherits="SPSRequirement_Default" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="Server">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+    <>
     <div id="cssmenu2">
         <ul style="font-size: small">
             <li class="active"><a><span class="fa fa-navicon"></span>All</a></li>
@@ -260,15 +264,17 @@
                                         </tr>
                                         <tr>
                                             <td class="tdtitle">
-                                                Starting Date (DD-MMM-YYYY)
+                                                Starting Date
                                             </td>
                                             <td class="tdrow">
+                                                <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbStart" ClearTime="True" Format="dd-MMM-yyyy" />
                                                 <asp:TextBox ID="tbStart" Text="<%# Bind('Start_Date', '{0:dd-MMM-yyyy}') %>" runat="server"></asp:TextBox>
                                             </td>
                                             <td class="tdtitle">
-                                                Ending Date (DD-MMM-YYYY)
+                                                Ending Date
                                             </td>
                                             <td class="tdrow">
+                                                <cc1:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbEnd" ClearTime="True" Format="dd-MMM-yyyy" />
                                                 <asp:TextBox ID="tbEnd" Text="<%# Bind('End_Date', '{0:dd-MMM-yyyy}') %>" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
