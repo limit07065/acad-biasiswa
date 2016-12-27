@@ -51,5 +51,80 @@
             </tr>
         </table>
     </div>
+    <asp:SqlDataSource ID="sql" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+
+        DeleteCommand="DELETE FROM [APPLICATION] WHERE [App_No] = @App_No" 
+        InsertCommand="INSERT INTO [APPLICATION] ([Matrix_No], [Session], [App_Date],[Type]) VALUES (@Matrix_No, @Session, @App_Date,@Type)" 
+        SelectCommand="SELECT * FROM [APPLICATION] WHERE ([Matrix_No] = @Matrix_No AND [Type] = @type)  ORDER BY [App_Date] DESC " 
+        UpdateCommand="UPDATE [APPLICATION] SET [Matrix_No] = @Matrix_No, [Session] = @Session, [App_Date] = @App_Date, [Mark] = @Mark, [Comment] = @Comment, [Achievement] = @Achievement, [Award] = @Award, [Type] = @Type, [Faculty_Approval] = @Faculty_Approval, [Selected] = @Selected WHERE [App_No] = @App_No">
+         <SelectParameters>
+            <asp:SessionParameter Name="Matrix_No" SessionField="matricNo" Type="String" />
+            <asp:SessionParameter Name="type" SessionField="scholarshipType" Type="String" />
+        </SelectParameters>
+        <DeleteParameters>
+            <asp:Parameter Name="App_No" Type="Int32" />
+        </DeleteParameters>
+   
+        <UpdateParameters>
+            <asp:Parameter Name="Matrix_No" Type="String" />
+            <asp:Parameter Name="Session" Type="String" />
+            <asp:Parameter DbType="Date" Name="App_Date" />
+            <asp:Parameter Name="Mark" Type="Decimal" />
+            <asp:Parameter Name="Comment" Type="String" />
+            <asp:Parameter Name="Achievement" Type="String" />
+            <asp:Parameter Name="Award" Type="String" />
+            <asp:Parameter Name="Type" Type="String" />
+            <asp:Parameter Name="Faculty_Approval" Type="Byte" />
+            <asp:Parameter Name="Selected" Type="Byte" />
+            <asp:Parameter Name="App_No" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="sql1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>"        
+        
+        SelectCommand="SELECT [Email] FROM [vw_Supervisor] WHERE (([Matrix_No] = @Matrix_No) AND ([Semester] = @Semester))" >
+        <SelectParameters>
+            <asp:SessionParameter Name="Matrix_No" SessionField="matricNo" Type="String" />
+            <asp:Parameter DefaultValue="201620171" Name="Semester" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+     <asp:SqlDataSource ID="sql0" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+        DeleteCommand="DELETE FROM [APP_STATUS_DETAILS] WHERE [ID] = @ID" 
+        InsertCommand="INSERT INTO [APP_STATUS_DETAILS] ([App_Code], [Status], [Remark], [Date], [Active]) VALUES (@App_Code, @Status, @Remark, @Date, @Active)" 
+        SelectCommand="SELECT * FROM [APP_STATUS_DETAILS]" 
+        
+        UpdateCommand="UPDATE [APP_STATUS_DETAILS] SET [App_Code] = @App_Code, [Status] = @Status, [Remark] = @Remark, [Date] = @Date, [Active] = @Active WHERE [ID] = @ID">
+        <DeleteParameters>
+            <asp:Parameter Name="ID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="App_Code" Type="Int32" />
+            <asp:Parameter Name="Status" Type="String" />
+            <asp:Parameter Name="Remark" Type="String" />
+            <asp:Parameter Name="Date" DbType="Date" />
+            <asp:Parameter Name="Active" Type="Byte" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="App_Code" Type="Int32" />
+            <asp:Parameter Name="Status" Type="String" />
+            <asp:Parameter Name="Remark" Type="String" />
+            <asp:Parameter Name="Date" DbType="Date" />
+            <asp:Parameter Name="Active" Type="Byte" />
+            <asp:Parameter Name="ID" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+
+     <asp:SqlDataSource ID="sqlScholarship" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>"> 
+        </asp:SqlDataSource>
+         <asp:SqlDataSource ID="sqlPublication" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
+        SelectCommand="SELECT * FROM [PUBLICATION] WHERE ([matrix_no] = @matrix_no)">
+             <SelectParameters>
+                 <asp:SessionParameter Name="matrix_no" SessionField="matricNo" Type="String" />
+             </SelectParameters>
+        </asp:SqlDataSource>
 </asp:Content>
 

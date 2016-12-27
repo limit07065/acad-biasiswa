@@ -31,13 +31,15 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        <asp:SqlDataSource ID="sqlStudent" runat="server" 
             ConnectionString="<%$ ConnectionStrings:LocalDB %>" 
-            SelectCommand="SELECT * FROM [vw_StuInfo] WHERE ([Matrix_No] = @Matrix_No)">
+            SelectCommand="SELECT * FROM [vw_StuInfo] WHERE ([Matrix_No] = @Matrix_No)" >
             <SelectParameters>
-                <asp:SessionParameter DefaultValue="A14CS0095" Name="Matrix_No" 
-                    SessionField="matricNo" Type="String" />
+                <asp:QueryStringParameter Name="Matrix_No" QueryStringField="mat" 
+                    Type="String" />
             </SelectParameters>
+            
+            
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:LocalDB %>" 

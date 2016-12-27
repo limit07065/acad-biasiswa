@@ -230,12 +230,12 @@
             window.open("frmPersonalDetail.aspx?matrixNo=" + str, 'detailWindow', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=550,left=20,top=20');
         }
 
-        function viewStatus(matrixNo, session) {
+        function viewStatus(matrixNo, session ) {
             window.open("frmProcess.aspx?matrixNo=" + matrixNo + "&session=" + session, "statusWindow", 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1000,height=500,left=20,top=20');
         }
 
-        function viewMark(str, str2) {
-            window.open("frmMark.aspx?appNo=" + str + "&type=" + str2, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
+        function viewMark(str, str2, str3) {
+            window.open("frmMark.aspx?appNo=" + str + "&type=" + str2 + "&mat=" + str3, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=800, height=550, left=20, top=20');
         }
     </script>
     <script type="text/javascript">

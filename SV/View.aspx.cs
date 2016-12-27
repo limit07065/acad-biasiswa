@@ -24,6 +24,8 @@ public partial class SV_View : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            string jsFunction = String.Format("viewCompleteForm('{0}');", Request.QueryString["mat"]);
+            btnCompleteForm.Attributes.Add("OnClick", jsFunction);   
             DataView student = (DataView)SqlDataSourceStudent.Select(DataSourceSelectArguments.Empty);
             lblName.Text = student[0]["Name"].ToString();
             lblContactNo.Text = student[0]["Contact"].ToString();

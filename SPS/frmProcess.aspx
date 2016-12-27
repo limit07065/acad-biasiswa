@@ -392,5 +392,11 @@
             <asp:Parameter Name="Remark" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+
+    <script>
+        function viewCompleteForm(str) {
+            window.open("../UGStudent/frmCompleteForm.aspx?mat=" + str, 'Complete Form', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes');
+        }
+    </script>
 </body>
 </html>
