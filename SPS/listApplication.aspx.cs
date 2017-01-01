@@ -55,7 +55,7 @@ public partial class SPS_Default : System.Web.UI.Page
             viewMark.Text = rv["Mark"].ToString();
 
             LinkButton viewStatus = e.Row.FindControl("viewStatus") as LinkButton;
-            string jsFunction3 = String.Format("viewStatus('{0}', '{1}','{2}');", e.Row.Cells[3].Text.Trim(), e.Row.Cells[5].Text.Trim());
+            string jsFunction3 = String.Format("viewStatus('{0}', '{1}');", e.Row.Cells[3].Text.Trim(), e.Row.Cells[5].Text.Trim());
             viewStatus.Attributes.Add("OnClick", jsFunction3);
             viewStatus.Text = rv["App_Status"].ToString();
 

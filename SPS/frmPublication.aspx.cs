@@ -47,7 +47,7 @@ public partial class frmPublication : System.Web.UI.Page
     {
 
         if (e.Row.RowType == DataControlRowType.DataRow)
-        {
+        { 
             TextBox mark = e.Row.FindControl("tbMark") as TextBox;
             TextBox myra2 = e.Row.FindControl("tbMyra2") as TextBox;
             DropDownList typeAuthorship = e.Row.FindControl("ddlTypeAuthorship") as DropDownList;
@@ -143,7 +143,7 @@ public partial class frmPublication : System.Web.UI.Page
 
             SqlDataSourcePublication.Update();
         }
-        //  ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "refreshParent()", true);
+          ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "refreshParent()", true);
 
     }
 

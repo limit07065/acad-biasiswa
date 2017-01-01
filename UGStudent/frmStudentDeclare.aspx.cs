@@ -1,5 +1,4 @@
-﻿using
-System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +8,12 @@ using System.Data;
 
 public partial class UGStudent_frmDeclare : System.Web.UI.Page
 {
+    String type;
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["matricNo"] = "A14CS0095";
         Session["session"] = "201620171";
+        type = Session["scholarshipType"].ToString();
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -38,12 +39,12 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
 
     protected void insertScholarship()
     {
-        String scholarshipType = Session["scholarshipType"].ToString();
+        
         //insert to application table
         sql.InsertParameters.Add("Matrix_No", Session["matricNo"].ToString());
         sql.InsertParameters.Add("Session", "201620171");
         sql.InsertParameters.Add("App_Date", DateTime.Now.ToString());
-        sql.InsertParameters.Add("Type", scholarshipType);
+        sql.InsertParameters.Add("Type", type);
         sql.Insert();
 
         int appNo = 0;
@@ -63,11 +64,11 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
         sql0.Insert();
 
         //insert to respective table based on scholarship type.
-        if(scholarshipType.Equals("174A"))
+        if(type.Equals("174A"))
         {
             insertZamalah(appNo);
         }
-        else if (scholarshipType.Equals("176"))
+        else if (type.Equals("176"))
         {   
             insertPNF(appNo);
         }
