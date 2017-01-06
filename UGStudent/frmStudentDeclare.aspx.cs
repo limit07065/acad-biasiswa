@@ -13,7 +13,8 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
     {
         Session["matricNo"] = "A14CS0095";
         Session["session"] = "201620171";
-        type = Session["scholarshipType"].ToString();
+        Session["scholarshipType"] = "174A";
+        type = (String)Session["scholarshipType"];
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -44,7 +45,7 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
         sql.InsertParameters.Add("Matrix_No", Session["matricNo"].ToString());
         sql.InsertParameters.Add("Session", "201620171");
         sql.InsertParameters.Add("App_Date", DateTime.Now.ToString());
-        sql.InsertParameters.Add("Type", type);
+        sql.InsertParameters.Add("Type",type);
         sql.Insert();
 
         int appNo = 0;
@@ -54,7 +55,6 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
         {
             DataRow row = drv.Row;
             appNo = (int)row["App_No"];
-
         }
         sql0.InsertParameters["App_Code"].DefaultValue = appNo.ToString();
         sql0.InsertParameters["Status"].DefaultValue = "BIA_01";

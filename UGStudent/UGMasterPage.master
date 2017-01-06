@@ -23,7 +23,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div id="menu" class="menu-bg">
         <ul class="left">
-            <li class="home"><a href="" class="icon-home"></a><span style="visibility: hidden;">
+            <li class="home"><a href="/acad-biasiswa/UGStudent/Default.aspx" class="icon-home"></a><span style="visibility: hidden;">
                 ---</span></li>
             <li><a>
                 <asp:Label ID="Label2" runat="server" Text="Student Info" CssClass="textMenu"></asp:Label></a>
@@ -53,9 +53,9 @@
                 <asp:Label ID="lblLoggedInUser" runat="server" Text=""></asp:Label></span>&nbsp;
             <li class="profile"><a class="icon-user"></a>
                 <ul>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
-                    <li><a href="#" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
-                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
+                    <li><a href="../UGStudent/" class="popup-box-window"><i class="fa fa-cogs fa-fw"></i>Manage account</a></li>
+                    <li><a href="../SV/" class="popup-box-window"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+                    <li><a href="../SPS/"><i class="fa fa-sign-out fa-fw"></i>Sign out</a></li>
                 </ul>
             </li>
         </ul>
