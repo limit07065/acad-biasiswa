@@ -98,6 +98,7 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
         //table mark zamalah
         sqlScholarship.InsertCommand = "INSERT INTO [MARK_ZAMALAH] ([id])VALUES(@appNo)";
         sqlScholarship.InsertParameters.Add("appNo",appNo.ToString());
+        sqlScholarship.Insert();
 
     }
 
@@ -121,15 +122,15 @@ public partial class UGStudent_frmDeclare : System.Web.UI.Page
 
     protected void insertPublication(int appNo)
     {
-        sqlScholarship.InsertCommand = "INSERT INTO [MARK_PUBLICATION] ([app_no],[publication_id])VALUES(@appNo,@pubId)";
-        sqlScholarship.InsertParameters.Add("appNo", appNo.ToString());
-        sqlScholarship.InsertParameters.Add("pubId", appNo.ToString());
-
+        sqlScholarship.InsertCommand = "INSERT INTO [MARK_PUBLICATION] ([app_no],[publication_id])VALUES(@appNo,@pubId)";        
+        sqlScholarship.InsertParameters.Add("pubId", "");
         DataView dv = (DataView)sqlPublication.Select(DataSourceSelectArguments.Empty);
         foreach (DataRowView drv in dv)
         {
             DataRow dr = drv.Row;
-            sqlScholarship.InsertParameters.Add("appNo", appNo.ToString());
+            
+            sqlScholarship.InsertParameters["pubId"].DefaultValue = dr["id"].ToString();            
+            sqlScholarship.Insert();
 
         }
 
